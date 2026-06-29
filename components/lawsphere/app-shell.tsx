@@ -8,8 +8,13 @@ import { InboxScreen } from "./screens/inbox"
 import { LibraryScreen } from "./screens/library"
 import { DashboardScreen } from "./screens/dashboard"
 import { ProfileScreen } from "./screens/profile"
+import { Welcome } from "./entry/welcome"
+import { Auth } from "./entry/auth"
+
+type Phase = "welcome" | "auth" | "app"
 
 export function AppShell() {
+  const [phase, setPhase] = useState<Phase>("welcome")
   const [tab, setTab] = useState<TabKey>("ai")
 
   return (
@@ -25,15 +30,31 @@ export function AppShell() {
       >
         <StatusBar />
 
-        <div className="relative flex-1 overflow-hidden">
-          {tab === "ai" && <AiChatScreen />}
-          {tab === "inbox" && <InboxScreen />}
-          {tab === "library" && <LibraryScreen />}
-          {tab === "activity" && <DashboardScreen />}
-          {tab === "profile" && <ProfileScreen />}
-        </div>
+        {phase === "welcome" && (
+          <div className="relative flex-1 overflow-hidden">
+            <Welcome onFinish={() => setPhase("auth")} />
+          </div>
+        )}
 
-        <BottomNav active={tab} onChange={setTab} />
+        {phase === "auth" && (
+          <div className="relative flex-1 overflow-hidden">
+            <Auth onAuthenticated={() => setPhase("app")} />
+          </div>
+        )}
+
+        {phase === "app" && (
+          <>
+            <div className="relative flex-1 overflow-hidden">
+              {tab === "ai" && <AiChatScreen />}
+              {tab === "inbox" && <InboxScreen />}
+              {tab === "library" && <LibraryScreen />}
+              {tab === "activity" && <DashboardScreen />}
+              {tab === "profile" && <ProfileScreen />}
+            </div>
+
+            <BottomNav active={tab} onChange={setTab} />
+          </>
+        )}
 
         {/* Home indicator */}
         <div className="pointer-events-none absolute inset-x-0 bottom-2 flex justify-center">
