@@ -1,29 +1,45 @@
 "use client"
 
+import { useState } from "react"
 import Image from "next/image"
 import {
   Pencil,
   UserCog,
-  KeyRound,
-  BellRing,
+  CreditCard,
+  Settings,
   ShieldOff,
   LogOut,
   ChevronRight,
+  FolderClosed,
+  MessagesSquare,
+  Crown,
 } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
+import { SettingsScreen } from "./settings"
 
-const settings: { icon: LucideIcon; label: string }[] = [
-  { icon: UserCog, label: "Thay đổi thông tin cá nhân" },
-  { icon: KeyRound, label: "Đổi mật khẩu" },
-  { icon: BellRing, label: "Cài đặt thông báo" },
+const stats: { icon: LucideIcon; value: string; label: string }[] = [
+  { icon: FolderClosed, value: "12", label: "Hồ sơ" },
+  { icon: MessagesSquare, value: "48", label: "Tư vấn" },
+  { icon: Crown, value: "Pro", label: "Gói dịch vụ" },
+]
+
+const quickItems: { icon: LucideIcon; label: string; sub: string }[] = [
+  { icon: UserCog, label: "Thông tin cá nhân", sub: "Họ tên, ảnh đại diện, liên hệ" },
+  { icon: CreditCard, label: "Gói dịch vụ & thanh toán", sub: "Đang dùng gói Pro" },
 ]
 
 export function ProfileScreen() {
+  const [view, setView] = useState<"profile" | "settings">("profile")
+
+  if (view === "settings") {
+    return <SettingsScreen onBack={() => setView("profile")} />
+  }
+
   return (
     <div className="flex h-full flex-col overflow-y-auto bg-[#F5F5F5]">
       {/* Gradient header */}
       <div
-        className="px-4 pb-16 pt-6"
+        className="px-4 pb-20 pt-6"
         style={{ background: "linear-gradient(135deg, #FFFFFF 0%, #E6F0F9 50%, #B0CBE2 100%)" }}
       >
         <h1 className="text-lg font-bold text-[#1A1A1A]">Cá Nhân</h1>
@@ -49,24 +65,61 @@ export function ProfileScreen() {
         </div>
       </div>
 
-      {/* Settings card */}
-      <div className="-mt-10 flex-1 px-4 pb-4">
-        <div className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm">
-          {settings.map(({ icon: Icon, label }, i) => (
+      <div className="-mt-12 flex-1 px-4 pb-4">
+        {/* Stats strip */}
+        <div className="grid grid-cols-3 overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm">
+          {stats.map(({ icon: Icon, value, label }, i) => (
+            <div
+              key={label}
+              className={`flex flex-col items-center gap-1 py-4 ${
+                i !== stats.length - 1 ? "border-r border-gray-100" : ""
+              }`}
+            >
+              <Icon className="h-5 w-5 text-[#2854A8]" />
+              <span className="text-base font-bold text-[#1A1A1A]">{value}</span>
+              <span className="text-[11px] text-[#5E5E5E]">{label}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Quick account items */}
+        <div className="mt-4 overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm">
+          {quickItems.map(({ icon: Icon, label, sub }, i) => (
             <button
               key={label}
               type="button"
               className={`flex w-full items-center gap-3 px-4 py-3.5 text-left transition-colors hover:bg-[#F5F5F5] ${
-                i !== settings.length - 1 ? "border-b border-gray-100" : ""
+                i !== quickItems.length - 1 ? "border-b border-gray-100" : ""
               }`}
             >
-              <span className="grid h-9 w-9 place-items-center rounded-xl bg-[#E6F0F9] text-[#2854A8]">
+              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-[#E6F0F9] text-[#2854A8]">
                 <Icon className="h-5 w-5" />
               </span>
-              <span className="flex-1 text-sm font-semibold text-[#1A1A1A]">{label}</span>
+              <div className="flex-1">
+                <p className="text-sm font-semibold text-[#1A1A1A]">{label}</p>
+                <p className="text-xs text-[#5E5E5E]">{sub}</p>
+              </div>
               <ChevronRight className="h-5 w-5 text-[#5E5E5E]" />
             </button>
           ))}
+        </div>
+
+        {/* Settings entry */}
+        <div className="mt-4 overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm">
+          <button
+            type="button"
+            onClick={() => setView("settings")}
+            className="flex w-full items-center gap-3 px-4 py-3.5 text-left transition-colors hover:bg-[#F5F5F5]"
+          >
+            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-[#E6F0F9] text-[#2854A8]">
+              <Settings className="h-5 w-5" />
+            </span>
+            <div className="flex-1">
+              <p className="text-sm font-semibold text-[#1A1A1A]">Cài đặt</p>
+              <p className="text-xs text-[#5E5E5E]">Thông báo, bảo mật, hiển thị, hỗ trợ</p>
+            </div>
+            <ChevronRight className="h-5 w-5 text-[#5E5E5E]" />
+          </button>
         </div>
 
         {/* Destructive action */}
@@ -75,7 +128,7 @@ export function ProfileScreen() {
             type="button"
             className="flex w-full items-center gap-3 px-4 py-3.5 text-left transition-colors hover:bg-red-50"
           >
-            <span className="grid h-9 w-9 place-items-center rounded-xl bg-red-50 text-red-600">
+            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-red-50 text-red-600">
               <ShieldOff className="h-5 w-5" />
             </span>
             <span className="flex-1 text-sm font-semibold text-red-600">Vô hiệu hóa tài khoản</span>
