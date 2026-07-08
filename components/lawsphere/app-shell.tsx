@@ -4,9 +4,9 @@ import { useState } from "react"
 import { StatusBar } from "./status-bar"
 import { BottomNav, type TabKey } from "./bottom-nav"
 import { AiChatScreen } from "./screens/ai-chat"
-import { InboxScreen } from "./screens/inbox"
+import { LawyersScreen } from "./screens/lawyers"
 import { LibraryScreen } from "./screens/library"
-import { DashboardScreen } from "./screens/dashboard"
+import { RequestsScreen } from "./screens/requests"
 import { ProfileScreen } from "./screens/profile"
 import { Welcome } from "./entry/welcome"
 import { Auth } from "./entry/auth"
@@ -46,9 +46,9 @@ export function AppShell() {
           <>
             <div className="relative flex-1 overflow-hidden">
               {tab === "ai" && <AiChatScreen />}
-              {tab === "inbox" && <InboxScreen />}
+              {tab === "lawyers" && <LawyersScreen />}
               {tab === "library" && <LibraryScreen />}
-              {tab === "activity" && <DashboardScreen />}
+              {tab === "requests" && <RequestsScreen />}
               {tab === "profile" && <ProfileScreen />}
             </div>
 

@@ -469,3 +469,147 @@ export const userProfile: UserProfile = {
   address: "123 Nguyễn Huệ, Quận 1, TP. Hồ Chí Minh",
   dob: "12/08/1995",
 }
+
+/* ----------------------------- Lawyers ----------------------------- */
+
+export type Lawyer = {
+  id: string
+  name: string
+  specialty: string
+  rating: number
+  cases: number
+  responseTime: string
+  initials: string
+  color: string
+  online: boolean
+  bio: string
+  experience: number
+}
+
+export const lawyers: Lawyer[] = [
+  {
+    id: "l1",
+    name: "Trần Minh Khoa",
+    specialty: "Luật sư Đất đai & BĐS",
+    rating: 4.9,
+    cases: 128,
+    responseTime: "~15 phút",
+    initials: "TK",
+    color: "#2854A8",
+    online: true,
+    bio: "Luật sư chuyên về pháp luật đất đai, bất động sản, và tranh chấp hành chính. Kinh nghiệm 12 năm tư vấn pháp lý cho các doanh nghiệp.",
+    experience: 12,
+  },
+  {
+    id: "l2",
+    name: "Nguyễn Thị Hương",
+    specialty: "Luật sư Hôn nhân & Gia đình",
+    rating: 4.8,
+    cases: 96,
+    responseTime: "~1 giờ",
+    initials: "NH",
+    color: "#82ACDB",
+    online: false,
+    bio: "Chuyên gia về pháp luật hôn nhân, gia đình, thừa kế và bảo vệ quyền lợi phụ nữ. Có 9 năm kinh nghiệm thực hành.",
+    experience: 9,
+  },
+  {
+    id: "l3",
+    name: "Lê Công Dương",
+    specialty: "Luật sư Doanh nghiệp & Thương mại",
+    rating: 5.0,
+    cases: 210,
+    responseTime: "~10 phút",
+    initials: "LD",
+    color: "#2854A8",
+    online: true,
+    bio: "Luật sư doanh nghiệp với 15 năm kinh nghiệm tư vấn cho các công ty SME và startup về hợp đồng, sáp nhập.",
+    experience: 15,
+  },
+  {
+    id: "l4",
+    name: "Phạm Quốc Bảo",
+    specialty: "Luật sư Lao động",
+    rating: 4.7,
+    cases: 74,
+    responseTime: "~2 giờ",
+    initials: "PB",
+    color: "#82ACDB",
+    online: false,
+    bio: "Chuyên về tranh chấp lao động, bảo hiểm xã hội, và chế độ đãi ngộ người lao động. 8 năm kinh nghiệm.",
+    experience: 8,
+  },
+]
+
+/* ----------------------------- Requests ----------------------------- */
+
+export type HelpRequest = {
+  id: string
+  type: "help"
+  title: string
+  description: string
+  date: string
+  status: "pending" | "acknowledged" | "resolved"
+}
+
+export type ConsultantRequest = {
+  id: string
+  type: "consultant"
+  title: string
+  lawyerId: string
+  lawyerName: string
+  description: string
+  date: string
+  status: "pending" | "accepted" | "in-progress" | "completed"
+}
+
+export type ServiceRequest = {
+  id: string
+  type: "service"
+  title: string
+  description: string
+  date: string
+  status: "pending" | "matched" | "in-progress" | "completed"
+  matchedLawyer?: { id: string; name: string }
+}
+
+export type Request = HelpRequest | ConsultantRequest | ServiceRequest
+
+export const requests: Request[] = [
+  {
+    id: "r1",
+    type: "help",
+    title: "Không thể upload hồ sơ",
+    description: "Hệ thống báo lỗi khi em cố gắng upload file PDF. Không hiểu sao lại như vậy.",
+    date: "21/06/2024 · 10:30",
+    status: "acknowledged",
+  },
+  {
+    id: "r2",
+    type: "consultant",
+    title: "Tư vấn tranh chấp ranh giới đất",
+    lawyerId: "l1",
+    lawyerName: "Trần Minh Khoa",
+    description: "Nhà em và hàng xóm đang tranh chấp phần đất khoảng 2 mét.",
+    date: "15/06/2024 · 14:00",
+    status: "in-progress",
+  },
+  {
+    id: "r3",
+    type: "service",
+    title: "Soạn thảo hợp đồng thuê nhà",
+    description: "Cần soạn thảo hợp đồng thuê nhà ở dài hạn với các điều khoản chuẩn.",
+    date: "18/06/2024 · 09:00",
+    status: "matched",
+    matchedLawyer: { id: "l1", name: "Trần Minh Khoa" },
+  },
+  {
+    id: "r4",
+    type: "service",
+    title: "Thủ tục ly hôn thuận tình",
+    description: "Cần hỗ trợ hoàn thiện thủ tục ly hôn thuận tình.",
+    date: "10/06/2024 · 08:00",
+    status: "completed",
+    matchedLawyer: { id: "l2", name: "Nguyễn Thị Hương" },
+  },
+]
