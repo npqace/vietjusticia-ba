@@ -255,6 +255,8 @@ export const threadMessages: Record<string, LawyerMessage[]> = {
 
 export type DocArticle = { heading: string; body: string[] }
 
+export type DocFlowNode = { step: string; note: string }
+
 export type DocDetail = {
   id: string
   number: string
@@ -262,6 +264,8 @@ export type DocDetail = {
   effectiveDate: string
   field: string
   summary: string
+  keyPoints: string[]
+  flow: DocFlowNode[]
   articles: DocArticle[]
   related: { id: string; title: string }[]
 }
@@ -275,6 +279,17 @@ export const docDetails: Record<string, DocDetail> = {
     field: "Lao động",
     summary:
       "Bộ luật Lao động 2019 quy định tiêu chuẩn lao động; quyền, nghĩa vụ, trách nhiệm của người lao động, người sử dụng lao động trong quan hệ lao động.",
+    keyPoints: [
+      "Áp dụng cho người lao động, người sử dụng lao động và các bên trong quan hệ lao động.",
+      "Bảo vệ quyền làm việc, tự do lựa chọn việc làm và chống phân biệt đối xử.",
+      "Tiền lương không được thấp hơn mức lương tối thiểu vùng.",
+    ],
+    flow: [
+      { step: "Giao kết HĐLĐ", note: "Ký hợp đồng lao động bằng văn bản" },
+      { step: "Thực hiện", note: "Làm việc theo thỏa thuận & nội quy" },
+      { step: "Trả lương", note: "Đúng hạn, không dưới lương tối thiểu" },
+      { step: "Chấm dứt", note: "Báo trước & thanh toán chế độ" },
+    ],
     articles: [
       {
         heading: "Điều 1. Phạm vi điều chỉnh",
@@ -310,6 +325,17 @@ export const docDetails: Record<string, DocDetail> = {
     field: "Doanh nghiệp",
     summary:
       "Luật Doanh nghiệp 2020 quy định về việc thành lập, tổ chức quản lý, tổ chức lại, giải thể và hoạt động có liên quan của doanh nghiệp.",
+    keyPoints: [
+      "Áp dụng cho công ty TNHH, công ty cổ phần, công ty hợp danh và doanh nghiệp tư nhân.",
+      "Tổ chức, cá nhân có quyền thành lập và quản lý doanh nghiệp, trừ trường hợp bị cấm.",
+      "Quy định rõ quyền góp vốn, mua cổ phần và phần vốn góp.",
+    ],
+    flow: [
+      { step: "Chuẩn bị hồ sơ", note: "Điều lệ, danh sách thành viên" },
+      { step: "Nộp đăng ký", note: "Tại Sở KH&ĐT nơi đặt trụ sở" },
+      { step: "Cấp GCN", note: "Giấy chứng nhận đăng ký DN" },
+      { step: "Hoạt động", note: "Khắc dấu, mở tài khoản, kê khai thuế" },
+    ],
     articles: [
       {
         heading: "Điều 1. Phạm vi điều chỉnh",
@@ -335,6 +361,15 @@ export const fallbackDoc: DocDetail = {
   effectiveDate: "—",
   field: "Pháp luật",
   summary: "Nội dung chi tiết của văn bản đang được cập nhật vào hệ thống thư viện pháp luật.",
+  keyPoints: [
+    "Nội dung tóm tắt đang được biên tập và số hóa.",
+    "Vui lòng xem tab Nội dung gốc để tham khảo điều khoản.",
+  ],
+  flow: [
+    { step: "Ban hành", note: "Cơ quan có thẩm quyền ký ban hành" },
+    { step: "Hiệu lực", note: "Áp dụng từ ngày quy định" },
+    { step: "Thực thi", note: "Các bên tuân thủ quy định" },
+  ],
   articles: [
     {
       heading: "Điều 1. Phạm vi điều chỉnh",
@@ -360,7 +395,7 @@ export const caseDetails: Record<string, CaseDetail> = {
   c1: {
     id: "c1",
     description:
-      "Yêu cầu soạn thảo hợp đồng thuê nhà ở dài hạn giữa bên cho thuê và bên thuê, đảm bảo đầy đủ điều khoản về giá thuê, thời hạn, đặt cọc và quyền chấm dứt hợp đồng.",
+      "Yêu cầu soạn thảo hợp đồng thuê nhà ở dài hạn giữa bên cho thuê và bên thuê, đảm bảo đầy đủ ��iều khoản về giá thuê, thời hạn, đặt cọc và quyền chấm dứt hợp đồng.",
     lawyer: { name: "LS. Trần Minh Khoa", specialty: "Luật sư Đất đai", initials: "TK", color: "#2854A8" },
     documents: [
       { name: "Yeu-cau-thue-nha.pdf", size: "240 KB" },
