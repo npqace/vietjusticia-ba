@@ -3,12 +3,18 @@
 import { useState } from "react"
 import { Check } from "lucide-react"
 import { caseRequests, caseSteps, type CaseRequest } from "../data"
+import { CaseDetail } from "./case-detail"
 
 const categories = ["Dịch vụ", "Tư vấn", "Trợ giúp"] as const
 
 export function DashboardScreen() {
   const [cat, setCat] = useState<(typeof categories)[number]>("Dịch vụ")
+  const [active, setActive] = useState<CaseRequest | null>(null)
   const filtered = caseRequests.filter((c) => c.category === cat)
+
+  if (active) {
+    return <CaseDetail req={active} onBack={() => setActive(null)} />
+  }
 
   return (
     <div className="flex h-full flex-col bg-[#F5F5F5]">
@@ -32,7 +38,7 @@ export function DashboardScreen() {
 
       <div className="flex-1 space-y-3 overflow-y-auto px-4 py-3">
         {filtered.map((req) => (
-          <CaseCard key={req.id} req={req} />
+          <CaseCard key={req.id} req={req} onOpen={() => setActive(req)} />
         ))}
         {filtered.length === 0 && (
           <p className="pt-10 text-center text-sm text-[#5E5E5E]">Chưa có yêu cầu nào trong mục này.</p>
@@ -42,7 +48,7 @@ export function DashboardScreen() {
   )
 }
 
-function CaseCard({ req }: { req: CaseRequest }) {
+function CaseCard({ req, onOpen }: { req: CaseRequest; onOpen: () => void }) {
   const currentIndex = caseSteps.indexOf(req.status)
   const statusColor =
     req.status === "Hoàn thành"
@@ -95,6 +101,7 @@ function CaseCard({ req }: { req: CaseRequest }) {
 
       <button
         type="button"
+        onClick={onOpen}
         className="mt-4 w-full rounded-xl border border-[#2854A8] py-2.5 text-sm font-bold text-[#2854A8] transition-colors active:scale-[0.98] hover:bg-[#E6F0F9]"
       >
         Xem chi tiết

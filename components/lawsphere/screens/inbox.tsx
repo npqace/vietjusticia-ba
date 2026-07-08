@@ -2,15 +2,21 @@
 
 import { useState } from "react"
 import { Search } from "lucide-react"
-import { threads } from "../data"
+import { threads, type Thread } from "../data"
+import { ConversationDetail } from "./conversation-detail"
 
 export function InboxScreen() {
   const [query, setQuery] = useState("")
+  const [active, setActive] = useState<Thread | null>(null)
   const filtered = threads.filter(
     (t) =>
       t.name.toLowerCase().includes(query.toLowerCase()) ||
       t.specialty.toLowerCase().includes(query.toLowerCase()),
   )
+
+  if (active) {
+    return <ConversationDetail thread={active} onBack={() => setActive(null)} />
+  }
 
   return (
     <div className="flex h-full flex-col bg-[#F5F5F5]">
@@ -32,6 +38,7 @@ export function InboxScreen() {
           <button
             key={t.id}
             type="button"
+            onClick={() => setActive(t)}
             className="flex w-full items-center gap-3 rounded-2xl border border-gray-100 bg-white p-3 text-left shadow-sm transition-colors hover:bg-[#E6F0F9]/40"
           >
             <span

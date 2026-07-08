@@ -2,13 +2,28 @@
 
 import { useState } from "react"
 import { Search, SlidersHorizontal, FileText } from "lucide-react"
-import { lawDocs, procedures } from "../data"
+import { lawDocs, procedures, type LawDoc } from "../data"
+import { DocumentDetail } from "./document-detail"
 
 export function LibraryScreen() {
   const [seg, setSeg] = useState<"docs" | "proc">("docs")
   const [query, setQuery] = useState("")
+  const [active, setActive] = useState<LawDoc | null>(null)
   const list = seg === "docs" ? lawDocs : procedures
   const filtered = list.filter((d) => d.title.toLowerCase().includes(query.toLowerCase()))
+
+  if (active) {
+    return (
+      <DocumentDetail
+        doc={active}
+        onBack={() => setActive(null)}
+        onOpenRelated={(id) => {
+          const found = [...lawDocs, ...procedures].find((d) => d.id === id)
+          if (found) setActive(found)
+        }}
+      />
+    )
+  }
 
   return (
     <div className="flex h-full flex-col bg-[#F5F5F5]">
@@ -61,6 +76,7 @@ export function LibraryScreen() {
           <button
             key={d.id}
             type="button"
+            onClick={() => setActive(d)}
             className="flex w-full items-start gap-3 rounded-2xl border border-gray-100 bg-white p-3 text-left shadow-sm transition-colors hover:bg-[#E6F0F9]/40"
           >
             <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#E6F0F9] text-[#2854A8]">

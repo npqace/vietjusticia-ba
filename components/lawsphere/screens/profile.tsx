@@ -15,6 +15,7 @@ import {
 } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
 import { SettingsScreen } from "./settings"
+import { EditProfileSheet } from "./edit-profile-sheet"
 
 const quickItems: { icon: LucideIcon; label: string; sub: string }[] = [
   { icon: UserCog, label: "Thông tin cá nhân", sub: "Họ tên, ảnh đại diện, liên hệ" },
@@ -22,12 +23,14 @@ const quickItems: { icon: LucideIcon; label: string; sub: string }[] = [
 
 export function ProfileScreen() {
   const [view, setView] = useState<"profile" | "settings">("profile")
+  const [editing, setEditing] = useState(false)
 
   if (view === "settings") {
     return <SettingsScreen onBack={() => setView("profile")} />
   }
 
   return (
+    <div className="relative h-full">
     <div className="flex h-full flex-col overflow-y-auto bg-[#F5F5F5]">
       {/* Gradient header */}
       <div
@@ -46,6 +49,7 @@ export function ProfileScreen() {
             />
             <button
               type="button"
+              onClick={() => setEditing(true)}
               aria-label="Sửa ảnh đại diện"
               className="absolute bottom-0 right-0 grid h-7 w-7 place-items-center rounded-full border-2 border-white bg-[#2854A8] text-white shadow-sm"
             >
@@ -94,6 +98,7 @@ export function ProfileScreen() {
             <button
               key={label}
               type="button"
+              onClick={() => setEditing(true)}
               className={`flex w-full items-center gap-3 px-4 py-3.5 text-left transition-colors hover:bg-[#F5F5F5] ${
                 i !== quickItems.length - 1 ? "border-b border-gray-100" : ""
               }`}
@@ -151,6 +156,9 @@ export function ProfileScreen() {
           Đăng xuất
         </button>
       </div>
+    </div>
+
+      {editing && <EditProfileSheet onClose={() => setEditing(false)} />}
     </div>
   )
 }
