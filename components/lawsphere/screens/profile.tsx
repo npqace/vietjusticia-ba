@@ -9,6 +9,9 @@ import {
   ShieldOff,
   LogOut,
   ChevronRight,
+  Clock,
+  Users,
+  Crown,
 } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
 import { SettingsScreen } from "./settings"
@@ -55,16 +58,33 @@ export function ProfileScreen() {
       </div>
 
       <div className="-mt-12 flex-1 px-4 pb-4">
-        {/* Plan tier card */}
-        <div className="rounded-2xl border border-[#D4E4F0] bg-gradient-to-r from-[#E6F0F9] to-[#F0F4F9] p-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-xs font-medium text-[#666666]">Gói hiện tại</p>
-              <p className="mt-1 text-lg font-bold text-[#2854A8]">Pro</p>
-            </div>
-            <div className="text-right text-xs text-[#666666]">
-              <p className="font-medium">Gia hạn: 28/02/2025</p>
-            </div>
+        {/* Stats strip */}
+        <div className="grid grid-cols-3 gap-3 overflow-hidden rounded-2xl border border-[#D4E4F0] bg-white shadow-sm">
+          {/* Pending requests */}
+          <div className="flex flex-col items-center gap-2 px-3 py-4">
+            <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#E6F0F9] text-[#2854A8]">
+              <Clock className="h-5 w-5" />
+            </span>
+            <p className="text-base font-bold text-[#1A1A1A]">3</p>
+            <p className="text-center text-[10px] font-medium leading-tight text-[#5E5E5E]">Yêu cầu đang chờ</p>
+          </div>
+
+          {/* Matched lawyers */}
+          <div className="flex flex-col items-center gap-2 px-3 py-4 border-l border-r border-[#E0E0E0]">
+            <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#E6F0F9] text-[#2854A8]">
+              <Users className="h-5 w-5" />
+            </span>
+            <p className="text-base font-bold text-[#1A1A1A]">5</p>
+            <p className="text-center text-[10px] font-medium leading-tight text-[#5E5E5E]">Luật sư hợp tác</p>
+          </div>
+
+          {/* Plan tier */}
+          <div className="flex flex-col items-center gap-2 px-3 py-4">
+            <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#E6F0F9] text-[#2854A8]">
+              <Crown className="h-5 w-5" />
+            </span>
+            <p className="text-base font-bold text-[#2854A8]">Pro</p>
+            <p className="text-center text-[10px] font-medium leading-tight text-[#5E5E5E]">Gói hiện tại</p>
           </div>
         </div>
 
