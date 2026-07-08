@@ -1,25 +1,43 @@
 "use client"
 
 import { useState } from "react"
-import { Check } from "lucide-react"
+import { Check, Plus } from "lucide-react"
 import { caseRequests, caseSteps, type CaseRequest } from "../data"
 import { CaseDetail } from "./case-detail"
 
 const categories = ["Dịch vụ", "Tư vấn", "Trợ giúp"] as const
 
+type RequestType = "help" | "consultant" | "service" | null
+
 export function DashboardScreen() {
   const [cat, setCat] = useState<(typeof categories)[number]>("Dịch vụ")
   const [active, setActive] = useState<CaseRequest | null>(null)
+  const [showModal, setShowModal] = useState(false)
+  const [requestForm, setRequestForm] = useState<RequestType>(null)
   const filtered = caseRequests.filter((c) => c.category === cat)
 
   if (active) {
     return <CaseDetail req={active} onBack={() => setActive(null)} />
   }
 
+  if (requestForm) {
+    return <RequestForm type={requestForm} onClose={() => setRequestForm(null)} />
+  }
+
   return (
     <div className="flex h-full flex-col bg-[#F5F5F5]">
       <header className="border-b border-gray-100 bg-white px-4 pb-3 pt-3">
-        <h1 className="mb-3 text-lg font-bold text-[#1A1A1A]">Hoạt Động Của Tôi</h1>
+        <div className="mb-3 flex items-center justify-between">
+          <h1 className="text-lg font-bold text-[#1A1A1A]">Yêu Cầu Của Tôi</h1>
+          <button
+            type="button"
+            onClick={() => setShowModal(true)}
+            className="grid h-9 w-9 place-items-center rounded-full bg-[#2854A8] text-white transition-transform active:scale-95 hover:bg-[#1f4080]"
+            aria-label="Tạo yêu cầu mới"
+          >
+            <Plus className="h-5 w-5" />
+          </button>
+        </div>
         <div className="grid grid-cols-3 gap-1 rounded-xl bg-[#F5F5F5] p-1">
           {categories.map((c) => (
             <button
@@ -43,6 +61,195 @@ export function DashboardScreen() {
         {filtered.length === 0 && (
           <p className="pt-10 text-center text-sm text-[#5E5E5E]">Chưa có yêu cầu nào trong mục này.</p>
         )}
+      </div>
+
+      {/* Request creation modal */}
+      {showModal && (
+        <div className="absolute inset-0 z-50 flex items-end bg-black/30">
+          <div className="w-full rounded-t-3xl bg-white p-4 pb-6">
+            <div className="mb-4 flex justify-center">
+              <div className="h-1 w-12 rounded-full bg-gray-300" />
+            </div>
+            <h2 className="mb-4 text-center text-lg font-bold text-[#1A1A1A]">Chọn loại yêu cầu</h2>
+            <div className="space-y-3">
+              <button
+                type="button"
+                onClick={() => {
+                  setShowModal(false)
+                  setRequestForm("help")
+                }}
+                className="flex w-full flex-col rounded-2xl border border-gray-100 bg-white p-4 text-left transition-colors hover:bg-[#E6F0F9]/40"
+              >
+                <p className="font-bold text-[#1A1A1A]">Yêu cầu hỗ trợ</p>
+                <p className="mt-1 text-xs text-[#5E5E5E]">Báo cáo sự cố hoặc yêu cầu hỗ trợ từ quản trị viên</p>
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setShowModal(false)
+                  setRequestForm("consultant")
+                }}
+                className="flex w-full flex-col rounded-2xl border border-gray-100 bg-white p-4 text-left transition-colors hover:bg-[#E6F0F9]/40"
+              >
+                <p className="font-bold text-[#1A1A1A]">Yêu cầu tư vấn</p>
+                <p className="mt-1 text-xs text-[#5E5E5E]">Tư vấn trực tiếp với một luật sư cụ thể</p>
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setShowModal(false)
+                  setRequestForm("service")
+                }}
+                className="flex w-full flex-col rounded-2xl border border-gray-100 bg-white p-4 text-left transition-colors hover:bg-[#E6F0F9]/40"
+              >
+                <p className="font-bold text-[#1A1A1A]">Yêu cầu dịch vụ</p>
+                <p className="mt-1 text-xs text-[#5E5E5E]">Hệ thống sẽ ghép nối bạn với luật sư phù hợp</p>
+              </button>
+            </div>
+            <button
+              type="button"
+              onClick={() => setShowModal(false)}
+              className="mt-4 w-full rounded-xl border border-gray-200 py-3 text-center text-sm font-semibold text-[#5E5E5E] transition-colors active:scale-[0.98] hover:bg-gray-50"
+            >
+              Hủy
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
+function RequestForm({ type, onClose }: { type: RequestType; onClose: () => void }) {
+  const [title, setTitle] = useState("")
+  const [description, setDescription] = useState("")
+  const [selectedLawyer, setSelectedLawyer] = useState("")
+  const [category, setCategory] = useState("Lao động")
+
+  const handleSubmit = () => {
+    if (!title.trim() || !description.trim()) return
+    onClose()
+  }
+
+  return (
+    <div className="flex h-full flex-col bg-[#F5F5F5]">
+      <header className="border-b border-gray-100 bg-white px-4 py-3">
+        <button
+          type="button"
+          onClick={onClose}
+          className="text-sm font-bold text-[#2854A8] hover:text-[#1f4080]"
+        >
+          ← Quay lại
+        </button>
+      </header>
+
+      <div className="flex-1 space-y-4 overflow-y-auto px-4 py-4">
+        {type === "help" && (
+          <>
+            <div>
+              <label className="text-xs font-semibold text-[#1A1A1A]">Tiêu đề</label>
+              <input
+                type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                placeholder="Mô tả sự cố hoặc vấn đề gặp phải"
+                className="mt-2 w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm placeholder-gray-400 outline-none transition-colors focus:border-[#2854A8] focus:ring-1 focus:ring-[#82ACDB]"
+              />
+            </div>
+            <div>
+              <label className="text-xs font-semibold text-[#1A1A1A]">Chi tiết</label>
+              <textarea
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                placeholder="Mô tả chi tiết vấn đề để chúng tôi hỗ trợ tốt hơn"
+                className="mt-2 h-32 w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm placeholder-gray-400 outline-none transition-colors focus:border-[#2854A8] focus:ring-1 focus:ring-[#82ACDB]"
+              />
+            </div>
+          </>
+        )}
+
+        {type === "consultant" && (
+          <>
+            <div>
+              <label className="text-xs font-semibold text-[#1A1A1A]">Chọn luật sư</label>
+              <select
+                value={selectedLawyer}
+                onChange={(e) => setSelectedLawyer(e.target.value)}
+                className="mt-2 w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm outline-none transition-colors focus:border-[#2854A8] focus:ring-1 focus:ring-[#82ACDB]"
+              >
+                <option value="">Chọn một luật sư...</option>
+                <option value="l1">Trần Minh Khoa - Luật sư Đất đai</option>
+                <option value="l2">Nguyễn Thị Hương - Luật sư Hôn nhân</option>
+                <option value="l3">Lê Công Dương - Luật sư Doanh nghiệp</option>
+                <option value="l4">Phạm Quốc Bảo - Luật sư Lao động</option>
+              </select>
+            </div>
+            <div>
+              <label className="text-xs font-semibold text-[#1A1A1A]">Mô tả vấn đề</label>
+              <textarea
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                placeholder="Mô tả vấn đề pháp lý cần tư vấn"
+                className="mt-2 h-32 w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm placeholder-gray-400 outline-none transition-colors focus:border-[#2854A8] focus:ring-1 focus:ring-[#82ACDB]"
+              />
+            </div>
+          </>
+        )}
+
+        {type === "service" && (
+          <>
+            <div>
+              <label className="text-xs font-semibold text-[#1A1A1A]">Danh mục dịch vụ</label>
+              <select
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                className="mt-2 w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm outline-none transition-colors focus:border-[#2854A8] focus:ring-1 focus:ring-[#82ACDB]"
+              >
+                <option value="Lao động">Lao động</option>
+                <option value="Đất đai">Đất đai & BĐS</option>
+                <option value="Hôn nhân">Hôn nhân & Gia đình</option>
+                <option value="Doanh nghiệp">Doanh nghiệp & Thương mại</option>
+              </select>
+            </div>
+            <div>
+              <label className="text-xs font-semibold text-[#1A1A1A]">Tiêu đề</label>
+              <input
+                type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                placeholder="Nhập tiêu đề yêu cầu dịch vụ"
+                className="mt-2 w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm placeholder-gray-400 outline-none transition-colors focus:border-[#2854A8] focus:ring-1 focus:ring-[#82ACDB]"
+              />
+            </div>
+            <div>
+              <label className="text-xs font-semibold text-[#1A1A1A]">Mô tả chi tiết</label>
+              <textarea
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                placeholder="Mô tả chi tiết nhu cầu để chúng tôi tìm luật sư phù hợp"
+                className="mt-2 h-32 w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm placeholder-gray-400 outline-none transition-colors focus:border-[#2854A8] focus:ring-1 focus:ring-[#82ACDB]"
+              />
+            </div>
+          </>
+        )}
+      </div>
+
+      <div className="border-t border-gray-100 bg-white px-4 py-3 space-y-2">
+        <button
+          type="button"
+          onClick={handleSubmit}
+          disabled={!title.trim() || !description.trim() || (type === "consultant" && !selectedLawyer)}
+          className="w-full rounded-xl bg-[#2854A8] py-3 text-sm font-bold text-white transition-all active:scale-[0.98] hover:bg-[#1f4080] disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          Gửi yêu cầu
+        </button>
+        <button
+          type="button"
+          onClick={onClose}
+          className="w-full rounded-xl border border-gray-200 py-3 text-sm font-bold text-[#5E5E5E] transition-colors active:scale-[0.98] hover:bg-gray-50"
+        >
+          Hủy
+        </button>
       </div>
     </div>
   )

@@ -6,7 +6,7 @@ import { BottomNav, type TabKey } from "./bottom-nav"
 import { AiChatScreen } from "./screens/ai-chat"
 import { LawyersScreen } from "./screens/lawyers"
 import { LibraryScreen } from "./screens/library"
-import { RequestsScreen } from "./screens/requests"
+import { DashboardScreen } from "./screens/dashboard"
 import { ProfileScreen } from "./screens/profile"
 import { Welcome } from "./entry/welcome"
 import { Auth } from "./entry/auth"
@@ -48,7 +48,7 @@ export function AppShell() {
               {tab === "ai" && <AiChatScreen />}
               {tab === "lawyers" && <LawyersScreen />}
               {tab === "library" && <LibraryScreen />}
-              {tab === "requests" && <RequestsScreen />}
+              {tab === "requests" && <DashboardScreen />}
               {tab === "profile" && <ProfileScreen />}
             </div>
 
