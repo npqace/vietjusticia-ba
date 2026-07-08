@@ -5,27 +5,16 @@ import Image from "next/image"
 import {
   Pencil,
   UserCog,
-  CreditCard,
   Settings,
   ShieldOff,
   LogOut,
   ChevronRight,
-  FolderClosed,
-  MessagesSquare,
-  Crown,
 } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
 import { SettingsScreen } from "./settings"
 
-const stats: { icon: LucideIcon; value: string; label: string }[] = [
-  { icon: FolderClosed, value: "12", label: "Hồ sơ" },
-  { icon: MessagesSquare, value: "48", label: "Tư vấn" },
-  { icon: Crown, value: "Pro", label: "Gói dịch vụ" },
-]
-
 const quickItems: { icon: LucideIcon; label: string; sub: string }[] = [
   { icon: UserCog, label: "Thông tin cá nhân", sub: "Họ tên, ảnh đại diện, liên hệ" },
-  { icon: CreditCard, label: "Gói dịch vụ & thanh toán", sub: "Đang dùng gói Pro" },
 ]
 
 export function ProfileScreen() {
@@ -66,20 +55,17 @@ export function ProfileScreen() {
       </div>
 
       <div className="-mt-12 flex-1 px-4 pb-4">
-        {/* Stats strip */}
-        <div className="grid grid-cols-3 overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm">
-          {stats.map(({ icon: Icon, value, label }, i) => (
-            <div
-              key={label}
-              className={`flex flex-col items-center gap-1 py-4 ${
-                i !== stats.length - 1 ? "border-r border-gray-100" : ""
-              }`}
-            >
-              <Icon className="h-5 w-5 text-[#2854A8]" />
-              <span className="text-base font-bold text-[#1A1A1A]">{value}</span>
-              <span className="text-[11px] text-[#5E5E5E]">{label}</span>
+        {/* Plan tier card */}
+        <div className="rounded-2xl border border-[#D4E4F0] bg-gradient-to-r from-[#E6F0F9] to-[#F0F4F9] p-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-xs font-medium text-[#666666]">Gói hiện tại</p>
+              <p className="mt-1 text-lg font-bold text-[#2854A8]">Pro</p>
             </div>
-          ))}
+            <div className="text-right text-xs text-[#666666]">
+              <p className="font-medium">Gia hạn: 28/02/2025</p>
+            </div>
+          </div>
         </div>
 
         {/* Quick account items */}
