@@ -234,7 +234,7 @@ function LawyerDetail({
           className="w-full rounded-xl py-3 font-semibold text-white transition-opacity hover:opacity-90 active:scale-[0.98]"
           style={{ backgroundColor: lawyer.color }}
         >
-          Yêu cầu tư vấn
+          Đặt lịch tư vấn
         </button>
         <button
           type="button"
