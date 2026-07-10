@@ -552,9 +552,9 @@ export type HelpRequest = {
   status: "pending" | "acknowledged" | "resolved"
 }
 
-export type ConsultantRequest = {
+export type AppointmentRequest = {
   id: string
-  type: "consultant"
+  type: "appointment"
   title: string
   lawyerId: string
   lawyerName: string
@@ -573,7 +573,7 @@ export type ServiceRequest = {
   matchedLawyer?: { id: string; name: string }
 }
 
-export type Request = HelpRequest | ConsultantRequest | ServiceRequest
+export type Request = HelpRequest | AppointmentRequest | ServiceRequest
 
 export const requests: Request[] = [
   {
@@ -586,8 +586,8 @@ export const requests: Request[] = [
   },
   {
     id: "r2",
-    type: "consultant",
-    title: "Tư vấn tranh chấp ranh giới đất",
+    type: "appointment",
+    title: "Đặt lịch tư vấn - Tranh chấp ranh giới đất",
     lawyerId: "l1",
     lawyerName: "Trần Minh Khoa",
     description: "Nhà em và hàng xóm đang tranh chấp phần đất khoảng 2 mét.",

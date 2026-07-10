@@ -7,7 +7,7 @@ import { CaseDetail } from "./case-detail"
 
 const categories = ["Dịch vụ", "Tư vấn", "Trợ giúp"] as const
 
-type RequestType = "help" | "consultant" | "service" | null
+type RequestType = "help" | "appointment" | "service" | null
 
 export function DashboardScreen() {
   const [cat, setCat] = useState<(typeof categories)[number]>("Dịch vụ")
@@ -87,12 +87,12 @@ export function DashboardScreen() {
                 type="button"
                 onClick={() => {
                   setShowModal(false)
-                  setRequestForm("consultant")
+                  setRequestForm("appointment")
                 }}
                 className="flex w-full flex-col rounded-2xl border border-gray-100 bg-white p-4 text-left transition-colors hover:bg-[#E6F0F9]/40"
               >
-                <p className="font-bold text-[#1A1A1A]">Yêu cầu tư vấn</p>
-                <p className="mt-1 text-xs text-[#5E5E5E]">Tư vấn trực tiếp với một luật sư cụ thể</p>
+                <p className="font-bold text-[#1A1A1A]">Đặt lịch tư vấn với luật sư</p>
+                <p className="mt-1 text-xs text-[#5E5E5E]">Chọn luật sư và đặt lịch tư vấn trực tiếp</p>
               </button>
               <button
                 type="button"
@@ -168,7 +168,7 @@ function RequestForm({ type, onClose }: { type: RequestType; onClose: () => void
           </>
         )}
 
-        {type === "consultant" && (
+        {type === "appointment" && (
           <>
             <div>
               <label className="text-xs font-semibold text-[#1A1A1A]">Chọn luật sư</label>
@@ -238,7 +238,7 @@ function RequestForm({ type, onClose }: { type: RequestType; onClose: () => void
         <button
           type="button"
           onClick={handleSubmit}
-          disabled={!title.trim() || !description.trim() || (type === "consultant" && !selectedLawyer)}
+          disabled={!title.trim() || !description.trim() || (type === "appointment" && !selectedLawyer)}
           className="w-full rounded-xl bg-[#2854A8] py-3 text-sm font-bold text-white transition-all active:scale-[0.98] hover:bg-[#1f4080] disabled:opacity-50 disabled:cursor-not-allowed"
         >
           Gửi yêu cầu
