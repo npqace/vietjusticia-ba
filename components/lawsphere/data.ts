@@ -176,7 +176,7 @@ export type CaseRequest = {
 export const caseRequests: CaseRequest[] = [
   {
     id: "c1",
-    title: "Soạn thảo hợp đồng thuê nhà",
+    title: "Soạn thảo hợp đồng thu�� nhà",
     date: "Tạo ngày 18/06/2024",
     status: "Đang giải quyết",
     category: "Dịch vụ",
@@ -611,5 +611,53 @@ export const requests: Request[] = [
     date: "10/06/2024 · 08:00",
     status: "completed",
     matchedLawyer: { id: "l2", name: "Nguyễn Thị Hương" },
+  },
+]
+
+/* ----------------------------- Chat History ----------------------------- */
+
+export type ChatSession = {
+  id: string
+  title: string
+  preview: string
+  date: string
+  messageCount: number
+}
+
+export const chatHistory: ChatSession[] = [
+  {
+    id: "chat-1",
+    title: "Tư vấn tranh chấp đất đai",
+    preview: "Tôi muốn tư vấn về tranh chấp ranh giới đất với hàng xóm...",
+    date: "Hôm nay · 10:30",
+    messageCount: 8,
+  },
+  {
+    id: "chat-2",
+    title: "Hợp đồng lao động",
+    preview: "Hợp đồng lao động của em vừa được ký, có cần lưu ý gì không?",
+    date: "Hôm qua · 14:15",
+    messageCount: 5,
+  },
+  {
+    id: "chat-3",
+    title: "Quy trình ly hôn",
+    preview: "Em muốn hỏi về thủ tục ly hôn thuận tình",
+    date: "22/06/2024 · 09:45",
+    messageCount: 12,
+  },
+  {
+    id: "chat-4",
+    title: "Bảo hộ nhãn hiệu",
+    preview: "Cần hỏi về quy trình đăng ký bảo hộ nhãn hiệu sản phẩm...",
+    date: "20/06/2024 · 16:20",
+    messageCount: 6,
+  },
+  {
+    id: "chat-5",
+    title: "Quyền người tiêu dùng",
+    preview: "Sản phẩm mua không đúng chất lượng, có quyền gì không?",
+    date: "18/06/2024 · 11:00",
+    messageCount: 9,
   },
 ]

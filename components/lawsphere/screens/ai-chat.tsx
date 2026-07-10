@@ -1,14 +1,16 @@
 "use client"
 
 import { useState } from "react"
-import { Plus, Bell, Send, FileText, Scale } from "lucide-react"
+import { Plus, Bell, Send, FileText, Scale, Clock } from "lucide-react"
 import { initialMessages, type ChatMessage, type Citation } from "../data"
 import { CitationDrawer } from "../citation-drawer"
+import { ChatHistoryScreen } from "./chat-history"
 
 export function AiChatScreen() {
   const [messages, setMessages] = useState<ChatMessage[]>(initialMessages)
   const [draft, setDraft] = useState("")
   const [activeCitation, setActiveCitation] = useState<Citation | null>(null)
+  const [showHistory, setShowHistory] = useState(false)
 
   const send = () => {
     if (!draft.trim()) return
@@ -28,6 +30,18 @@ export function AiChatScreen() {
 
   const restart = () => setMessages([initialMessages[0]])
 
+  if (showHistory) {
+    return (
+      <ChatHistoryScreen
+        onClose={() => setShowHistory(false)}
+        onNewChat={() => {
+          setShowHistory(false)
+          restart()
+        }}
+      />
+    )
+  }
+
   return (
     <div className="relative flex h-full flex-col bg-[#F5F5F5]">
       {/* Header */}
@@ -42,6 +56,14 @@ export function AiChatScreen() {
           </div>
         </div>
         <div className="flex items-center gap-1.5">
+          <button
+            type="button"
+            onClick={() => setShowHistory(true)}
+            aria-label="Lịch sử"
+            className="grid h-9 w-9 place-items-center rounded-full bg-[#F5F5F5] text-[#5E5E5E] transition-colors hover:bg-gray-200"
+          >
+            <Clock className="h-5 w-5" />
+          </button>
           <button
             type="button"
             onClick={restart}
