@@ -19,7 +19,7 @@ import { urgentRequests, conversation, activeCase, type Urgent } from "../data"
 
 const urgentMeta: Record<Urgent["status"], string> = {
   "Khẩn cấp": "bg-red-50 text-red-700 ring-red-200",
-  "Mới": "bg-blue-50 text-[#2854A8] ring-blue-200",
+  "Mới": "bg-blue-50 text-[var(--color-primary)] ring-blue-200",
   "Chờ phản hồi": "bg-amber-50 text-amber-700 ring-amber-200",
 }
 
@@ -39,7 +39,7 @@ function UrgentStack({ activeId, onSelect }: { activeId: string; onSelect: (id: 
             key={r.id}
             onClick={() => onSelect(r.id)}
             className={`rounded-xl border bg-white p-4 text-left transition-all hover:shadow-sm ${
-              activeId === r.id ? "border-[#2854A8] ring-1 ring-[#2854A8]/30" : "border-slate-200"
+              activeId === r.id ? "border-[var(--color-primary)] ring-1 ring-[var(--color-primary)]/30" : "border-slate-200"
             }`}
           >
             <div className="flex items-center justify-between">
@@ -68,7 +68,7 @@ function ChatPane() {
     <div className="flex h-full min-h-0 flex-col rounded-xl border border-slate-200 bg-white">
       <div className="flex items-center gap-3 border-b border-slate-100 px-4 py-3">
         <div className="relative">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold text-white" style={{ backgroundColor: "#82ACDB" }}>
+          <div className="flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold text-white" style={{ backgroundColor: "var(--color-secondary-mid)" }}>
             HN
           </div>
           <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-white bg-emerald-500" />
@@ -88,7 +88,7 @@ function ChatPane() {
                 className={`max-w-[75%] rounded-2xl px-3.5 py-2 text-sm leading-relaxed ${
                   isLawyer ? "rounded-br-sm text-white" : "rounded-bl-sm bg-slate-100 text-slate-700"
                 }`}
-                style={isLawyer ? { backgroundColor: "#2854A8" } : undefined}
+                style={isLawyer ? { backgroundColor: "var(--color-primary)" } : undefined}
               >
                 {m.text}
                 <span className={`mt-1 block text-[10px] ${isLawyer ? "text-white/70" : "text-slate-400"}`}>
@@ -117,11 +117,11 @@ function ChatPane() {
             value={draft}
             onChange={(e) => setDraft(e.target.value)}
             placeholder="Nhập tin nhắn tư vấn..."
-            className="h-10 flex-1 rounded-lg border border-slate-200 bg-slate-50 px-3 text-sm outline-none focus:border-[#2854A8] focus:bg-white focus:ring-2 focus:ring-[#82ACDB]/40"
+            className="h-10 flex-1 rounded-lg border border-slate-200 bg-slate-50 px-3 text-sm outline-none focus:border-[var(--color-primary)] focus:bg-white focus:ring-2 focus:ring-[var(--color-secondary-mid)]/40"
           />
           <button
             className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-white transition-all active:scale-95"
-            style={{ backgroundColor: "#2854A8" }}
+            style={{ backgroundColor: "var(--color-primary)" }}
           >
             <Send className="h-4 w-4" />
           </button>
@@ -166,7 +166,7 @@ function CasePane() {
                 <p className="truncate text-xs font-medium text-slate-700">{d.name}</p>
                 <p className="text-[10px] text-slate-400">{d.size}</p>
               </div>
-              <button className="flex h-8 w-8 items-center justify-center rounded-lg text-slate-400 transition-colors hover:bg-slate-100 hover:text-[#2854A8]">
+              <button className="flex h-8 w-8 items-center justify-center rounded-lg text-slate-400 transition-colors hover:bg-slate-100 hover:text-[var(--color-primary)]">
                 <Download className="h-4 w-4" />
               </button>
             </div>
@@ -187,11 +187,11 @@ function CasePane() {
                     className={`flex h-6 w-6 items-center justify-center rounded-full ${
                       m.done ? "text-white" : "border-2 border-slate-200 bg-white text-slate-300"
                     }`}
-                    style={m.done ? { backgroundColor: "#2854A8" } : undefined}
+                    style={m.done ? { backgroundColor: "var(--color-primary)" } : undefined}
                   >
                     <Check className="h-3.5 w-3.5" />
                   </div>
-                  {!isLast && <div className={`h-7 w-0.5 ${m.done ? "bg-[#2854A8]" : "bg-slate-200"}`} />}
+                  {!isLast && <div className={`h-7 w-0.5 ${m.done ? "bg-[var(--color-primary)]" : "bg-slate-200"}`} />}
                 </div>
                 <p className={`pt-0.5 text-xs ${m.done ? "font-semibold text-slate-800" : "text-slate-400"}`}>
                   {m.label}
@@ -210,7 +210,7 @@ function CasePane() {
         </button>
         <button
           className="inline-flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold text-white transition-all active:scale-95"
-          style={{ backgroundColor: "#2854A8" }}
+          style={{ backgroundColor: "var(--color-primary)" }}
         >
           <Send className="h-4 w-4" />
           Gửi phản hồi pháp lý

@@ -18,7 +18,7 @@ export function AppShell() {
   const [tab, setTab] = useState<TabKey>("ai")
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-[#F5F5F5] p-4">
+    <main className="flex min-h-screen items-center justify-center bg-[var(--color-neutral-50)] p-4">
       {/* Phone frame */}
       <div
         className="relative flex flex-col overflow-hidden rounded-[44px] bg-white"
@@ -58,7 +58,7 @@ export function AppShell() {
 
         {/* Home indicator */}
         <div className="pointer-events-none absolute inset-x-0 bottom-2 flex justify-center">
-          <div className="h-1.5 w-32 rounded-full bg-[#1A1A1A]/70" />
+          <div className="h-1.5 w-32 rounded-full bg-[var(--color-neutral-950)]/70" />
         </div>
       </div>
     </main>

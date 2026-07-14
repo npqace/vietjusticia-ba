@@ -36,11 +36,11 @@ export function BottomNav({
                 <Icon
                   className="h-6 w-6 transition-transform duration-200 group-active:scale-90"
                   strokeWidth={isActive ? 2.4 : 2}
-                  style={{ color: isActive ? "#2854A8" : "#5E5E5E" }}
+                  style={{ color: isActive ? "var(--color-primary)" : "var(--color-neutral-500)" }}
                 />
                 <span
                   className="text-[10px] font-semibold leading-none"
-                  style={{ color: isActive ? "#2854A8" : "#5E5E5E" }}
+                  style={{ color: isActive ? "var(--color-primary)" : "var(--color-neutral-500)" }}
                 >
                   {label}
                 </span>

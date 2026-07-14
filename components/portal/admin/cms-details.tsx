@@ -56,12 +56,12 @@ export function CmsDetails({
               key={t.id}
               onClick={() => onTabChange(t.id)}
               className={`relative px-3 py-2 text-xs font-semibold transition-colors ${
-                tab === t.id ? "text-[#2854A8]" : "text-slate-400 hover:text-slate-600"
+                tab === t.id ? "text-[var(--color-primary)]" : "text-slate-400 hover:text-slate-600"
               }`}
             >
               {t.label}
               {tab === t.id && (
-                <span className="absolute inset-x-1 -bottom-px h-0.5 rounded-full" style={{ backgroundColor: "#2854A8" }} />
+                <span className="absolute inset-x-1 -bottom-px h-0.5 rounded-full" style={{ backgroundColor: "var(--color-primary)" }} />
               )}
             </button>
           ))}
@@ -97,7 +97,7 @@ export function CmsDetails({
                 <div
                   key={ch.id}
                   className={`overflow-hidden rounded-lg border transition-all ${
-                    isHi ? "border-[#2854A8] bg-[#2854A8]/5 ring-1 ring-[#2854A8]/30" : "border-slate-200 bg-white"
+                    isHi ? "border-[var(--color-primary)] bg-[var(--color-primary)]/5 ring-1 ring-[var(--color-primary)]/30" : "border-slate-200 bg-white"
                   }`}
                 >
                   <button
@@ -105,7 +105,7 @@ export function CmsDetails({
                     className="flex w-full items-center justify-between gap-2 px-3 py-2.5 text-left"
                   >
                     <div className="flex items-center gap-2">
-                      <span className="font-mono text-[11px] font-semibold text-[#2854A8]">{ch.id}</span>
+                      <span className="font-mono text-[11px] font-semibold text-[var(--color-primary)]">{ch.id}</span>
                       <span className="text-[10px] text-slate-400">{ch.chars} ký tự</span>
                     </div>
                     <ChevronDown

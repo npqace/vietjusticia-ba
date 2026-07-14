@@ -94,25 +94,25 @@ export function SettingsScreen({ onBack }: { onBack: () => void }) {
   }
 
   return (
-    <div className="flex h-full flex-col bg-[#F5F5F5]">
+    <div className="flex h-full flex-col bg-[var(--color-neutral-50)]">
       {/* Header */}
       <div className="flex items-center gap-2 border-b border-gray-100 bg-white px-3 py-3">
         <button
           type="button"
           onClick={onBack}
           aria-label="Quay lại"
-          className="grid h-9 w-9 place-items-center rounded-full text-[#1A1A1A] transition-colors hover:bg-[#F5F5F5]"
+          className="grid h-9 w-9 place-items-center rounded-full text-[var(--color-neutral-950)] transition-colors hover:bg-[var(--color-neutral-50)]"
         >
           <ChevronLeft className="h-5 w-5" />
         </button>
-        <h1 className="text-base font-bold text-[#1A1A1A]">Cài đặt</h1>
+        <h1 className="text-base font-bold text-[var(--color-neutral-950)]">Cài đặt</h1>
       </div>
 
       {/* Sections */}
       <div className="flex-1 space-y-6 overflow-y-auto px-4 py-5 pb-8">
         {sections.map((section, si) => (
           <div key={section.title}>
-            <p className="mb-2 px-1 text-xs font-bold uppercase tracking-wide text-[#5E5E5E]">{section.title}</p>
+            <p className="mb-2 px-1 text-xs font-bold uppercase tracking-wide text-[var(--color-neutral-500)]">{section.title}</p>
             <div className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm">
               {section.rows.map((row, ri) => {
                 const Icon = row.icon
@@ -125,17 +125,17 @@ export function SettingsScreen({ onBack }: { onBack: () => void }) {
                   >
                     <span
                       className={`grid h-9 w-9 shrink-0 place-items-center rounded-xl ${
-                        danger ? "bg-red-50 text-red-600" : "bg-[#E6F0F9] text-[#2854A8]"
+                        danger ? "bg-red-50 text-red-600" : "bg-[var(--color-primary-light)] text-[var(--color-primary)]"
                       }`}
                     >
                       <Icon className="h-5 w-5" />
                     </span>
                     <div className="flex-1">
-                      <p className={`text-sm font-semibold ${danger ? "text-red-600" : "text-[#1A1A1A]"}`}>
+                      <p className={`text-sm font-semibold ${danger ? "text-red-600" : "text-[var(--color-neutral-950)]"}`}>
                         {row.label}
                       </p>
                       {row.kind === "toggle" && row.sub && (
-                        <p className="text-xs text-[#5E5E5E]">{row.sub}</p>
+                        <p className="text-xs text-[var(--color-neutral-500)]">{row.sub}</p>
                       )}
                     </div>
 
@@ -147,7 +147,7 @@ export function SettingsScreen({ onBack }: { onBack: () => void }) {
                         aria-label={row.label}
                         onClick={() => toggle(si, ri)}
                         className={`relative h-6 w-11 shrink-0 rounded-full transition-colors ${
-                          row.on ? "bg-[#2854A8]" : "bg-gray-300"
+                          row.on ? "bg-[var(--color-primary)]" : "bg-gray-300"
                         }`}
                       >
                         <span
@@ -158,8 +158,8 @@ export function SettingsScreen({ onBack }: { onBack: () => void }) {
                       </button>
                     ) : (
                       <div className="flex shrink-0 items-center gap-1.5">
-                        {row.value && <span className="text-xs text-[#5E5E5E]">{row.value}</span>}
-                        <ChevronRight className={`h-5 w-5 ${danger ? "text-red-300" : "text-[#5E5E5E]"}`} />
+                        {row.value && <span className="text-xs text-[var(--color-neutral-500)]">{row.value}</span>}
+                        <ChevronRight className={`h-5 w-5 ${danger ? "text-red-300" : "text-[var(--color-neutral-500)]"}`} />
                       </div>
                     )}
                   </div>

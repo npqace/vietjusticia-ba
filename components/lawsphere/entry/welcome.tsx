@@ -46,14 +46,14 @@ export function Welcome({ onFinish }: { onFinish: () => void }) {
     <div
       className="flex h-full flex-col"
       style={{
-        background: "linear-gradient(160deg, #FFFFFF 0%, #E6F0F9 45%, #B0CBE2 100%)",
+        background: "linear-gradient(160deg, #FFFFFF 0%, var(--color-primary-light) 45%, var(--color-primary-mid) 100%)",
       }}
     >
       {/* Skip */}
       <div className="flex justify-end px-4 pt-2">
         <button
           onClick={onFinish}
-          className="rounded-full px-3 py-1.5 text-sm font-semibold text-[#2854A8] transition-colors hover:bg-white/40"
+          className="rounded-full px-3 py-1.5 text-sm font-semibold text-[var(--color-primary)] transition-colors hover:bg-white/40"
         >
           Bỏ qua
         </button>
@@ -71,12 +71,12 @@ export function Welcome({ onFinish }: { onFinish: () => void }) {
           />
         </div>
 
-        <h1 className="max-w-[300px] text-balance text-center text-3xl leading-tight text-[#1A1A1A]">
+        <h1 className="max-w-[300px] text-balance text-center text-3xl leading-tight text-[var(--color-neutral-950)]">
           <span className="font-medium">{slide.title} </span>
-          <span className="font-extrabold text-[#2854A8]">{slide.highlight}</span>
+          <span className="font-extrabold text-[var(--color-primary)]">{slide.highlight}</span>
         </h1>
 
-        <p className="mt-5 max-w-[300px] text-pretty text-center text-[15px] leading-relaxed text-[#5E5E5E]">
+        <p className="mt-5 max-w-[300px] text-pretty text-center text-[15px] leading-relaxed text-[var(--color-neutral-500)]">
           {slide.body}
         </p>
       </div>
@@ -89,7 +89,7 @@ export function Welcome({ onFinish }: { onFinish: () => void }) {
             <span
               key={i}
               className={`h-2 rounded-full transition-all duration-300 ${
-                i === index ? "w-6 bg-[#2854A8]" : "w-2 bg-[#2854A8]/30"
+                i === index ? "w-6 bg-[var(--color-primary)]" : "w-2 bg-[var(--color-primary)]/30"
               }`}
             />
           ))}
@@ -98,7 +98,7 @@ export function Welcome({ onFinish }: { onFinish: () => void }) {
         <button
           onClick={next}
           aria-label={isLast ? "Bắt đầu" : "Tiếp theo"}
-          className="flex h-14 w-14 items-center justify-center rounded-full bg-[#2854A8] text-white shadow-lg shadow-[#2854A8]/30 transition-all active:scale-95 hover:bg-[#22478f]"
+          className="flex h-14 w-14 items-center justify-center rounded-full bg-[var(--color-primary)] text-white shadow-lg shadow-[var(--color-primary)]/30 transition-all active:scale-95 hover:bg-[#22478f]"
         >
           <ArrowRight className="h-6 w-6" strokeWidth={2.5} />
         </button>

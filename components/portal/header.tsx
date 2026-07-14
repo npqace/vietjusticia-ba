@@ -18,7 +18,7 @@ export function PortalHeader({
   return (
     <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b border-slate-200 bg-white px-6">
       <div className="flex items-center gap-2.5">
-        <div className="flex h-9 w-9 items-center justify-center rounded-xl" style={{ backgroundColor: "#2854A8" }}>
+        <div className="flex h-9 w-9 items-center justify-center rounded-xl" style={{ backgroundColor: "var(--color-primary)" }}>
           <Scale className="h-5 w-5 text-white" />
         </div>
         <div className="leading-tight">
@@ -33,7 +33,7 @@ export function PortalHeader({
         <input
           type="text"
           placeholder="Tìm kiếm hồ sơ, văn bản, người dùng..."
-          className="h-9 w-full rounded-lg border border-slate-200 bg-slate-50 pl-9 pr-3 text-sm text-slate-700 outline-none transition-colors placeholder:text-slate-400 focus:border-[#2854A8] focus:bg-white focus:ring-2 focus:ring-[#82ACDB]/40"
+          className="h-9 w-full rounded-lg border border-slate-200 bg-slate-50 pl-9 pr-3 text-sm text-slate-700 outline-none transition-colors placeholder:text-slate-400 focus:border-[var(--color-primary)] focus:bg-white focus:ring-2 focus:ring-[var(--color-secondary-mid)]/40"
         />
       </div>
 
@@ -43,7 +43,7 @@ export function PortalHeader({
           <button
             onClick={() => onChangeView("admin")}
             className={`rounded-md px-3 py-1.5 text-xs font-semibold transition-all ${
-              view === "admin" ? "bg-white text-[#2854A8] shadow-sm" : "text-slate-500 hover:text-slate-700"
+              view === "admin" ? "bg-white text-[var(--color-primary)] shadow-sm" : "text-slate-500 hover:text-slate-700"
             }`}
           >
             Admin Console
@@ -51,7 +51,7 @@ export function PortalHeader({
           <button
             onClick={() => onChangeView("lawyer")}
             className={`rounded-md px-3 py-1.5 text-xs font-semibold transition-all ${
-              view === "lawyer" ? "bg-white text-[#2854A8] shadow-sm" : "text-slate-500 hover:text-slate-700"
+              view === "lawyer" ? "bg-white text-[var(--color-primary)] shadow-sm" : "text-slate-500 hover:text-slate-700"
             }`}
           >
             Luật sư
@@ -74,7 +74,7 @@ export function PortalHeader({
           >
             <div
               className="flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold text-white"
-              style={{ backgroundColor: "#82ACDB" }}
+              style={{ backgroundColor: "var(--color-secondary-mid)" }}
             >
               {view === "admin" ? "QT" : "LS"}
             </div>

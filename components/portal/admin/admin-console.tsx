@@ -47,7 +47,7 @@ function ControlBar() {
           onClick={rebuild}
           disabled={busy}
           className="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-white transition-all active:scale-95 disabled:opacity-70"
-          style={{ backgroundColor: "#2854A8" }}
+          style={{ backgroundColor: "var(--color-primary)" }}
         >
           <RefreshCw className={`h-4 w-4 ${busy ? "animate-spin" : ""}`} />
           Rebuild BM25

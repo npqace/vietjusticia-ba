@@ -29,12 +29,12 @@ export function EditProfileSheet({ onClose }: { onClose: () => void }) {
         <div className="shrink-0 px-4 pb-3 pt-3">
           <div className="mx-auto mb-3 h-1.5 w-10 rounded-full bg-gray-200" />
           <div className="flex items-center justify-between">
-            <h2 className="text-base font-bold text-[#1A1A1A]">Chỉnh sửa thông tin</h2>
+            <h2 className="text-base font-bold text-[var(--color-neutral-950)]">Chỉnh sửa thông tin</h2>
             <button
               type="button"
               onClick={onClose}
               aria-label="Đóng"
-              className="grid h-8 w-8 place-items-center rounded-full text-[#5E5E5E] transition-colors hover:bg-[#F5F5F5]"
+              className="grid h-8 w-8 place-items-center rounded-full text-[var(--color-neutral-500)] transition-colors hover:bg-[var(--color-neutral-50)]"
             >
               <X className="h-5 w-5" />
             </button>
@@ -56,12 +56,12 @@ export function EditProfileSheet({ onClose }: { onClose: () => void }) {
               <button
                 type="button"
                 aria-label="Đổi ảnh đại diện"
-                className="absolute bottom-0 right-0 grid h-7 w-7 place-items-center rounded-full border-2 border-white bg-[#2854A8] text-white shadow-sm"
+                className="absolute bottom-0 right-0 grid h-7 w-7 place-items-center rounded-full border-2 border-white bg-[var(--color-primary)] text-white shadow-sm"
               >
                 <Camera className="h-3.5 w-3.5" />
               </button>
             </div>
-            <button type="button" className="mt-2 text-xs font-semibold text-[#2854A8]">
+            <button type="button" className="mt-2 text-xs font-semibold text-[var(--color-primary)]">
               Thay đổi ảnh đại diện
             </button>
           </div>
@@ -99,14 +99,14 @@ export function EditProfileSheet({ onClose }: { onClose: () => void }) {
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 rounded-xl border border-gray-200 py-3 text-sm font-bold text-[#5E5E5E] transition-colors hover:bg-[#F5F5F5]"
+              className="flex-1 rounded-xl border border-gray-200 py-3 text-sm font-bold text-[var(--color-neutral-500)] transition-colors hover:bg-[var(--color-neutral-50)]"
             >
               Hủy
             </button>
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 rounded-xl bg-[#2854A8] py-3 text-sm font-bold text-white transition-all active:scale-[0.98] hover:opacity-90"
+              className="flex-1 rounded-xl bg-[var(--color-primary)] py-3 text-sm font-bold text-white transition-all active:scale-[0.98] hover:opacity-90"
             >
               Lưu thay đổi
             </button>
@@ -132,14 +132,14 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-xs font-semibold text-[#5E5E5E]">{label}</span>
-      <div className="flex items-center gap-2.5 rounded-xl border border-gray-200 bg-[#F5F5F5] px-3 focus-within:border-[#82ACDB] focus-within:bg-white">
-        <Icon className="h-4 w-4 shrink-0 text-[#5E5E5E]" />
+      <span className="mb-1 block text-xs font-semibold text-[var(--color-neutral-500)]">{label}</span>
+      <div className="flex items-center gap-2.5 rounded-xl border border-gray-200 bg-[var(--color-neutral-50)] px-3 focus-within:border-[var(--color-secondary-mid)] focus-within:bg-white">
+        <Icon className="h-4 w-4 shrink-0 text-[var(--color-neutral-500)]" />
         <input
           type={type}
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          className="h-11 flex-1 bg-transparent text-[13px] text-[#1A1A1A] outline-none"
+          className="h-11 flex-1 bg-transparent text-[13px] text-[var(--color-neutral-950)] outline-none"
         />
       </div>
     </label>

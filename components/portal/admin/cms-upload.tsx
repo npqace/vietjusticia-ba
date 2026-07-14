@@ -74,9 +74,9 @@ export function CmsUpload({
       <div>
         <button
           onClick={simulateUpload}
-          className="flex w-full flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-slate-300 bg-slate-50 px-4 py-6 text-center transition-colors hover:border-[#82ACDB] hover:bg-[#82ACDB]/5"
+          className="flex w-full flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-slate-300 bg-slate-50 px-4 py-6 text-center transition-colors hover:border-[var(--color-secondary-mid)] hover:bg-[var(--color-secondary-mid)]/5"
         >
-          <UploadCloud className="h-7 w-7 text-[#2854A8]" />
+          <UploadCloud className="h-7 w-7 text-[var(--color-primary)]" />
           <p className="text-sm font-semibold text-slate-700">Chọn thư mục văn bản</p>
           <p className="text-xs text-slate-400">Hỗ trợ tải lên cả thư mục (webkitdirectory)</p>
         </button>
@@ -86,7 +86,7 @@ export function CmsUpload({
             <span
               key={f.name}
               className={`inline-flex items-center gap-1 rounded-md px-2 py-1 text-[11px] font-medium ${
-                f.required ? "bg-blue-50 text-[#2854A8]" : "bg-slate-100 text-slate-500"
+                f.required ? "bg-blue-50 text-[var(--color-primary)]" : "bg-slate-100 text-slate-500"
               }`}
             >
               {f.required ? <FileCheck2 className="h-3 w-3" /> : <FileX2 className="h-3 w-3" />}
@@ -106,7 +106,7 @@ export function CmsUpload({
                 type="checkbox"
                 checked={pipeline.includes(opt)}
                 onChange={() => togglePipeline(opt)}
-                className="h-4 w-4 rounded border-slate-300 text-[#2854A8] focus:ring-[#82ACDB]"
+                className="h-4 w-4 rounded border-slate-300 text-[var(--color-primary)] focus:ring-[var(--color-secondary-mid)]"
               />
               {opt}
             </label>
@@ -121,7 +121,7 @@ export function CmsUpload({
             <div className="h-1.5 w-full overflow-hidden rounded-full bg-slate-100">
               <div
                 className="h-full rounded-full transition-all duration-200"
-                style={{ width: `${progress}%`, backgroundColor: "#2854A8" }}
+                style={{ width: `${progress}%`, backgroundColor: "var(--color-primary)" }}
               />
             </div>
           </div>
@@ -136,20 +136,20 @@ export function CmsUpload({
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Tìm văn bản..."
-            className="h-9 w-full rounded-lg border border-slate-200 bg-white pl-8 pr-3 text-sm outline-none focus:border-[#2854A8] focus:ring-2 focus:ring-[#82ACDB]/40"
+            className="h-9 w-full rounded-lg border border-slate-200 bg-white pl-8 pr-3 text-sm outline-none focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-secondary-mid)]/40"
           />
         </div>
         <div className="grid grid-cols-2 gap-2">
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="h-9 rounded-lg border border-slate-200 bg-white px-2 text-xs text-slate-600 outline-none focus:border-[#2854A8] focus:ring-2 focus:ring-[#82ACDB]/40"
+            className="h-9 rounded-lg border border-slate-200 bg-white px-2 text-xs text-slate-600 outline-none focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-secondary-mid)]/40"
           >
             {categories.map((c) => (
               <option key={c}>{c}</option>
             ))}
           </select>
-          <select className="h-9 rounded-lg border border-slate-200 bg-white px-2 text-xs text-slate-600 outline-none focus:border-[#2854A8] focus:ring-2 focus:ring-[#82ACDB]/40">
+          <select className="h-9 rounded-lg border border-slate-200 bg-white px-2 text-xs text-slate-600 outline-none focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-secondary-mid)]/40">
             {validityFilters.map((v) => (
               <option key={v}>{v}</option>
             ))}
@@ -167,8 +167,8 @@ export function CmsUpload({
               onClick={() => onSelect(doc)}
               className={`rounded-lg border p-3 text-left transition-all ${
                 isSel
-                  ? "border-[#2854A8] bg-[#2854A8]/5 ring-1 ring-[#2854A8]/30"
-                  : "border-slate-200 bg-white hover:border-[#82ACDB]"
+                  ? "border-[var(--color-primary)] bg-[var(--color-primary)]/5 ring-1 ring-[var(--color-primary)]/30"
+                  : "border-slate-200 bg-white hover:border-[var(--color-secondary-mid)]"
               }`}
             >
               <div className="flex items-start justify-between gap-2">

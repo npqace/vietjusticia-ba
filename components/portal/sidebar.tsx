@@ -57,7 +57,7 @@ export function PortalSidebar({
               onClick={() => onSelect(item.id)}
               className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all ${
                 isActive
-                  ? "bg-[#2854A8] text-white shadow-sm"
+                  ? "bg-[var(--color-primary)] text-white shadow-sm"
                   : "text-slate-600 hover:bg-slate-200/60 hover:text-slate-900"
               }`}
             >

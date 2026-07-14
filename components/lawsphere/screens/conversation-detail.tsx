@@ -20,7 +20,7 @@ export function ConversationDetail({ thread, onBack }: { thread: Thread; onBack:
   }
 
   return (
-    <div className="flex h-full flex-col bg-[#F5F5F5]">
+    <div className="flex h-full flex-col bg-[var(--color-neutral-50)]">
       {/* Header */}
       <header className="border-b border-gray-100 bg-white px-3 pb-3 pt-2">
         <div className="flex items-center gap-2">
@@ -28,7 +28,7 @@ export function ConversationDetail({ thread, onBack }: { thread: Thread; onBack:
             type="button"
             onClick={onBack}
             aria-label="Quay lại"
-            className="grid h-9 w-9 shrink-0 place-items-center rounded-full text-[#1A1A1A] transition-colors hover:bg-[#F5F5F5]"
+            className="grid h-9 w-9 shrink-0 place-items-center rounded-full text-[var(--color-neutral-950)] transition-colors hover:bg-[var(--color-neutral-50)]"
           >
             <ArrowLeft className="h-5 w-5" />
           </button>
@@ -46,8 +46,8 @@ export function ConversationDetail({ thread, onBack }: { thread: Thread; onBack:
           </div>
 
           <div className="min-w-0 flex-1">
-            <p className="truncate text-sm font-bold text-[#1A1A1A]">{thread.name}</p>
-            <p className="text-[11px] text-[#5E5E5E]">
+            <p className="truncate text-sm font-bold text-[var(--color-neutral-950)]">{thread.name}</p>
+            <p className="text-[11px] text-[var(--color-neutral-500)]">
               {info?.online ? "Đang hoạt động" : "Hoạt động gần đây"} · {thread.specialty}
             </p>
           </div>
@@ -55,14 +55,14 @@ export function ConversationDetail({ thread, onBack }: { thread: Thread; onBack:
           <button
             type="button"
             aria-label="Gọi điện"
-            className="grid h-9 w-9 shrink-0 place-items-center rounded-full text-[#2854A8] transition-colors hover:bg-[#E6F0F9]"
+            className="grid h-9 w-9 shrink-0 place-items-center rounded-full text-[var(--color-primary)] transition-colors hover:bg-[var(--color-primary-light)]"
           >
             <Phone className="h-5 w-5" />
           </button>
           <button
             type="button"
             aria-label="Tùy chọn"
-            className="grid h-9 w-9 shrink-0 place-items-center rounded-full text-[#5E5E5E] transition-colors hover:bg-[#F5F5F5]"
+            className="grid h-9 w-9 shrink-0 place-items-center rounded-full text-[var(--color-neutral-500)] transition-colors hover:bg-[var(--color-neutral-50)]"
           >
             <MoreVertical className="h-5 w-5" />
           </button>
@@ -70,20 +70,20 @@ export function ConversationDetail({ thread, onBack }: { thread: Thread; onBack:
 
         {/* Lawyer quick stats */}
         {info && (
-          <div className="mt-3 flex items-center justify-around rounded-xl bg-[#F5F5F5] py-2">
+          <div className="mt-3 flex items-center justify-around rounded-xl bg-[var(--color-neutral-50)] py-2">
             <div className="flex items-center gap-1.5">
               <Star className="h-4 w-4 fill-[#F5A623] text-[#F5A623]" />
-              <span className="text-xs font-semibold text-[#1A1A1A]">{info.rating}</span>
+              <span className="text-xs font-semibold text-[var(--color-neutral-950)]">{info.rating}</span>
             </div>
             <div className="h-4 w-px bg-gray-200" />
             <div className="flex items-center gap-1.5">
-              <Briefcase className="h-4 w-4 text-[#2854A8]" />
-              <span className="text-xs font-semibold text-[#1A1A1A]">{info.cases} hồ sơ</span>
+              <Briefcase className="h-4 w-4 text-[var(--color-primary)]" />
+              <span className="text-xs font-semibold text-[var(--color-neutral-950)]">{info.cases} hồ sơ</span>
             </div>
             <div className="h-4 w-px bg-gray-200" />
             <div className="flex items-center gap-1.5">
-              <Clock className="h-4 w-4 text-[#2854A8]" />
-              <span className="text-xs font-semibold text-[#1A1A1A]">{info.responseTime}</span>
+              <Clock className="h-4 w-4 text-[var(--color-primary)]" />
+              <span className="text-xs font-semibold text-[var(--color-neutral-950)]">{info.responseTime}</span>
             </div>
           </div>
         )}
@@ -97,8 +97,8 @@ export function ConversationDetail({ thread, onBack }: { thread: Thread; onBack:
             <div
               className={`max-w-[78%] rounded-2xl px-3.5 py-2.5 text-[13px] leading-relaxed shadow-sm ${
                 m.from === "user"
-                  ? "rounded-br-md bg-[#2854A8] text-white"
-                  : "rounded-bl-md border border-gray-100 bg-white text-[#1A1A1A]"
+                  ? "rounded-br-md bg-[var(--color-primary)] text-white"
+                  : "rounded-bl-md border border-gray-100 bg-white text-[var(--color-neutral-950)]"
               }`}
             >
               <p>{m.text}</p>
@@ -114,7 +114,7 @@ export function ConversationDetail({ thread, onBack }: { thread: Thread; onBack:
       <div className="border-t border-gray-100 bg-white px-4 pt-3">
         <button
           type="button"
-          className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#E6F0F9] py-2.5 text-xs font-bold text-[#2854A8] transition-colors hover:bg-[#D4E4F0]"
+          className="flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--color-primary-light)] py-2.5 text-xs font-bold text-[var(--color-primary)] transition-colors hover:bg-[var(--color-primary-light)]"
         >
           <CalendarPlus className="h-4 w-4" />
           Đặt lịch tư vấn với luật sư
@@ -125,7 +125,7 @@ export function ConversationDetail({ thread, onBack }: { thread: Thread; onBack:
           <button
             type="button"
             aria-label="Đính kèm tệp"
-            className="grid h-10 w-10 shrink-0 place-items-center rounded-full text-[#5E5E5E] transition-colors hover:bg-[#F5F5F5]"
+            className="grid h-10 w-10 shrink-0 place-items-center rounded-full text-[var(--color-neutral-500)] transition-colors hover:bg-[var(--color-neutral-50)]"
           >
             <Paperclip className="h-5 w-5" />
           </button>
@@ -136,13 +136,13 @@ export function ConversationDetail({ thread, onBack }: { thread: Thread; onBack:
               if (e.key === "Enter" && !e.nativeEvent.isComposing && e.keyCode !== 229) send()
             }}
             placeholder="Nhập tin nhắn..."
-            className="h-10 flex-1 rounded-full border border-gray-200 bg-[#F5F5F5] px-4 text-[13px] text-[#1A1A1A] outline-none focus:border-[#82ACDB] focus:bg-white"
+            className="h-10 flex-1 rounded-full border border-gray-200 bg-[var(--color-neutral-50)] px-4 text-[13px] text-[var(--color-neutral-950)] outline-none focus:border-[var(--color-secondary-mid)] focus:bg-white"
           />
           <button
             type="button"
             onClick={send}
             aria-label="Gửi"
-            className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#2854A8] text-white transition-transform active:scale-95"
+            className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[var(--color-primary)] text-white transition-transform active:scale-95"
           >
             <Send className="h-4.5 w-4.5" />
           </button>

@@ -58,7 +58,7 @@ export function RejectModal({
             <select
               value={reason}
               onChange={(e) => setReason(e.target.value)}
-              className="h-10 w-full rounded-lg border border-slate-200 bg-white px-3 text-sm text-slate-700 outline-none transition-colors focus:border-[#2854A8] focus:ring-2 focus:ring-[#82ACDB]/40"
+              className="h-10 w-full rounded-lg border border-slate-200 bg-white px-3 text-sm text-slate-700 outline-none transition-colors focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-secondary-mid)]/40"
             >
               {reasons.map((r) => (
                 <option key={r}>{r}</option>
@@ -72,7 +72,7 @@ export function RejectModal({
               onChange={(e) => setNote(e.target.value)}
               rows={3}
               placeholder="Nhập nội dung phản hồi chi tiết..."
-              className="w-full resize-none rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700 outline-none transition-colors placeholder:text-slate-400 focus:border-[#2854A8] focus:ring-2 focus:ring-[#82ACDB]/40"
+              className="w-full resize-none rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700 outline-none transition-colors placeholder:text-slate-400 focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-secondary-mid)]/40"
             />
           </div>
         </div>

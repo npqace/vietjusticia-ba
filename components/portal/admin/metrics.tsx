@@ -61,8 +61,8 @@ export function MetricsWidget() {
         <AreaChart data={requestSeries} margin={{ top: 4, right: 4, left: 4, bottom: 0 }}>
           <defs>
             <linearGradient id="gradReq" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#2854A8" stopOpacity={0.35} />
-              <stop offset="100%" stopColor="#2854A8" stopOpacity={0} />
+              <stop offset="0%" stopColor="var(--color-primary)" stopOpacity={0.35} />
+              <stop offset="100%" stopColor="var(--color-primary)" stopOpacity={0} />
             </linearGradient>
           </defs>
           <XAxis dataKey="time" tick={{ fontSize: 10, fill: "#94a3b8" }} axisLine={false} tickLine={false} />
@@ -70,7 +70,7 @@ export function MetricsWidget() {
             contentStyle={{ borderRadius: 8, border: "1px solid #e2e8f0", fontSize: 12 }}
             labelStyle={{ color: "#475569" }}
           />
-          <Area type="monotone" dataKey="requests" stroke="#2854A8" strokeWidth={2} fill="url(#gradReq)" />
+          <Area type="monotone" dataKey="requests" stroke="var(--color-primary)" strokeWidth={2} fill="url(#gradReq)" />
         </AreaChart>
       </ChartCard>
 
@@ -81,7 +81,7 @@ export function MetricsWidget() {
             cursor={{ fill: "#f1f5f9" }}
             contentStyle={{ borderRadius: 8, border: "1px solid #e2e8f0", fontSize: 12 }}
           />
-          <Bar dataKey="load" fill="#82ACDB" radius={[4, 4, 0, 0]} />
+          <Bar dataKey="load" fill="var(--color-secondary-mid)" radius={[4, 4, 0, 0]} />
         </BarChart>
       </ChartCard>
 
@@ -92,7 +92,7 @@ export function MetricsWidget() {
           <Tooltip
             contentStyle={{ borderRadius: 8, border: "1px solid #e2e8f0", fontSize: 12 }}
           />
-          <Line type="monotone" dataKey="latency" stroke="#2854A8" strokeWidth={2} dot={{ r: 3, fill: "#2854A8" }} />
+          <Line type="monotone" dataKey="latency" stroke="var(--color-primary)" strokeWidth={2} dot={{ r: 3, fill: "var(--color-primary)" }} />
         </LineChart>
       </ChartCard>
     </div>

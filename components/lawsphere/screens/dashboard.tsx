@@ -25,27 +25,27 @@ export function DashboardScreen() {
   }
 
   return (
-    <div className="flex h-full flex-col bg-[#F5F5F5]">
+    <div className="flex h-full flex-col bg-[var(--color-neutral-50)]">
       <header className="border-b border-gray-100 bg-white px-4 pb-3 pt-3">
         <div className="mb-3 flex items-center justify-between">
-          <h1 className="text-lg font-bold text-[#1A1A1A]">Yêu Cầu Của Tôi</h1>
+          <h1 className="text-lg font-bold text-[var(--color-neutral-950)]">Yêu Cầu Của Tôi</h1>
           <button
             type="button"
             onClick={() => setShowModal(true)}
-            className="grid h-9 w-9 place-items-center rounded-full bg-[#2854A8] text-white transition-transform active:scale-95 hover:bg-[#1f4080]"
+            className="grid h-9 w-9 place-items-center rounded-full bg-[var(--color-primary)] text-white transition-transform active:scale-95 hover:bg-[#1f4080]"
             aria-label="Tạo yêu cầu mới"
           >
             <Plus className="h-5 w-5" />
           </button>
         </div>
-        <div className="grid grid-cols-3 gap-1 rounded-xl bg-[#F5F5F5] p-1">
+        <div className="grid grid-cols-3 gap-1 rounded-xl bg-[var(--color-neutral-50)] p-1">
           {categories.map((c) => (
             <button
               key={c}
               type="button"
               onClick={() => setCat(c)}
               className={`rounded-lg py-2 text-xs font-semibold transition-all ${
-                cat === c ? "bg-white text-[#2854A8] shadow-sm" : "text-[#5E5E5E]"
+                cat === c ? "bg-white text-[var(--color-primary)] shadow-sm" : "text-[var(--color-neutral-500)]"
               }`}
             >
               {c}
@@ -59,7 +59,7 @@ export function DashboardScreen() {
           <CaseCard key={req.id} req={req} onOpen={() => setActive(req)} />
         ))}
         {filtered.length === 0 && (
-          <p className="pt-10 text-center text-sm text-[#5E5E5E]">Chưa có yêu cầu nào trong mục này.</p>
+          <p className="pt-10 text-center text-sm text-[var(--color-neutral-500)]">Chưa có yêu cầu nào trong mục này.</p>
         )}
       </div>
 
@@ -70,7 +70,7 @@ export function DashboardScreen() {
             <div className="mb-4 flex justify-center">
               <div className="h-1 w-12 rounded-full bg-gray-300" />
             </div>
-            <h2 className="mb-4 text-center text-lg font-bold text-[#1A1A1A]">Chọn loại yêu cầu</h2>
+            <h2 className="mb-4 text-center text-lg font-bold text-[var(--color-neutral-950)]">Chọn loại yêu cầu</h2>
             <div className="space-y-3">
               <button
                 type="button"
@@ -78,10 +78,10 @@ export function DashboardScreen() {
                   setShowModal(false)
                   setRequestForm("help")
                 }}
-                className="flex w-full flex-col rounded-2xl border border-gray-100 bg-white p-4 text-left transition-colors hover:bg-[#E6F0F9]/40"
+                className="flex w-full flex-col rounded-2xl border border-gray-100 bg-white p-4 text-left transition-colors hover:bg-[var(--color-primary-light)]/40"
               >
-                <p className="font-bold text-[#1A1A1A]">Yêu cầu hỗ trợ</p>
-                <p className="mt-1 text-xs text-[#5E5E5E]">Báo cáo sự cố hoặc yêu cầu hỗ trợ từ quản trị viên</p>
+                <p className="font-bold text-[var(--color-neutral-950)]">Yêu cầu hỗ trợ</p>
+                <p className="mt-1 text-xs text-[var(--color-neutral-500)]">Báo cáo sự cố hoặc yêu cầu hỗ trợ từ quản trị viên</p>
               </button>
               <button
                 type="button"
@@ -89,10 +89,10 @@ export function DashboardScreen() {
                   setShowModal(false)
                   setRequestForm("appointment")
                 }}
-                className="flex w-full flex-col rounded-2xl border border-gray-100 bg-white p-4 text-left transition-colors hover:bg-[#E6F0F9]/40"
+                className="flex w-full flex-col rounded-2xl border border-gray-100 bg-white p-4 text-left transition-colors hover:bg-[var(--color-primary-light)]/40"
               >
-                <p className="font-bold text-[#1A1A1A]">Đặt lịch tư vấn với luật sư</p>
-                <p className="mt-1 text-xs text-[#5E5E5E]">Chọn luật sư và đặt lịch tư vấn trực tiếp</p>
+                <p className="font-bold text-[var(--color-neutral-950)]">Đặt lịch tư vấn với luật sư</p>
+                <p className="mt-1 text-xs text-[var(--color-neutral-500)]">Chọn luật sư và đặt lịch tư vấn trực tiếp</p>
               </button>
               <button
                 type="button"
@@ -100,16 +100,16 @@ export function DashboardScreen() {
                   setShowModal(false)
                   setRequestForm("service")
                 }}
-                className="flex w-full flex-col rounded-2xl border border-gray-100 bg-white p-4 text-left transition-colors hover:bg-[#E6F0F9]/40"
+                className="flex w-full flex-col rounded-2xl border border-gray-100 bg-white p-4 text-left transition-colors hover:bg-[var(--color-primary-light)]/40"
               >
-                <p className="font-bold text-[#1A1A1A]">Yêu cầu dịch vụ</p>
-                <p className="mt-1 text-xs text-[#5E5E5E]">Hệ thống sẽ ghép nối bạn với luật sư phù hợp</p>
+                <p className="font-bold text-[var(--color-neutral-950)]">Yêu cầu dịch vụ</p>
+                <p className="mt-1 text-xs text-[var(--color-neutral-500)]">Hệ thống sẽ ghép nối bạn với luật sư phù hợp</p>
               </button>
             </div>
             <button
               type="button"
               onClick={() => setShowModal(false)}
-              className="mt-4 w-full rounded-xl border border-gray-200 py-3 text-center text-sm font-semibold text-[#5E5E5E] transition-colors active:scale-[0.98] hover:bg-gray-50"
+              className="mt-4 w-full rounded-xl border border-gray-200 py-3 text-center text-sm font-semibold text-[var(--color-neutral-500)] transition-colors active:scale-[0.98] hover:bg-gray-50"
             >
               Hủy
             </button>
@@ -132,12 +132,12 @@ function RequestForm({ type, onClose }: { type: RequestType; onClose: () => void
   }
 
   return (
-    <div className="flex h-full flex-col bg-[#F5F5F5]">
+    <div className="flex h-full flex-col bg-[var(--color-neutral-50)]">
       <header className="border-b border-gray-100 bg-white px-4 py-3">
         <button
           type="button"
           onClick={onClose}
-          className="text-sm font-bold text-[#2854A8] hover:text-[#1f4080]"
+          className="text-sm font-bold text-[var(--color-primary)] hover:text-[#1f4080]"
         >
           ← Quay lại
         </button>
@@ -147,22 +147,22 @@ function RequestForm({ type, onClose }: { type: RequestType; onClose: () => void
         {type === "help" && (
           <>
             <div>
-              <label className="text-xs font-semibold text-[#1A1A1A]">Tiêu đề</label>
+              <label className="text-xs font-semibold text-[var(--color-neutral-950)]">Tiêu đề</label>
               <input
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="Mô tả sự cố hoặc vấn đề gặp phải"
-                className="mt-2 w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm placeholder-gray-400 outline-none transition-colors focus:border-[#2854A8] focus:ring-1 focus:ring-[#82ACDB]"
+                className="mt-2 w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm placeholder-gray-400 outline-none transition-colors focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-secondary-mid)]"
               />
             </div>
             <div>
-              <label className="text-xs font-semibold text-[#1A1A1A]">Chi tiết</label>
+              <label className="text-xs font-semibold text-[var(--color-neutral-950)]">Chi tiết</label>
               <textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder="Mô tả chi tiết vấn đề để chúng tôi hỗ trợ tốt hơn"
-                className="mt-2 h-32 w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm placeholder-gray-400 outline-none transition-colors focus:border-[#2854A8] focus:ring-1 focus:ring-[#82ACDB]"
+                className="mt-2 h-32 w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm placeholder-gray-400 outline-none transition-colors focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-secondary-mid)]"
               />
             </div>
           </>
@@ -171,11 +171,11 @@ function RequestForm({ type, onClose }: { type: RequestType; onClose: () => void
         {type === "appointment" && (
           <>
             <div>
-              <label className="text-xs font-semibold text-[#1A1A1A]">Chọn luật sư</label>
+              <label className="text-xs font-semibold text-[var(--color-neutral-950)]">Chọn luật sư</label>
               <select
                 value={selectedLawyer}
                 onChange={(e) => setSelectedLawyer(e.target.value)}
-                className="mt-2 w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm outline-none transition-colors focus:border-[#2854A8] focus:ring-1 focus:ring-[#82ACDB]"
+                className="mt-2 w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm outline-none transition-colors focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-secondary-mid)]"
               >
                 <option value="">Chọn một luật sư...</option>
                 <option value="l1">Trần Minh Khoa - Luật sư Đất đai</option>
@@ -185,12 +185,12 @@ function RequestForm({ type, onClose }: { type: RequestType; onClose: () => void
               </select>
             </div>
             <div>
-              <label className="text-xs font-semibold text-[#1A1A1A]">Mô tả vấn đề</label>
+              <label className="text-xs font-semibold text-[var(--color-neutral-950)]">Mô tả vấn đề</label>
               <textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder="Mô tả vấn đề pháp lý cần tư vấn"
-                className="mt-2 h-32 w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm placeholder-gray-400 outline-none transition-colors focus:border-[#2854A8] focus:ring-1 focus:ring-[#82ACDB]"
+                className="mt-2 h-32 w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm placeholder-gray-400 outline-none transition-colors focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-secondary-mid)]"
               />
             </div>
           </>
@@ -199,11 +199,11 @@ function RequestForm({ type, onClose }: { type: RequestType; onClose: () => void
         {type === "service" && (
           <>
             <div>
-              <label className="text-xs font-semibold text-[#1A1A1A]">Danh mục dịch vụ</label>
+              <label className="text-xs font-semibold text-[var(--color-neutral-950)]">Danh mục dịch vụ</label>
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-                className="mt-2 w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm outline-none transition-colors focus:border-[#2854A8] focus:ring-1 focus:ring-[#82ACDB]"
+                className="mt-2 w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm outline-none transition-colors focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-secondary-mid)]"
               >
                 <option value="Lao động">Lao động</option>
                 <option value="Đất đai">Đất đai & BĐS</option>
@@ -212,22 +212,22 @@ function RequestForm({ type, onClose }: { type: RequestType; onClose: () => void
               </select>
             </div>
             <div>
-              <label className="text-xs font-semibold text-[#1A1A1A]">Tiêu đề</label>
+              <label className="text-xs font-semibold text-[var(--color-neutral-950)]">Tiêu đề</label>
               <input
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="Nhập tiêu đề yêu cầu dịch vụ"
-                className="mt-2 w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm placeholder-gray-400 outline-none transition-colors focus:border-[#2854A8] focus:ring-1 focus:ring-[#82ACDB]"
+                className="mt-2 w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm placeholder-gray-400 outline-none transition-colors focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-secondary-mid)]"
               />
             </div>
             <div>
-              <label className="text-xs font-semibold text-[#1A1A1A]">Mô tả chi tiết</label>
+              <label className="text-xs font-semibold text-[var(--color-neutral-950)]">Mô tả chi tiết</label>
               <textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder="Mô tả chi tiết nhu cầu để chúng tôi tìm luật sư phù hợp"
-                className="mt-2 h-32 w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm placeholder-gray-400 outline-none transition-colors focus:border-[#2854A8] focus:ring-1 focus:ring-[#82ACDB]"
+                className="mt-2 h-32 w-full rounded-xl border border-gray-200 px-3 py-2.5 text-sm placeholder-gray-400 outline-none transition-colors focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-secondary-mid)]"
               />
             </div>
           </>
@@ -239,14 +239,14 @@ function RequestForm({ type, onClose }: { type: RequestType; onClose: () => void
           type="button"
           onClick={handleSubmit}
           disabled={!title.trim() || !description.trim() || (type === "appointment" && !selectedLawyer)}
-          className="w-full rounded-xl bg-[#2854A8] py-3 text-sm font-bold text-white transition-all active:scale-[0.98] hover:bg-[#1f4080] disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full rounded-xl bg-[var(--color-primary)] py-3 text-sm font-bold text-white transition-all active:scale-[0.98] hover:bg-[#1f4080] disabled:opacity-50 disabled:cursor-not-allowed"
         >
           Gửi yêu cầu
         </button>
         <button
           type="button"
           onClick={onClose}
-          className="w-full rounded-xl border border-gray-200 py-3 text-sm font-bold text-[#5E5E5E] transition-colors active:scale-[0.98] hover:bg-gray-50"
+          className="w-full rounded-xl border border-gray-200 py-3 text-sm font-bold text-[var(--color-neutral-500)] transition-colors active:scale-[0.98] hover:bg-gray-50"
         >
           Hủy
         </button>
@@ -262,15 +262,15 @@ function CaseCard({ req, onOpen }: { req: CaseRequest; onOpen: () => void }) {
       ? "bg-green-100 text-green-700"
       : req.status === "Đang chờ"
         ? "bg-gray-100 text-gray-600"
-        : "bg-[#E6F0F9] text-[#2854A8]"
+        : "bg-[var(--color-primary-light)] text-[var(--color-primary)]"
 
   return (
     <div className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm">
       <div className="flex items-start justify-between gap-2">
-        <p className="text-base font-bold leading-snug text-[#1A1A1A]">{req.title}</p>
+        <p className="text-base font-bold leading-snug text-[var(--color-neutral-950)]">{req.title}</p>
         <span className={`shrink-0 rounded-full px-2 py-1 text-[10px] font-bold ${statusColor}`}>{req.status}</span>
       </div>
-      <p className="mt-1 text-xs text-[#5E5E5E]">{req.date}</p>
+      <p className="mt-1 text-xs text-[var(--color-neutral-500)]">{req.date}</p>
 
       {/* Step progress */}
       <div className="mt-4 flex items-center">
@@ -281,22 +281,22 @@ function CaseCard({ req, onOpen }: { req: CaseRequest; onOpen: () => void }) {
             <div key={step} className="flex flex-1 flex-col items-center">
               <div className="flex w-full items-center">
                 {i > 0 && (
-                  <div className={`h-0.5 flex-1 ${i <= currentIndex ? "bg-[#2854A8]" : "bg-gray-200"}`} />
+                  <div className={`h-0.5 flex-1 ${i <= currentIndex ? "bg-[var(--color-primary)]" : "bg-gray-200"}`} />
                 )}
                 <div
                   className={`grid h-6 w-6 shrink-0 place-items-center rounded-full text-[10px] font-bold transition-colors ${
-                    done ? "bg-[#2854A8] text-white" : "bg-gray-200 text-gray-400"
-                  } ${active ? "ring-4 ring-[#82ACDB]/40" : ""}`}
+                    done ? "bg-[var(--color-primary)] text-white" : "bg-gray-200 text-gray-400"
+                  } ${active ? "ring-4 ring-[var(--color-secondary-mid)]/40" : ""}`}
                 >
                   {done ? <Check className="h-3.5 w-3.5" /> : i + 1}
                 </div>
                 {i < caseSteps.length - 1 && (
-                  <div className={`h-0.5 flex-1 ${i < currentIndex ? "bg-[#2854A8]" : "bg-gray-200"}`} />
+                  <div className={`h-0.5 flex-1 ${i < currentIndex ? "bg-[var(--color-primary)]" : "bg-gray-200"}`} />
                 )}
               </div>
               <span
                 className={`mt-1.5 text-center text-[9px] font-semibold leading-tight ${
-                  done ? "text-[#2854A8]" : "text-[#5E5E5E]"
+                  done ? "text-[var(--color-primary)]" : "text-[var(--color-neutral-500)]"
                 }`}
               >
                 {step}
@@ -309,7 +309,7 @@ function CaseCard({ req, onOpen }: { req: CaseRequest; onOpen: () => void }) {
       <button
         type="button"
         onClick={onOpen}
-        className="mt-4 w-full rounded-xl border border-[#2854A8] py-2.5 text-sm font-bold text-[#2854A8] transition-colors active:scale-[0.98] hover:bg-[#E6F0F9]"
+        className="mt-4 w-full rounded-xl border border-[var(--color-primary)] py-2.5 text-sm font-bold text-[var(--color-primary)] transition-colors active:scale-[0.98] hover:bg-[var(--color-primary-light)]"
       >
         Xem chi tiết
       </button>
