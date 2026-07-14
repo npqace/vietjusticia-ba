@@ -1,6 +1,7 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Montserrat } from 'next/font/google'
+import { ThemeProvider } from '@/components/lawsphere/theme-provider'
 import './globals.css'
 
 const montserrat = Montserrat({
@@ -42,9 +43,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="vi" className={`${montserrat.variable} bg-[#F5F5F5]`}>
+    <html lang="vi" className={`${montserrat.variable}`}>
       <body className="font-sans antialiased">
-        {children}
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

@@ -30,7 +30,7 @@ export function RejectModal({
         onClick={onClose}
         aria-hidden
       />
-      <div className="relative z-10 w-full max-w-md overflow-hidden rounded-2xl bg-white shadow-xl">
+      <div className="relative z-10 w-full max-w-md overflow-hidden rounded-2xl bg-white dark:bg-[var(--color-neutral-50)] shadow-xl">
         <div className="flex items-start justify-between border-b border-slate-100 p-5">
           <div className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-red-50">
@@ -58,7 +58,7 @@ export function RejectModal({
             <select
               value={reason}
               onChange={(e) => setReason(e.target.value)}
-              className="h-10 w-full rounded-lg border border-slate-200 bg-white px-3 text-sm text-slate-700 outline-none transition-colors focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-secondary-mid)]/40"
+              className="h-10 w-full rounded-lg border border-slate-200 bg-white dark:bg-[var(--color-neutral-50)] px-3 text-sm text-slate-700 outline-none transition-colors focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-secondary-mid)]/40"
             >
               {reasons.map((r) => (
                 <option key={r}>{r}</option>
@@ -72,7 +72,7 @@ export function RejectModal({
               onChange={(e) => setNote(e.target.value)}
               rows={3}
               placeholder="Nhập nội dung phản hồi chi tiết..."
-              className="w-full resize-none rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700 outline-none transition-colors placeholder:text-slate-400 focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-secondary-mid)]/40"
+              className="w-full resize-none rounded-lg border border-slate-200 bg-white dark:bg-[var(--color-neutral-50)] px-3 py-2 text-sm text-slate-700 outline-none transition-colors placeholder:text-slate-400 focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-secondary-mid)]/40"
             />
           </div>
         </div>
@@ -80,7 +80,7 @@ export function RejectModal({
         <div className="flex justify-end gap-2 border-t border-slate-100 bg-slate-50 p-4">
           <button
             onClick={onClose}
-            className="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-600 transition-colors hover:bg-slate-100"
+            className="rounded-lg border border-slate-200 bg-white dark:bg-[var(--color-neutral-50)] px-4 py-2 text-sm font-semibold text-slate-600 transition-colors hover:bg-slate-100"
           >
             Hủy
           </button>

@@ -53,7 +53,7 @@ export function Welcome({ onFinish }: { onFinish: () => void }) {
       <div className="flex justify-end px-4 pt-2">
         <button
           onClick={onFinish}
-          className="rounded-full px-3 py-1.5 text-sm font-semibold text-[var(--color-primary)] transition-colors hover:bg-white/40"
+          className="rounded-full px-3 py-1.5 text-sm font-semibold text-[var(--color-primary)] transition-colors hover:bg-white dark:bg-[var(--color-neutral-50)]/40"
         >
           Bỏ qua
         </button>
@@ -71,12 +71,12 @@ export function Welcome({ onFinish }: { onFinish: () => void }) {
           />
         </div>
 
-        <h1 className="max-w-[300px] text-balance text-center text-3xl leading-tight text-[var(--color-neutral-950)]">
+        <h1 className="max-w-[300px] text-balance text-center text-3xl leading-tight text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">
           <span className="font-medium">{slide.title} </span>
           <span className="font-extrabold text-[var(--color-primary)]">{slide.highlight}</span>
         </h1>
 
-        <p className="mt-5 max-w-[300px] text-pretty text-center text-[15px] leading-relaxed text-[var(--color-neutral-500)]">
+        <p className="mt-5 max-w-[300px] text-pretty text-center text-[15px] leading-relaxed text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]">
           {slide.body}
         </p>
       </div>

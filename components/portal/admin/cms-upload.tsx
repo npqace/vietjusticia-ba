@@ -97,7 +97,7 @@ export function CmsUpload({
       </div>
 
       {/* Pipeline options */}
-      <div className="rounded-lg border border-slate-200 bg-white p-3">
+      <div className="rounded-lg border border-slate-200 bg-white dark:bg-[var(--color-neutral-50)] p-3">
         <p className="mb-2 text-xs font-semibold text-slate-600">Tùy chọn xử lý</p>
         <div className="grid grid-cols-2 gap-2">
           {pipelineOptions.map((opt) => (
@@ -136,20 +136,20 @@ export function CmsUpload({
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Tìm văn bản..."
-            className="h-9 w-full rounded-lg border border-slate-200 bg-white pl-8 pr-3 text-sm outline-none focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-secondary-mid)]/40"
+            className="h-9 w-full rounded-lg border border-slate-200 bg-white dark:bg-[var(--color-neutral-50)] pl-8 pr-3 text-sm outline-none focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-secondary-mid)]/40"
           />
         </div>
         <div className="grid grid-cols-2 gap-2">
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="h-9 rounded-lg border border-slate-200 bg-white px-2 text-xs text-slate-600 outline-none focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-secondary-mid)]/40"
+            className="h-9 rounded-lg border border-slate-200 bg-white dark:bg-[var(--color-neutral-50)] px-2 text-xs text-slate-600 outline-none focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-secondary-mid)]/40"
           >
             {categories.map((c) => (
               <option key={c}>{c}</option>
             ))}
           </select>
-          <select className="h-9 rounded-lg border border-slate-200 bg-white px-2 text-xs text-slate-600 outline-none focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-secondary-mid)]/40">
+          <select className="h-9 rounded-lg border border-slate-200 bg-white dark:bg-[var(--color-neutral-50)] px-2 text-xs text-slate-600 outline-none focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-secondary-mid)]/40">
             {validityFilters.map((v) => (
               <option key={v}>{v}</option>
             ))}
@@ -168,7 +168,7 @@ export function CmsUpload({
               className={`rounded-lg border p-3 text-left transition-all ${
                 isSel
                   ? "border-[var(--color-primary)] bg-[var(--color-primary)]/5 ring-1 ring-[var(--color-primary)]/30"
-                  : "border-slate-200 bg-white hover:border-[var(--color-secondary-mid)]"
+                  : "border-slate-200 bg-white dark:bg-[var(--color-neutral-50)] hover:border-[var(--color-secondary-mid)]"
               }`}
             >
               <div className="flex items-start justify-between gap-2">
@@ -199,12 +199,12 @@ export function CmsUpload({
 
       {/* Pagination */}
       <div className="mt-auto flex items-center justify-between pt-2 text-xs text-slate-500">
-        <button className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-white px-3 py-1.5 font-medium transition-colors hover:bg-slate-50">
+        <button className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-white dark:bg-[var(--color-neutral-50)] px-3 py-1.5 font-medium transition-colors hover:bg-slate-50">
           <ChevronLeft className="h-3.5 w-3.5" />
           Trước
         </button>
         <span>Trang 1 / 4</span>
-        <button className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-white px-3 py-1.5 font-medium transition-colors hover:bg-slate-50">
+        <button className="inline-flex items-center gap-1 rounded-lg border border-slate-200 bg-white dark:bg-[var(--color-neutral-50)] px-3 py-1.5 font-medium transition-colors hover:bg-slate-50">
           Sau
           <ChevronRight className="h-3.5 w-3.5" />
         </button>

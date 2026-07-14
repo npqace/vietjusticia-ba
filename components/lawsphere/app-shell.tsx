@@ -18,10 +18,10 @@ export function AppShell() {
   const [tab, setTab] = useState<TabKey>("ai")
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-[var(--color-neutral-50)] p-4">
+    <main className="flex min-h-screen items-center justify-center bg-[var(--color-neutral-50)] dark:bg-[var(--color-neutral-50)] p-4">
       {/* Phone frame */}
       <div
-        className="relative flex flex-col overflow-hidden rounded-[44px] bg-white"
+        className="relative flex flex-col overflow-hidden rounded-[44px] bg-white dark:bg-[var(--color-neutral-50)]"
         style={{
           width: 393,
           height: 852,

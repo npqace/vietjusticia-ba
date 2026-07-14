@@ -24,17 +24,17 @@ export function EditProfileSheet({ onClose }: { onClose: () => void }) {
       />
 
       {/* Sheet */}
-      <div className="relative flex max-h-[90%] flex-col rounded-t-3xl bg-white shadow-2xl">
+      <div className="relative flex max-h-[90%] flex-col rounded-t-3xl bg-white dark:bg-[var(--color-neutral-50)] shadow-2xl">
         {/* Grabber + header */}
         <div className="shrink-0 px-4 pb-3 pt-3">
           <div className="mx-auto mb-3 h-1.5 w-10 rounded-full bg-gray-200" />
           <div className="flex items-center justify-between">
-            <h2 className="text-base font-bold text-[var(--color-neutral-950)]">Chỉnh sửa thông tin</h2>
+            <h2 className="text-base font-bold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">Chỉnh sửa thông tin</h2>
             <button
               type="button"
               onClick={onClose}
               aria-label="Đóng"
-              className="grid h-8 w-8 place-items-center rounded-full text-[var(--color-neutral-500)] transition-colors hover:bg-[var(--color-neutral-50)]"
+              className="grid h-8 w-8 place-items-center rounded-full text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)] transition-colors hover:bg-[var(--color-neutral-50)] dark:bg-[var(--color-neutral-50)]"
             >
               <X className="h-5 w-5" />
             </button>
@@ -94,12 +94,12 @@ export function EditProfileSheet({ onClose }: { onClose: () => void }) {
         </div>
 
         {/* Footer actions */}
-        <div className="shrink-0 border-t border-gray-100 px-4 py-3">
+        <div className="shrink-0 border-t border-[var(--color-neutral-200)] dark:border-[var(--color-neutral-200)] px-4 py-3">
           <div className="flex gap-3">
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 rounded-xl border border-gray-200 py-3 text-sm font-bold text-[var(--color-neutral-500)] transition-colors hover:bg-[var(--color-neutral-50)]"
+              className="flex-1 rounded-xl border border-gray-200 py-3 text-sm font-bold text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)] transition-colors hover:bg-[var(--color-neutral-50)] dark:bg-[var(--color-neutral-50)]"
             >
               Hủy
             </button>
@@ -132,14 +132,14 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-xs font-semibold text-[var(--color-neutral-500)]">{label}</span>
-      <div className="flex items-center gap-2.5 rounded-xl border border-gray-200 bg-[var(--color-neutral-50)] px-3 focus-within:border-[var(--color-secondary-mid)] focus-within:bg-white">
-        <Icon className="h-4 w-4 shrink-0 text-[var(--color-neutral-500)]" />
+      <span className="mb-1 block text-xs font-semibold text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]">{label}</span>
+      <div className="flex items-center gap-2.5 rounded-xl border border-gray-200 bg-[var(--color-neutral-50)] dark:bg-[var(--color-neutral-50)] px-3 focus-within:border-[var(--color-secondary-mid)] focus-within:bg-white dark:bg-[var(--color-neutral-50)]">
+        <Icon className="h-4 w-4 shrink-0 text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]" />
         <input
           type={type}
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          className="h-11 flex-1 bg-transparent text-[13px] text-[var(--color-neutral-950)] outline-none"
+          className="h-11 flex-1 bg-transparent text-[13px] text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)] outline-none"
         />
       </div>
     </label>

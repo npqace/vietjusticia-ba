@@ -71,7 +71,7 @@ export function CmsDetails({
       <div className="flex-1 overflow-y-auto p-4">
         {tab === "info" && (
           <div className="space-y-4">
-            <div className="rounded-lg border border-slate-200 bg-white p-3">
+            <div className="rounded-lg border border-slate-200 bg-white dark:bg-[var(--color-neutral-50)] p-3">
               <InfoRow label="Số hiệu" value={doc.meta.number} />
               <InfoRow label="Cơ quan ban hành" value={doc.meta.issuer} />
               <InfoRow label="Người ký" value={doc.meta.signatory} />
@@ -97,7 +97,7 @@ export function CmsDetails({
                 <div
                   key={ch.id}
                   className={`overflow-hidden rounded-lg border transition-all ${
-                    isHi ? "border-[var(--color-primary)] bg-[var(--color-primary)]/5 ring-1 ring-[var(--color-primary)]/30" : "border-slate-200 bg-white"
+                    isHi ? "border-[var(--color-primary)] bg-[var(--color-primary)]/5 ring-1 ring-[var(--color-primary)]/30" : "border-slate-200 bg-white dark:bg-[var(--color-neutral-50)]"
                   }`}
                 >
                   <button
@@ -135,7 +135,7 @@ export function CmsDetails({
               <StatCard label="Lượt truy xuất" value={doc.stats.retrievals.toLocaleString("vi-VN")} />
               <StatCard label="Độ trễ TB" value={`${doc.stats.avgLatency} ms`} />
             </div>
-            <div className="rounded-lg border border-slate-200 bg-white p-3">
+            <div className="rounded-lg border border-slate-200 bg-white dark:bg-[var(--color-neutral-50)] p-3">
               <p className="mb-2 text-xs font-semibold text-slate-600">Chi tiết hệ thống tệp</p>
               <InfoRow label="Thư mục gốc" value={doc.stats.folderPath} />
               <InfoRow label="Tốc độ xử lý" value={doc.stats.processSpeed} />
@@ -149,7 +149,7 @@ export function CmsDetails({
 
 function StatCard({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-lg border border-slate-200 bg-white p-3">
+    <div className="rounded-lg border border-slate-200 bg-white dark:bg-[var(--color-neutral-50)] p-3">
       <p className="text-[11px] text-slate-400">{label}</p>
       <p className="mt-1 font-heading text-lg font-bold text-slate-900">{value}</p>
     </div>

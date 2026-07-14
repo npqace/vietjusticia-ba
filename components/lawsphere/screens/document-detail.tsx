@@ -28,18 +28,18 @@ export function DocumentDetail({
   const [tab, setTab] = useState<"original" | "overview">("overview")
 
   return (
-    <div className="flex h-full flex-col bg-[var(--color-neutral-50)]">
+    <div className="flex h-full flex-col bg-[var(--color-neutral-50)] dark:bg-[var(--color-neutral-50)]">
       {/* Header */}
-      <header className="flex items-center gap-2 border-b border-gray-100 bg-white px-3 py-2">
+      <header className="flex items-center gap-2 border-b border-[var(--color-neutral-200)] dark:border-[var(--color-neutral-200)] bg-white dark:bg-[var(--color-neutral-50)] px-3 py-2">
         <button
           type="button"
           onClick={onBack}
           aria-label="Quay lại"
-          className="grid h-9 w-9 shrink-0 place-items-center rounded-full text-[var(--color-neutral-950)] transition-colors hover:bg-[var(--color-neutral-50)]"
+          className="grid h-9 w-9 shrink-0 place-items-center rounded-full text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)] transition-colors hover:bg-[var(--color-neutral-50)] dark:bg-[var(--color-neutral-50)]"
         >
           <ArrowLeft className="h-5 w-5" />
         </button>
-        <p className="flex-1 truncate text-sm font-bold text-[var(--color-neutral-950)]">Chi tiết văn bản</p>
+        <p className="flex-1 truncate text-sm font-bold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">Chi tiết văn bản</p>
         <button
           type="button"
           aria-label="Lưu"
@@ -57,7 +57,7 @@ export function DocumentDetail({
       </header>
 
       {/* Title block (always visible) */}
-      <div className="bg-white px-4 pb-3 pt-4">
+      <div className="bg-white dark:bg-[var(--color-neutral-50)] px-4 pb-3 pt-4">
         <div className="flex items-center gap-2">
           <span
             className={`rounded-full px-2 py-0.5 text-[10px] font-bold ${
@@ -70,10 +70,10 @@ export function DocumentDetail({
             {detail.field}
           </span>
         </div>
-        <h1 className="mt-2 text-lg font-bold leading-snug text-[var(--color-neutral-950)] text-balance">{doc.title}</h1>
+        <h1 className="mt-2 text-lg font-bold leading-snug text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)] text-balance">{doc.title}</h1>
 
         {/* Tabs */}
-        <div className="mt-4 grid grid-cols-2 gap-1 rounded-xl bg-[var(--color-neutral-50)] p-1">
+        <div className="mt-4 grid grid-cols-2 gap-1 rounded-xl bg-[var(--color-neutral-50)] dark:bg-[var(--color-neutral-50)] p-1">
           <TabBtn active={tab === "overview"} onClick={() => setTab("overview")} icon={Workflow} label="Lược đồ & Tóm tắt" />
           <TabBtn active={tab === "original"} onClick={() => setTab("original")} icon={FileText} label="Nội dung gốc" />
         </div>
@@ -83,9 +83,9 @@ export function DocumentDetail({
         {tab === "overview" ? (
           <>
             {/* Metadata */}
-            <div className="mt-2 bg-white px-4 py-4">
-              <h2 className="text-sm font-bold text-[var(--color-neutral-950)]">Thông tin văn bản</h2>
-              <div className="mt-3 space-y-2 rounded-2xl bg-[var(--color-neutral-50)] p-3">
+            <div className="mt-2 bg-white dark:bg-[var(--color-neutral-50)] px-4 py-4">
+              <h2 className="text-sm font-bold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">Thông tin văn bản</h2>
+              <div className="mt-3 space-y-2 rounded-2xl bg-[var(--color-neutral-50)] dark:bg-[var(--color-neutral-50)] p-3">
                 <MetaRow icon={Tag} label="Số hiệu" value={detail.number} />
                 <MetaRow icon={Building2} label="Cơ quan ban hành" value={detail.issuer} />
                 <MetaRow icon={CalendarDays} label="Ngày hiệu lực" value={detail.effectiveDate} />
@@ -93,15 +93,15 @@ export function DocumentDetail({
             </div>
 
             {/* Summary */}
-            <div className="mt-2 bg-white px-4 py-4">
-              <h2 className="text-sm font-bold text-[var(--color-neutral-950)]">Tóm tắt nội dung</h2>
-              <p className="mt-2 text-[13px] leading-relaxed text-[var(--color-neutral-500)]">{detail.summary}</p>
+            <div className="mt-2 bg-white dark:bg-[var(--color-neutral-50)] px-4 py-4">
+              <h2 className="text-sm font-bold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">Tóm tắt nội dung</h2>
+              <p className="mt-2 text-[13px] leading-relaxed text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]">{detail.summary}</p>
             </div>
 
             {/* Key points */}
             {detail.keyPoints.length > 0 && (
-              <div className="mt-2 bg-white px-4 py-4">
-                <h2 className="flex items-center gap-2 text-sm font-bold text-[var(--color-neutral-950)]">
+              <div className="mt-2 bg-white dark:bg-[var(--color-neutral-50)] px-4 py-4">
+                <h2 className="flex items-center gap-2 text-sm font-bold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">
                   <ListChecks className="h-4 w-4 text-[var(--color-primary)]" />
                   Điểm chính
                 </h2>
@@ -120,8 +120,8 @@ export function DocumentDetail({
 
             {/* Process diagram */}
             {detail.flow.length > 0 && (
-              <div className="mt-2 bg-white px-4 py-4">
-                <h2 className="flex items-center gap-2 text-sm font-bold text-[var(--color-neutral-950)]">
+              <div className="mt-2 bg-white dark:bg-[var(--color-neutral-50)] px-4 py-4">
+                <h2 className="flex items-center gap-2 text-sm font-bold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">
                   <Workflow className="h-4 w-4 text-[var(--color-primary)]" />
                   Lược đồ áp dụng
                 </h2>
@@ -133,7 +133,7 @@ export function DocumentDetail({
                           {i + 1}
                         </span>
                         <span className="mt-2 text-xs font-bold text-[var(--color-primary)]">{node.step}</span>
-                        <span className="mt-1 text-[10px] leading-tight text-[var(--color-neutral-500)]">{node.note}</span>
+                        <span className="mt-1 text-[10px] leading-tight text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]">{node.note}</span>
                       </div>
                       {i < detail.flow.length - 1 && (
                         <ChevronRight className="h-5 w-5 shrink-0 text-[var(--color-secondary-mid)]" />
@@ -146,23 +146,23 @@ export function DocumentDetail({
 
             {/* Related documents */}
             {detail.related.length > 0 && (
-              <div className="mt-2 bg-white px-4 py-4">
-                <h2 className="text-sm font-bold text-[var(--color-neutral-950)]">Văn bản liên quan</h2>
+              <div className="mt-2 bg-white dark:bg-[var(--color-neutral-50)] px-4 py-4">
+                <h2 className="text-sm font-bold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">Văn bản liên quan</h2>
                 <div className="mt-3 space-y-2">
                   {detail.related.map((r) => (
                     <button
                       key={r.id}
                       type="button"
                       onClick={() => onOpenRelated(r.id)}
-                      className="flex w-full items-center gap-3 rounded-2xl border border-gray-100 bg-white p-3 text-left transition-colors hover:bg-[var(--color-primary-light)]/40"
+                      className="flex w-full items-center gap-3 rounded-2xl border border-[var(--color-neutral-200)] dark:border-[var(--color-neutral-200)] bg-white dark:bg-[var(--color-neutral-50)] p-3 text-left transition-colors hover:bg-[var(--color-primary-light)]/40"
                     >
                       <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-[var(--color-primary-light)] text-[var(--color-primary)]">
                         <FileText className="h-[18px] w-[18px]" />
                       </span>
-                      <span className="min-w-0 flex-1 truncate text-[13px] font-semibold text-[var(--color-neutral-950)]">
+                      <span className="min-w-0 flex-1 truncate text-[13px] font-semibold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">
                         {r.title}
                       </span>
-                      <ChevronRight className="h-5 w-5 shrink-0 text-[var(--color-neutral-500)]" />
+                      <ChevronRight className="h-5 w-5 shrink-0 text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]" />
                     </button>
                   ))}
                 </div>
@@ -171,8 +171,8 @@ export function DocumentDetail({
           </>
         ) : (
           /* Original formatted content */
-          <div className="mt-2 bg-white px-4 py-4">
-            <h2 className="text-sm font-bold text-[var(--color-neutral-950)]">Nội dung chi tiết</h2>
+          <div className="mt-2 bg-white dark:bg-[var(--color-neutral-50)] px-4 py-4">
+            <h2 className="text-sm font-bold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">Nội dung chi tiết</h2>
             <div className="mt-3 space-y-4">
               {detail.articles.map((a) => (
                 <div key={a.heading}>
@@ -212,7 +212,7 @@ function TabBtn({
       type="button"
       onClick={onClick}
       className={`flex items-center justify-center gap-1.5 rounded-lg py-2 text-xs font-semibold transition-all ${
-        active ? "bg-white text-[var(--color-primary)] shadow-sm" : "text-[var(--color-neutral-500)]"
+        active ? "bg-white dark:bg-[var(--color-neutral-50)] text-[var(--color-primary)] shadow-sm" : "text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]"
       }`}
     >
       <Icon className="h-4 w-4" />
@@ -232,9 +232,9 @@ function MetaRow({
 }) {
   return (
     <div className="flex items-center gap-2.5">
-      <Icon className="h-4 w-4 shrink-0 text-[var(--color-neutral-500)]" />
-      <span className="w-32 shrink-0 text-xs text-[var(--color-neutral-500)]">{label}</span>
-      <span className="flex-1 text-right text-xs font-semibold text-[var(--color-neutral-950)]">{value}</span>
+      <Icon className="h-4 w-4 shrink-0 text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]" />
+      <span className="w-32 shrink-0 text-xs text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]">{label}</span>
+      <span className="flex-1 text-right text-xs font-semibold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">{value}</span>
     </div>
   )
 }

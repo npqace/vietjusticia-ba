@@ -16,7 +16,7 @@ export function PortalHeader({
   const roleLabel = view === "admin" ? "Quản trị viên" : "Luật sư"
 
   return (
-    <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b border-slate-200 bg-white px-6">
+    <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b border-slate-200 bg-white dark:bg-[var(--color-neutral-50)] px-6">
       <div className="flex items-center gap-2.5">
         <div className="flex h-9 w-9 items-center justify-center rounded-xl" style={{ backgroundColor: "var(--color-primary)" }}>
           <Scale className="h-5 w-5 text-white" />
@@ -33,7 +33,7 @@ export function PortalHeader({
         <input
           type="text"
           placeholder="Tìm kiếm hồ sơ, văn bản, người dùng..."
-          className="h-9 w-full rounded-lg border border-slate-200 bg-slate-50 pl-9 pr-3 text-sm text-slate-700 outline-none transition-colors placeholder:text-slate-400 focus:border-[var(--color-primary)] focus:bg-white focus:ring-2 focus:ring-[var(--color-secondary-mid)]/40"
+          className="h-9 w-full rounded-lg border border-slate-200 bg-slate-50 pl-9 pr-3 text-sm text-slate-700 outline-none transition-colors placeholder:text-slate-400 focus:border-[var(--color-primary)] focus:bg-white dark:bg-[var(--color-neutral-50)] focus:ring-2 focus:ring-[var(--color-secondary-mid)]/40"
         />
       </div>
 
@@ -43,7 +43,7 @@ export function PortalHeader({
           <button
             onClick={() => onChangeView("admin")}
             className={`rounded-md px-3 py-1.5 text-xs font-semibold transition-all ${
-              view === "admin" ? "bg-white text-[var(--color-primary)] shadow-sm" : "text-slate-500 hover:text-slate-700"
+              view === "admin" ? "bg-white dark:bg-[var(--color-neutral-50)] text-[var(--color-primary)] shadow-sm" : "text-slate-500 hover:text-slate-700"
             }`}
           >
             Admin Console
@@ -51,7 +51,7 @@ export function PortalHeader({
           <button
             onClick={() => onChangeView("lawyer")}
             className={`rounded-md px-3 py-1.5 text-xs font-semibold transition-all ${
-              view === "lawyer" ? "bg-white text-[var(--color-primary)] shadow-sm" : "text-slate-500 hover:text-slate-700"
+              view === "lawyer" ? "bg-white dark:bg-[var(--color-neutral-50)] text-[var(--color-primary)] shadow-sm" : "text-slate-500 hover:text-slate-700"
             }`}
           >
             Luật sư
@@ -85,7 +85,7 @@ export function PortalHeader({
           {menuOpen && (
             <>
               <div className="fixed inset-0 z-10" onClick={() => setMenuOpen(false)} />
-              <div className="absolute right-0 top-11 z-20 w-52 overflow-hidden rounded-xl border border-slate-200 bg-white py-1 shadow-lg">
+              <div className="absolute right-0 top-11 z-20 w-52 overflow-hidden rounded-xl border border-slate-200 bg-white dark:bg-[var(--color-neutral-50)] py-1 shadow-lg">
                 <div className="border-b border-slate-100 px-4 py-2.5">
                   <p className="text-sm font-semibold text-slate-900">{roleLabel}</p>
                   <p className="text-xs text-slate-500">admin@lawsphere.vn</p>

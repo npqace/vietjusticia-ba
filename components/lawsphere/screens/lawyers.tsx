@@ -28,11 +28,11 @@ export function LawyersScreen() {
   }
 
   return (
-    <div className="flex h-full flex-col overflow-hidden bg-[var(--color-neutral-50)]">
+    <div className="flex h-full flex-col overflow-hidden bg-[var(--color-neutral-50)] dark:bg-[var(--color-neutral-50)]">
       {/* Top bar */}
-      <div className="shrink-0 border-b border-gray-100 bg-white px-4 py-3">
+      <div className="shrink-0 border-b border-[var(--color-neutral-200)] dark:border-[var(--color-neutral-200)] bg-white dark:bg-[var(--color-neutral-50)] px-4 py-3">
         <div className="flex items-center justify-between gap-2">
-          <h1 className="text-base font-bold text-[var(--color-neutral-950)]">
+          <h1 className="text-base font-bold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">
             {view === "browse" ? "Luật sư" : "Cuộc trò chuyện"}
           </h1>
           <button
@@ -50,14 +50,14 @@ export function LawyersScreen() {
         </div>
 
         {/* Search */}
-        <div className="mt-3 flex items-center gap-2 rounded-xl bg-[var(--color-neutral-50)] px-3 py-2">
-          <Search className="h-4 w-4 text-[var(--color-neutral-500)]" />
+        <div className="mt-3 flex items-center gap-2 rounded-xl bg-[var(--color-neutral-50)] dark:bg-[var(--color-neutral-50)] px-3 py-2">
+          <Search className="h-4 w-4 text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]" />
           <input
             type="text"
             placeholder={view === "browse" ? "Tìm luật sư..." : "Tìm cuộc trò chuyện..."}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="flex-1 bg-transparent text-sm text-[var(--color-neutral-950)] placeholder-[#9E9E9E] outline-none"
+            className="flex-1 bg-transparent text-sm text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)] placeholder-[#9E9E9E] outline-none"
           />
         </div>
       </div>
@@ -72,7 +72,7 @@ export function LawyersScreen() {
                   key={lawyer.id}
                   type="button"
                   onClick={() => setSelected(lawyer)}
-                  className="flex w-full items-center gap-3 rounded-2xl border border-gray-100 bg-white p-3 text-left shadow-sm transition-colors hover:bg-[var(--color-primary-light)]/40"
+                  className="flex w-full items-center gap-3 rounded-2xl border border-[var(--color-neutral-200)] dark:border-[var(--color-neutral-200)] bg-white dark:bg-[var(--color-neutral-50)] p-3 text-left shadow-sm transition-colors hover:bg-[var(--color-primary-light)]/40"
                 >
                   <div
                     className="grid h-12 w-12 shrink-0 place-items-center rounded-full text-sm font-bold text-white"
@@ -82,13 +82,13 @@ export function LawyersScreen() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">
-                      <h3 className="font-semibold text-[var(--color-neutral-950)]">{lawyer.name}</h3>
+                      <h3 className="font-semibold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">{lawyer.name}</h3>
                       {lawyer.online && (
                         <div className="h-2 w-2 rounded-full bg-green-500" title="Đang hoạt động" />
                       )}
                     </div>
-                    <p className="text-xs text-[var(--color-neutral-500)]">{lawyer.specialty}</p>
-                    <div className="mt-1.5 flex items-center gap-2 text-[10px] text-[var(--color-neutral-700)]">
+                    <p className="text-xs text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]">{lawyer.specialty}</p>
+                    <div className="mt-1.5 flex items-center gap-2 text-[10px] text-[var(--color-neutral-700)] dark:text-[var(--color-neutral-700)]">
                       <div className="flex items-center gap-0.5">
                         <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
                         <span>{lawyer.rating.toFixed(1)}</span>
@@ -103,7 +103,7 @@ export function LawyersScreen() {
               ))
             ) : (
               <div className="flex h-32 items-center justify-center text-center">
-                <p className="text-sm text-[var(--color-neutral-500)]">Không tìm thấy luật sư phù hợp</p>
+                <p className="text-sm text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]">Không tìm thấy luật sư phù hợp</p>
               </div>
             )}
           </div>
@@ -115,7 +115,7 @@ export function LawyersScreen() {
                   key={t.id}
                   type="button"
                   onClick={() => setConversation(t)}
-                  className="flex w-full items-center gap-3 rounded-2xl border border-gray-100 bg-white p-3 text-left shadow-sm transition-colors hover:bg-[var(--color-primary-light)]/40"
+                  className="flex w-full items-center gap-3 rounded-2xl border border-[var(--color-neutral-200)] dark:border-[var(--color-neutral-200)] bg-white dark:bg-[var(--color-neutral-50)] p-3 text-left shadow-sm transition-colors hover:bg-[var(--color-primary-light)]/40"
                 >
                   <div
                     className="grid h-12 w-12 shrink-0 place-items-center rounded-full text-sm font-bold text-white"
@@ -125,15 +125,15 @@ export function LawyersScreen() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">
-                      <h3 className="font-semibold text-[var(--color-neutral-950)]">{t.name}</h3>
+                      <h3 className="font-semibold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">{t.name}</h3>
                       {t.unread > 0 && (
                         <span className="grid h-5 w-5 place-items-center rounded-full bg-red-500 text-[9px] font-bold text-white">
                           {t.unread}
                         </span>
                       )}
                     </div>
-                    <p className="text-xs text-[var(--color-neutral-500)]">{t.specialty}</p>
-                    <p className="mt-1 truncate text-xs text-[var(--color-neutral-700)]">{t.preview}</p>
+                    <p className="text-xs text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]">{t.specialty}</p>
+                    <p className="mt-1 truncate text-xs text-[var(--color-neutral-700)] dark:text-[var(--color-neutral-700)]">{t.preview}</p>
                   </div>
                   <div className="text-right text-[10px] text-[#9E9E9E]">
                     <p>{t.time}</p>
@@ -142,7 +142,7 @@ export function LawyersScreen() {
               ))
             ) : (
               <div className="flex h-32 items-center justify-center text-center">
-                <p className="text-sm text-[var(--color-neutral-500)]">Chưa có cuộc trò chuyện nào</p>
+                <p className="text-sm text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]">Chưa có cuộc trò chuyện nào</p>
               </div>
             )}
           </div>
@@ -160,9 +160,9 @@ function LawyerDetail({
   onBack: () => void
 }) {
   return (
-    <div className="flex h-full flex-col overflow-hidden bg-[var(--color-neutral-50)]">
+    <div className="flex h-full flex-col overflow-hidden bg-[var(--color-neutral-50)] dark:bg-[var(--color-neutral-50)]">
       {/* Header */}
-      <div className="shrink-0 border-b border-gray-100 bg-white px-4 py-3">
+      <div className="shrink-0 border-b border-[var(--color-neutral-200)] dark:border-[var(--color-neutral-200)] bg-white dark:bg-[var(--color-neutral-50)] px-4 py-3">
         <button
           type="button"
           onClick={onBack}
@@ -178,9 +178,9 @@ function LawyerDetail({
             {lawyer.initials}
           </div>
           <div className="flex-1">
-            <h1 className="text-base font-bold text-[var(--color-neutral-950)]">{lawyer.name}</h1>
-            <p className="text-xs text-[var(--color-neutral-500)]">{lawyer.specialty}</p>
-            <div className="mt-2 flex items-center gap-2 text-[11px] text-[var(--color-neutral-700)]">
+            <h1 className="text-base font-bold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">{lawyer.name}</h1>
+            <p className="text-xs text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]">{lawyer.specialty}</p>
+            <div className="mt-2 flex items-center gap-2 text-[11px] text-[var(--color-neutral-700)] dark:text-[var(--color-neutral-700)]">
               <span className="flex items-center gap-0.5">
                 <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
                 {lawyer.rating.toFixed(1)}
@@ -199,36 +199,36 @@ function LawyerDetail({
         <div className="space-y-4">
           {/* Bio */}
           <div>
-            <p className="text-xs font-semibold text-[var(--color-neutral-500)] uppercase">Giới thiệu</p>
+            <p className="text-xs font-semibold text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)] uppercase">Giới thiệu</p>
             <p className="mt-2 text-sm text-[#333333] leading-relaxed">{lawyer.bio}</p>
           </div>
 
           {/* Experience */}
           <div>
-            <p className="text-xs font-semibold text-[var(--color-neutral-500)] uppercase">Kinh nghiệm</p>
+            <p className="text-xs font-semibold text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)] uppercase">Kinh nghiệm</p>
             <p className="mt-2 text-sm font-semibold text-[var(--color-primary)]">{lawyer.experience} năm</p>
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-2 rounded-xl bg-white p-3">
+          <div className="grid grid-cols-3 gap-2 rounded-xl bg-white dark:bg-[var(--color-neutral-50)] p-3">
             <div className="text-center">
               <p className="text-xl font-bold text-[var(--color-primary)]">{lawyer.cases}</p>
-              <p className="mt-0.5 text-[10px] text-[var(--color-neutral-700)]">Hồ sơ</p>
+              <p className="mt-0.5 text-[10px] text-[var(--color-neutral-700)] dark:text-[var(--color-neutral-700)]">Hồ sơ</p>
             </div>
-            <div className="border-l border-r border-gray-100 text-center">
+            <div className="border-l border-r border-[var(--color-neutral-200)] dark:border-[var(--color-neutral-200)] text-center">
               <p className="text-xl font-bold text-[var(--color-primary)]">{lawyer.rating}</p>
-              <p className="mt-0.5 text-[10px] text-[var(--color-neutral-700)]">Đánh giá</p>
+              <p className="mt-0.5 text-[10px] text-[var(--color-neutral-700)] dark:text-[var(--color-neutral-700)]">Đánh giá</p>
             </div>
             <div className="text-center">
               <p className="text-sm font-bold text-[var(--color-primary)]">{lawyer.responseTime}</p>
-              <p className="mt-0.5 text-[10px] text-[var(--color-neutral-700)]">Phản hồi</p>
+              <p className="mt-0.5 text-[10px] text-[var(--color-neutral-700)] dark:text-[var(--color-neutral-700)]">Phản hồi</p>
             </div>
           </div>
         </div>
       </div>
 
       {/* CTA */}
-      <div className="shrink-0 border-t border-gray-100 bg-white px-4 py-3 space-y-2">
+      <div className="shrink-0 border-t border-[var(--color-neutral-200)] dark:border-[var(--color-neutral-200)] bg-white dark:bg-[var(--color-neutral-50)] px-4 py-3 space-y-2">
         <button
           type="button"
           className="w-full rounded-xl py-3 font-semibold text-white transition-opacity hover:opacity-90 active:scale-[0.98]"

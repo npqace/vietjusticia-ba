@@ -1,16 +1,18 @@
 "use client"
 
 import { useState } from "react"
-import { Plus, Bell, Send, FileText, Scale, Clock } from "lucide-react"
+import { Plus, Bell, Send, FileText, Scale, Clock, Moon, Sun } from "lucide-react"
 import { initialMessages, type ChatMessage, type Citation } from "../data"
 import { CitationDrawer } from "../citation-drawer"
 import { ChatHistoryScreen } from "./chat-history"
+import { useTheme } from "../theme-provider"
 
 export function AiChatScreen() {
   const [messages, setMessages] = useState<ChatMessage[]>(initialMessages)
   const [draft, setDraft] = useState("")
   const [activeCitation, setActiveCitation] = useState<Citation | null>(null)
   const [showHistory, setShowHistory] = useState(false)
+  const { theme, toggleTheme } = useTheme()
 
   const send = () => {
     if (!draft.trim()) return
@@ -43,24 +45,32 @@ export function AiChatScreen() {
   }
 
   return (
-    <div className="relative flex h-full flex-col bg-[var(--color-neutral-50)]">
+    <div className="relative flex h-full flex-col bg-[var(--color-neutral-50)] dark:bg-[var(--color-neutral-50)] dark:bg-[var(--color-neutral-50)] dark:bg-[var(--color-neutral-50)]">
       {/* Header */}
-      <header className="flex items-center justify-between border-b border-gray-100 bg-white px-4 py-3">
+      <header className="flex items-center justify-between border-b border-[var(--color-neutral-200)] dark:border-[var(--color-neutral-200)] bg-white dark:bg-[var(--color-neutral-50)] dark:bg-[var(--color-neutral-50)] dark:bg-[var(--color-neutral-50)] px-4 py-3">
         <div className="flex items-center gap-2">
           <span className="grid h-9 w-9 place-items-center rounded-xl bg-[var(--color-primary)]">
             <Scale className="h-5 w-5 text-white" />
           </span>
           <div>
-            <p className="text-sm font-bold leading-tight text-[var(--color-neutral-950)]">AI Luật Sư</p>
-            <p className="text-[11px] text-[var(--color-neutral-500)]">Trợ lý pháp lý thông minh</p>
+            <p className="text-sm font-bold leading-tight text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">AI Luật Sư</p>
+            <p className="text-[11px] text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]">Trợ lý pháp lý thông minh</p>
           </div>
         </div>
         <div className="flex items-center gap-1.5">
           <button
             type="button"
+            onClick={toggleTheme}
+            aria-label="Chuyển đổi chế độ tối"
+            className="grid h-9 w-9 place-items-center rounded-full bg-[var(--color-neutral-50)] dark:bg-[var(--color-neutral-50)] text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)] transition-colors hover:bg-[var(--color-neutral-200)] dark:bg-[var(--color-neutral-200)] dark:text-[var(--color-neutral-700)] dark:text-[var(--color-neutral-700)] dark:hover:bg-[var(--color-neutral-200)]"
+          >
+            {theme === 'light' ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
+          </button>
+          <button
+            type="button"
             onClick={() => setShowHistory(true)}
             aria-label="Lịch sử"
-            className="grid h-9 w-9 place-items-center rounded-full bg-[var(--color-neutral-50)] text-[var(--color-neutral-500)] transition-colors hover:bg-gray-200"
+            className="grid h-9 w-9 place-items-center rounded-full bg-[var(--color-neutral-50)] dark:bg-[var(--color-neutral-50)] text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)] transition-colors hover:bg-[var(--color-neutral-200)] dark:bg-[var(--color-neutral-200)] dark:text-[var(--color-neutral-700)] dark:text-[var(--color-neutral-700)] dark:hover:bg-[var(--color-neutral-200)]"
           >
             <Clock className="h-5 w-5" />
           </button>
@@ -68,14 +78,14 @@ export function AiChatScreen() {
             type="button"
             onClick={restart}
             aria-label="Bắt đầu lại"
-            className="grid h-9 w-9 place-items-center rounded-full bg-[var(--color-neutral-50)] text-[var(--color-primary)] transition-colors hover:bg-[var(--color-primary-light)]"
+            className="grid h-9 w-9 place-items-center rounded-full bg-[var(--color-neutral-50)] dark:bg-[var(--color-neutral-50)] text-[var(--color-primary)] transition-colors hover:bg-[var(--color-primary-light)]"
           >
             <Plus className="h-5 w-5" />
           </button>
           <button
             type="button"
             aria-label="Thông báo"
-            className="relative grid h-9 w-9 place-items-center rounded-full bg-[var(--color-neutral-50)] text-[var(--color-neutral-500)] transition-colors hover:bg-gray-200"
+            className="relative grid h-9 w-9 place-items-center rounded-full bg-[var(--color-neutral-50)] dark:bg-[var(--color-neutral-50)] text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)] transition-colors hover:bg-gray-200"
           >
             <Bell className="h-5 w-5" />
             <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-red-500" />
@@ -94,7 +104,7 @@ export function AiChatScreen() {
             </div>
           ) : (
             <div key={msg.id} className="flex flex-col items-start">
-              <div className="max-w-[85%] rounded-2xl rounded-bl-md border border-gray-100 bg-white px-4 py-2.5 text-[13px] leading-relaxed text-[var(--color-neutral-950)] shadow-sm">
+              <div className="max-w-[85%] rounded-2xl rounded-bl-md border border-[var(--color-neutral-200)] dark:border-[var(--color-neutral-200)] bg-white dark:bg-[var(--color-neutral-50)] px-4 py-2.5 text-[13px] leading-relaxed text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)] shadow-sm">
                 {msg.text}
               </div>
               {msg.citations && (
@@ -104,7 +114,7 @@ export function AiChatScreen() {
                       key={c.id}
                       type="button"
                       onClick={() => setActiveCitation(c)}
-                      className="flex items-center gap-1.5 rounded-full border border-gray-200 bg-gray-50 px-3 py-1.5 text-[11px] font-medium text-[var(--color-neutral-500)] transition-colors hover:border-[var(--color-secondary-mid)] hover:bg-[var(--color-primary-light)] hover:text-[var(--color-primary)]"
+                      className="flex items-center gap-1.5 rounded-full border border-gray-200 bg-gray-50 px-3 py-1.5 text-[11px] font-medium text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)] transition-colors hover:border-[var(--color-secondary-mid)] hover:bg-[var(--color-primary-light)] hover:text-[var(--color-primary)]"
                     >
                       <FileText className="h-3.5 w-3.5" />
                       Nguồn: {c.label}
@@ -118,14 +128,14 @@ export function AiChatScreen() {
       </div>
 
       {/* Input */}
-      <div className="shrink-0 border-t border-gray-100 bg-white px-4 py-3">
+      <div className="shrink-0 border-t border-[var(--color-neutral-200)] dark:border-[var(--color-neutral-200)] bg-white dark:bg-[var(--color-neutral-50)] px-4 py-3">
         <div className="flex items-center gap-2">
           <input
             value={draft}
             onChange={(e) => setDraft(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && send()}
             placeholder="Nhập câu hỏi của bạn tại đây..."
-            className="h-11 flex-1 rounded-full border border-gray-200 bg-[var(--color-neutral-50)] px-4 text-[13px] text-[var(--color-neutral-950)] outline-none transition-colors focus:border-[var(--color-secondary-mid)] focus:bg-white"
+            className="h-11 flex-1 rounded-full border border-gray-200 bg-[var(--color-neutral-50)] dark:bg-[var(--color-neutral-50)] px-4 text-[13px] text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)] outline-none transition-colors focus:border-[var(--color-secondary-mid)] focus:bg-white dark:bg-[var(--color-neutral-50)]"
           />
           <button
             type="button"

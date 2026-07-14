@@ -20,7 +20,7 @@ export function DocumentCms() {
   }
 
   return (
-    <div className="rounded-xl border border-slate-200 bg-white">
+    <div className="rounded-xl border border-slate-200 bg-white dark:bg-[var(--color-neutral-50)]">
       <div className="border-b border-slate-100 px-5 py-4">
         <h2 className="font-heading text-base font-bold text-slate-900">Quản lý văn bản</h2>
         <p className="text-xs text-slate-500">Tải lên, kiểm thử RAG và xem chi tiết tài liệu pháp luật.</p>

@@ -68,7 +68,7 @@ export function PortalSidebar({
         })}
       </nav>
 
-      <div className="mt-auto rounded-xl border border-slate-200 bg-white p-3">
+      <div className="mt-auto rounded-xl border border-slate-200 bg-white dark:bg-[var(--color-neutral-50)] p-3">
         <div className="flex items-center gap-2">
           <span className="flex h-2 w-2 rounded-full bg-emerald-500" />
           <p className="text-xs font-semibold text-slate-700">Hệ thống ổn định</p>

@@ -44,12 +44,12 @@ function Field({
   const inputType = toggleable ? (visible ? "text" : "password") : type
 
   return (
-    <div className="flex items-center gap-3 rounded-2xl border border-zinc-200 bg-white px-4 py-3.5 focus-within:border-[var(--color-primary)] focus-within:ring-2 focus-within:ring-[var(--color-primary)]/15">
+    <div className="flex items-center gap-3 rounded-2xl border border-zinc-200 bg-white dark:bg-[var(--color-neutral-50)] px-4 py-3.5 focus-within:border-[var(--color-primary)] focus-within:ring-2 focus-within:ring-[var(--color-primary)]/15">
       <span className="text-[var(--color-secondary-mid)]">{icon}</span>
       <input
         type={inputType}
         placeholder={placeholder}
-        className="flex-1 bg-transparent text-[15px] text-[var(--color-neutral-950)] outline-none placeholder:text-slate-500"
+        className="flex-1 bg-transparent text-[15px] text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)] outline-none placeholder:text-slate-500"
       />
       {toggleable && (
         <button
@@ -69,7 +69,7 @@ export function Auth({ onAuthenticated }: { onAuthenticated: () => void }) {
   const [tab, setTab] = useState<AuthTab>("signup")
 
   return (
-    <div className="flex h-full flex-col overflow-y-auto bg-[var(--color-neutral-50)]">
+    <div className="flex h-full flex-col overflow-y-auto bg-[var(--color-neutral-50)] dark:bg-[var(--color-neutral-50)]">
       <div className="flex flex-1 flex-col px-4 pb-8 pt-4">
         {/* Brand */}
         <div className="mb-6 flex flex-col items-center">
@@ -81,8 +81,8 @@ export function Auth({ onAuthenticated }: { onAuthenticated: () => void }) {
               className="object-contain"
             />
           </div>
-          <h1 className="mt-2 text-xl font-extrabold text-[var(--color-neutral-950)]">VietJusticIA</h1>
-          <p className="text-sm text-[var(--color-neutral-500)]">Trợ lý pháp lý của bạn</p>
+          <h1 className="mt-2 text-xl font-extrabold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">VietJusticIA</h1>
+          <p className="text-sm text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]">Trợ lý pháp lý của bạn</p>
         </div>
 
         {/* Segmented tabs */}
@@ -90,7 +90,7 @@ export function Auth({ onAuthenticated }: { onAuthenticated: () => void }) {
           <button
             onClick={() => setTab("signin")}
             className={`flex-1 rounded-xl py-2.5 text-sm font-bold transition-all ${
-              tab === "signin" ? "bg-white text-[var(--color-primary)] shadow-sm" : "text-[var(--color-neutral-500)]"
+              tab === "signin" ? "bg-white dark:bg-[var(--color-neutral-50)] text-[var(--color-primary)] shadow-sm" : "text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]"
             }`}
           >
             Đăng nhập
@@ -98,7 +98,7 @@ export function Auth({ onAuthenticated }: { onAuthenticated: () => void }) {
           <button
             onClick={() => setTab("signup")}
             className={`flex-1 rounded-xl py-2.5 text-sm font-bold transition-all ${
-              tab === "signup" ? "bg-white text-[var(--color-primary)] shadow-sm" : "text-[var(--color-neutral-500)]"
+              tab === "signup" ? "bg-white dark:bg-[var(--color-neutral-50)] text-[var(--color-primary)] shadow-sm" : "text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]"
             }`}
           >
             Đăng ký
@@ -141,21 +141,21 @@ export function Auth({ onAuthenticated }: { onAuthenticated: () => void }) {
         {/* Divider */}
         <div className="my-5 flex items-center gap-3">
           <div className="h-px flex-1 bg-zinc-200" />
-          <span className="text-xs font-medium text-[var(--color-neutral-500)]">hoặc</span>
+          <span className="text-xs font-medium text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]">hoặc</span>
           <div className="h-px flex-1 bg-zinc-200" />
         </div>
 
         {/* Google OAuth */}
         <button
           onClick={onAuthenticated}
-          className="flex w-full items-center justify-center gap-3 rounded-2xl border border-zinc-200 bg-white py-3.5 text-sm font-bold text-[var(--color-neutral-950)] transition-all active:scale-[0.98] hover:bg-zinc-50"
+          className="flex w-full items-center justify-center gap-3 rounded-2xl border border-zinc-200 bg-white dark:bg-[var(--color-neutral-50)] py-3.5 text-sm font-bold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)] transition-all active:scale-[0.98] hover:bg-zinc-50"
         >
           <GoogleLogo />
           Tiếp tục với Google
         </button>
 
         {/* Legal */}
-        <p className="mt-6 text-center text-xs leading-relaxed text-[var(--color-neutral-500)]">
+        <p className="mt-6 text-center text-xs leading-relaxed text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]">
           Bằng cách tiếp tục, bạn đồng ý với{" "}
           <span className="font-semibold text-[var(--color-primary)]">Điều khoản Dịch vụ</span> và{" "}
           <span className="font-semibold text-[var(--color-primary)]">Chính sách Bảo mật</span> của chúng tôi.

@@ -25,10 +25,10 @@ export function DashboardScreen() {
   }
 
   return (
-    <div className="flex h-full flex-col bg-[var(--color-neutral-50)]">
-      <header className="border-b border-gray-100 bg-white px-4 pb-3 pt-3">
+    <div className="flex h-full flex-col bg-[var(--color-neutral-50)] dark:bg-[var(--color-neutral-50)]">
+      <header className="border-b border-[var(--color-neutral-200)] dark:border-[var(--color-neutral-200)] bg-white dark:bg-[var(--color-neutral-50)] px-4 pb-3 pt-3">
         <div className="mb-3 flex items-center justify-between">
-          <h1 className="text-lg font-bold text-[var(--color-neutral-950)]">Yêu Cầu Của Tôi</h1>
+          <h1 className="text-lg font-bold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">Yêu Cầu Của Tôi</h1>
           <button
             type="button"
             onClick={() => setShowModal(true)}
@@ -38,14 +38,14 @@ export function DashboardScreen() {
             <Plus className="h-5 w-5" />
           </button>
         </div>
-        <div className="grid grid-cols-3 gap-1 rounded-xl bg-[var(--color-neutral-50)] p-1">
+        <div className="grid grid-cols-3 gap-1 rounded-xl bg-[var(--color-neutral-50)] dark:bg-[var(--color-neutral-50)] p-1">
           {categories.map((c) => (
             <button
               key={c}
               type="button"
               onClick={() => setCat(c)}
               className={`rounded-lg py-2 text-xs font-semibold transition-all ${
-                cat === c ? "bg-white text-[var(--color-primary)] shadow-sm" : "text-[var(--color-neutral-500)]"
+                cat === c ? "bg-white dark:bg-[var(--color-neutral-50)] text-[var(--color-primary)] shadow-sm" : "text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]"
               }`}
             >
               {c}
@@ -59,18 +59,18 @@ export function DashboardScreen() {
           <CaseCard key={req.id} req={req} onOpen={() => setActive(req)} />
         ))}
         {filtered.length === 0 && (
-          <p className="pt-10 text-center text-sm text-[var(--color-neutral-500)]">Chưa có yêu cầu nào trong mục này.</p>
+          <p className="pt-10 text-center text-sm text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]">Chưa có yêu cầu nào trong mục này.</p>
         )}
       </div>
 
       {/* Request creation modal */}
       {showModal && (
         <div className="absolute inset-0 z-50 flex items-end bg-black/30">
-          <div className="w-full rounded-t-3xl bg-white p-4 pb-6">
+          <div className="w-full rounded-t-3xl bg-white dark:bg-[var(--color-neutral-50)] p-4 pb-6">
             <div className="mb-4 flex justify-center">
               <div className="h-1 w-12 rounded-full bg-gray-300" />
             </div>
-            <h2 className="mb-4 text-center text-lg font-bold text-[var(--color-neutral-950)]">Chọn loại yêu cầu</h2>
+            <h2 className="mb-4 text-center text-lg font-bold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">Chọn loại yêu cầu</h2>
             <div className="space-y-3">
               <button
                 type="button"
@@ -78,10 +78,10 @@ export function DashboardScreen() {
                   setShowModal(false)
                   setRequestForm("help")
                 }}
-                className="flex w-full flex-col rounded-2xl border border-gray-100 bg-white p-4 text-left transition-colors hover:bg-[var(--color-primary-light)]/40"
+                className="flex w-full flex-col rounded-2xl border border-[var(--color-neutral-200)] dark:border-[var(--color-neutral-200)] bg-white dark:bg-[var(--color-neutral-50)] p-4 text-left transition-colors hover:bg-[var(--color-primary-light)]/40"
               >
-                <p className="font-bold text-[var(--color-neutral-950)]">Yêu cầu hỗ trợ</p>
-                <p className="mt-1 text-xs text-[var(--color-neutral-500)]">Báo cáo sự cố hoặc yêu cầu hỗ trợ từ quản trị viên</p>
+                <p className="font-bold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">Yêu cầu hỗ trợ</p>
+                <p className="mt-1 text-xs text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]">Báo cáo sự cố hoặc yêu cầu hỗ trợ từ quản trị viên</p>
               </button>
               <button
                 type="button"
@@ -89,10 +89,10 @@ export function DashboardScreen() {
                   setShowModal(false)
                   setRequestForm("appointment")
                 }}
-                className="flex w-full flex-col rounded-2xl border border-gray-100 bg-white p-4 text-left transition-colors hover:bg-[var(--color-primary-light)]/40"
+                className="flex w-full flex-col rounded-2xl border border-[var(--color-neutral-200)] dark:border-[var(--color-neutral-200)] bg-white dark:bg-[var(--color-neutral-50)] p-4 text-left transition-colors hover:bg-[var(--color-primary-light)]/40"
               >
-                <p className="font-bold text-[var(--color-neutral-950)]">Đặt lịch tư vấn với luật sư</p>
-                <p className="mt-1 text-xs text-[var(--color-neutral-500)]">Chọn luật sư và đặt lịch tư vấn trực tiếp</p>
+                <p className="font-bold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">Đặt lịch tư vấn với luật sư</p>
+                <p className="mt-1 text-xs text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]">Chọn luật sư và đặt lịch tư vấn trực tiếp</p>
               </button>
               <button
                 type="button"
@@ -100,16 +100,16 @@ export function DashboardScreen() {
                   setShowModal(false)
                   setRequestForm("service")
                 }}
-                className="flex w-full flex-col rounded-2xl border border-gray-100 bg-white p-4 text-left transition-colors hover:bg-[var(--color-primary-light)]/40"
+                className="flex w-full flex-col rounded-2xl border border-[var(--color-neutral-200)] dark:border-[var(--color-neutral-200)] bg-white dark:bg-[var(--color-neutral-50)] p-4 text-left transition-colors hover:bg-[var(--color-primary-light)]/40"
               >
-                <p className="font-bold text-[var(--color-neutral-950)]">Yêu cầu dịch vụ</p>
-                <p className="mt-1 text-xs text-[var(--color-neutral-500)]">Hệ thống sẽ ghép nối bạn với luật sư phù hợp</p>
+                <p className="font-bold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">Yêu cầu dịch vụ</p>
+                <p className="mt-1 text-xs text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]">Hệ thống sẽ ghép nối bạn với luật sư phù hợp</p>
               </button>
             </div>
             <button
               type="button"
               onClick={() => setShowModal(false)}
-              className="mt-4 w-full rounded-xl border border-gray-200 py-3 text-center text-sm font-semibold text-[var(--color-neutral-500)] transition-colors active:scale-[0.98] hover:bg-gray-50"
+              className="mt-4 w-full rounded-xl border border-gray-200 py-3 text-center text-sm font-semibold text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)] transition-colors active:scale-[0.98] hover:bg-gray-50"
             >
               Hủy
             </button>
@@ -132,8 +132,8 @@ function RequestForm({ type, onClose }: { type: RequestType; onClose: () => void
   }
 
   return (
-    <div className="flex h-full flex-col bg-[var(--color-neutral-50)]">
-      <header className="border-b border-gray-100 bg-white px-4 py-3">
+    <div className="flex h-full flex-col bg-[var(--color-neutral-50)] dark:bg-[var(--color-neutral-50)]">
+      <header className="border-b border-[var(--color-neutral-200)] dark:border-[var(--color-neutral-200)] bg-white dark:bg-[var(--color-neutral-50)] px-4 py-3">
         <button
           type="button"
           onClick={onClose}
@@ -147,7 +147,7 @@ function RequestForm({ type, onClose }: { type: RequestType; onClose: () => void
         {type === "help" && (
           <>
             <div>
-              <label className="text-xs font-semibold text-[var(--color-neutral-950)]">Tiêu đề</label>
+              <label className="text-xs font-semibold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">Tiêu đề</label>
               <input
                 type="text"
                 value={title}
@@ -157,7 +157,7 @@ function RequestForm({ type, onClose }: { type: RequestType; onClose: () => void
               />
             </div>
             <div>
-              <label className="text-xs font-semibold text-[var(--color-neutral-950)]">Chi tiết</label>
+              <label className="text-xs font-semibold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">Chi tiết</label>
               <textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
@@ -171,7 +171,7 @@ function RequestForm({ type, onClose }: { type: RequestType; onClose: () => void
         {type === "appointment" && (
           <>
             <div>
-              <label className="text-xs font-semibold text-[var(--color-neutral-950)]">Chọn luật sư</label>
+              <label className="text-xs font-semibold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">Chọn luật sư</label>
               <select
                 value={selectedLawyer}
                 onChange={(e) => setSelectedLawyer(e.target.value)}
@@ -185,7 +185,7 @@ function RequestForm({ type, onClose }: { type: RequestType; onClose: () => void
               </select>
             </div>
             <div>
-              <label className="text-xs font-semibold text-[var(--color-neutral-950)]">Mô tả vấn đề</label>
+              <label className="text-xs font-semibold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">Mô tả vấn đề</label>
               <textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
@@ -199,7 +199,7 @@ function RequestForm({ type, onClose }: { type: RequestType; onClose: () => void
         {type === "service" && (
           <>
             <div>
-              <label className="text-xs font-semibold text-[var(--color-neutral-950)]">Danh mục dịch vụ</label>
+              <label className="text-xs font-semibold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">Danh mục dịch vụ</label>
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
@@ -212,7 +212,7 @@ function RequestForm({ type, onClose }: { type: RequestType; onClose: () => void
               </select>
             </div>
             <div>
-              <label className="text-xs font-semibold text-[var(--color-neutral-950)]">Tiêu đề</label>
+              <label className="text-xs font-semibold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">Tiêu đề</label>
               <input
                 type="text"
                 value={title}
@@ -222,7 +222,7 @@ function RequestForm({ type, onClose }: { type: RequestType; onClose: () => void
               />
             </div>
             <div>
-              <label className="text-xs font-semibold text-[var(--color-neutral-950)]">Mô tả chi tiết</label>
+              <label className="text-xs font-semibold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">Mô tả chi tiết</label>
               <textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
@@ -234,7 +234,7 @@ function RequestForm({ type, onClose }: { type: RequestType; onClose: () => void
         )}
       </div>
 
-      <div className="border-t border-gray-100 bg-white px-4 py-3 space-y-2">
+      <div className="border-t border-[var(--color-neutral-200)] dark:border-[var(--color-neutral-200)] bg-white dark:bg-[var(--color-neutral-50)] px-4 py-3 space-y-2">
         <button
           type="button"
           onClick={handleSubmit}
@@ -246,7 +246,7 @@ function RequestForm({ type, onClose }: { type: RequestType; onClose: () => void
         <button
           type="button"
           onClick={onClose}
-          className="w-full rounded-xl border border-gray-200 py-3 text-sm font-bold text-[var(--color-neutral-500)] transition-colors active:scale-[0.98] hover:bg-gray-50"
+          className="w-full rounded-xl border border-gray-200 py-3 text-sm font-bold text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)] transition-colors active:scale-[0.98] hover:bg-gray-50"
         >
           Hủy
         </button>
@@ -265,12 +265,12 @@ function CaseCard({ req, onOpen }: { req: CaseRequest; onOpen: () => void }) {
         : "bg-[var(--color-primary-light)] text-[var(--color-primary)]"
 
   return (
-    <div className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm">
+    <div className="rounded-2xl border border-[var(--color-neutral-200)] dark:border-[var(--color-neutral-200)] bg-white dark:bg-[var(--color-neutral-50)] p-4 shadow-sm">
       <div className="flex items-start justify-between gap-2">
-        <p className="text-base font-bold leading-snug text-[var(--color-neutral-950)]">{req.title}</p>
+        <p className="text-base font-bold leading-snug text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">{req.title}</p>
         <span className={`shrink-0 rounded-full px-2 py-1 text-[10px] font-bold ${statusColor}`}>{req.status}</span>
       </div>
-      <p className="mt-1 text-xs text-[var(--color-neutral-500)]">{req.date}</p>
+      <p className="mt-1 text-xs text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]">{req.date}</p>
 
       {/* Step progress */}
       <div className="mt-4 flex items-center">
@@ -296,7 +296,7 @@ function CaseCard({ req, onOpen }: { req: CaseRequest; onOpen: () => void }) {
               </div>
               <span
                 className={`mt-1.5 text-center text-[9px] font-semibold leading-tight ${
-                  done ? "text-[var(--color-primary)]" : "text-[var(--color-neutral-500)]"
+                  done ? "text-[var(--color-primary)]" : "text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]"
                 }`}
               >
                 {step}

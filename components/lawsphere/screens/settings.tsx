@@ -94,26 +94,26 @@ export function SettingsScreen({ onBack }: { onBack: () => void }) {
   }
 
   return (
-    <div className="flex h-full flex-col bg-[var(--color-neutral-50)]">
+    <div className="flex h-full flex-col bg-[var(--color-neutral-50)] dark:bg-[var(--color-neutral-50)]">
       {/* Header */}
-      <div className="flex items-center gap-2 border-b border-gray-100 bg-white px-3 py-3">
+      <div className="flex items-center gap-2 border-b border-[var(--color-neutral-200)] dark:border-[var(--color-neutral-200)] bg-white dark:bg-[var(--color-neutral-50)] px-3 py-3">
         <button
           type="button"
           onClick={onBack}
           aria-label="Quay lại"
-          className="grid h-9 w-9 place-items-center rounded-full text-[var(--color-neutral-950)] transition-colors hover:bg-[var(--color-neutral-50)]"
+          className="grid h-9 w-9 place-items-center rounded-full text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)] transition-colors hover:bg-[var(--color-neutral-50)] dark:bg-[var(--color-neutral-50)]"
         >
           <ChevronLeft className="h-5 w-5" />
         </button>
-        <h1 className="text-base font-bold text-[var(--color-neutral-950)]">Cài đặt</h1>
+        <h1 className="text-base font-bold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">Cài đặt</h1>
       </div>
 
       {/* Sections */}
       <div className="flex-1 space-y-6 overflow-y-auto px-4 py-5 pb-8">
         {sections.map((section, si) => (
           <div key={section.title}>
-            <p className="mb-2 px-1 text-xs font-bold uppercase tracking-wide text-[var(--color-neutral-500)]">{section.title}</p>
-            <div className="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm">
+            <p className="mb-2 px-1 text-xs font-bold uppercase tracking-wide text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]">{section.title}</p>
+            <div className="overflow-hidden rounded-2xl border border-[var(--color-neutral-200)] dark:border-[var(--color-neutral-200)] bg-white dark:bg-[var(--color-neutral-50)] shadow-sm">
               {section.rows.map((row, ri) => {
                 const Icon = row.icon
                 const isLast = ri === section.rows.length - 1
@@ -121,7 +121,7 @@ export function SettingsScreen({ onBack }: { onBack: () => void }) {
                 return (
                   <div
                     key={row.label}
-                    className={`flex items-center gap-3 px-4 py-3.5 ${isLast ? "" : "border-b border-gray-100"}`}
+                    className={`flex items-center gap-3 px-4 py-3.5 ${isLast ? "" : "border-b border-[var(--color-neutral-200)] dark:border-[var(--color-neutral-200)]"}`}
                   >
                     <span
                       className={`grid h-9 w-9 shrink-0 place-items-center rounded-xl ${
@@ -131,11 +131,11 @@ export function SettingsScreen({ onBack }: { onBack: () => void }) {
                       <Icon className="h-5 w-5" />
                     </span>
                     <div className="flex-1">
-                      <p className={`text-sm font-semibold ${danger ? "text-red-600" : "text-[var(--color-neutral-950)]"}`}>
+                      <p className={`text-sm font-semibold ${danger ? "text-red-600" : "text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]"}`}>
                         {row.label}
                       </p>
                       {row.kind === "toggle" && row.sub && (
-                        <p className="text-xs text-[var(--color-neutral-500)]">{row.sub}</p>
+                        <p className="text-xs text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]">{row.sub}</p>
                       )}
                     </div>
 
@@ -151,15 +151,15 @@ export function SettingsScreen({ onBack }: { onBack: () => void }) {
                         }`}
                       >
                         <span
-                          className={`absolute top-0.5 h-5 w-5 rounded-full bg-white shadow-sm transition-all ${
+                          className={`absolute top-0.5 h-5 w-5 rounded-full bg-white dark:bg-[var(--color-neutral-50)] shadow-sm transition-all ${
                             row.on ? "left-[22px]" : "left-0.5"
                           }`}
                         />
                       </button>
                     ) : (
                       <div className="flex shrink-0 items-center gap-1.5">
-                        {row.value && <span className="text-xs text-[var(--color-neutral-500)]">{row.value}</span>}
-                        <ChevronRight className={`h-5 w-5 ${danger ? "text-red-300" : "text-[var(--color-neutral-500)]"}`} />
+                        {row.value && <span className="text-xs text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]">{row.value}</span>}
+                        <ChevronRight className={`h-5 w-5 ${danger ? "text-red-300" : "text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]"}`} />
                       </div>
                     )}
                   </div>

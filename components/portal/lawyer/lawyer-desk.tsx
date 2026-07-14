@@ -38,7 +38,7 @@ function UrgentStack({ activeId, onSelect }: { activeId: string; onSelect: (id: 
           <button
             key={r.id}
             onClick={() => onSelect(r.id)}
-            className={`rounded-xl border bg-white p-4 text-left transition-all hover:shadow-sm ${
+            className={`rounded-xl border bg-white dark:bg-[var(--color-neutral-50)] p-4 text-left transition-all hover:shadow-sm ${
               activeId === r.id ? "border-[var(--color-primary)] ring-1 ring-[var(--color-primary)]/30" : "border-slate-200"
             }`}
           >
@@ -65,7 +65,7 @@ function UrgentStack({ activeId, onSelect }: { activeId: string; onSelect: (id: 
 function ChatPane() {
   const [draft, setDraft] = useState("")
   return (
-    <div className="flex h-full min-h-0 flex-col rounded-xl border border-slate-200 bg-white">
+    <div className="flex h-full min-h-0 flex-col rounded-xl border border-slate-200 bg-white dark:bg-[var(--color-neutral-50)]">
       <div className="flex items-center gap-3 border-b border-slate-100 px-4 py-3">
         <div className="relative">
           <div className="flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold text-white" style={{ backgroundColor: "var(--color-secondary-mid)" }}>
@@ -117,7 +117,7 @@ function ChatPane() {
             value={draft}
             onChange={(e) => setDraft(e.target.value)}
             placeholder="Nhập tin nhắn tư vấn..."
-            className="h-10 flex-1 rounded-lg border border-slate-200 bg-slate-50 px-3 text-sm outline-none focus:border-[var(--color-primary)] focus:bg-white focus:ring-2 focus:ring-[var(--color-secondary-mid)]/40"
+            className="h-10 flex-1 rounded-lg border border-slate-200 bg-slate-50 px-3 text-sm outline-none focus:border-[var(--color-primary)] focus:bg-white dark:bg-[var(--color-neutral-50)] focus:ring-2 focus:ring-[var(--color-secondary-mid)]/40"
           />
           <button
             className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-white transition-all active:scale-95"
@@ -134,7 +134,7 @@ function ChatPane() {
 function CasePane() {
   const c = activeCase
   return (
-    <div className="flex h-full flex-col gap-4 overflow-y-auto rounded-xl border border-slate-200 bg-white p-4">
+    <div className="flex h-full flex-col gap-4 overflow-y-auto rounded-xl border border-slate-200 bg-white dark:bg-[var(--color-neutral-50)] p-4">
       <div>
         <div className="flex items-center justify-between">
           <h3 className="font-heading text-sm font-bold text-slate-900">Chi tiết hồ sơ</h3>
@@ -185,7 +185,7 @@ function CasePane() {
                 <div className="flex flex-col items-center">
                   <div
                     className={`flex h-6 w-6 items-center justify-center rounded-full ${
-                      m.done ? "text-white" : "border-2 border-slate-200 bg-white text-slate-300"
+                      m.done ? "text-white" : "border-2 border-slate-200 bg-white dark:bg-[var(--color-neutral-50)] text-slate-300"
                     }`}
                     style={m.done ? { backgroundColor: "var(--color-primary)" } : undefined}
                   >
@@ -204,7 +204,7 @@ function CasePane() {
 
       {/* CTAs */}
       <div className="mt-auto flex flex-col gap-2 border-t border-slate-100 pt-4">
-        <button className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-600 transition-colors hover:bg-slate-50">
+        <button className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-200 bg-white dark:bg-[var(--color-neutral-50)] px-3 py-2 text-xs font-semibold text-slate-600 transition-colors hover:bg-slate-50">
           <FileSearch className="h-4 w-4" />
           Yêu cầu cung cấp thêm thông tin
         </button>

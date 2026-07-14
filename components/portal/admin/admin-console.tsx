@@ -33,7 +33,7 @@ function ControlBar() {
         : "bg-slate-100 text-slate-500 ring-slate-200"
 
   return (
-    <div className="flex flex-col gap-3 rounded-xl border border-slate-200 bg-white p-4 sm:flex-row sm:items-center sm:justify-between">
+    <div className="flex flex-col gap-3 rounded-xl border border-slate-200 bg-white dark:bg-[var(--color-neutral-50)] p-4 sm:flex-row sm:items-center sm:justify-between">
       <div>
         <h1 className="font-heading text-lg font-bold text-slate-900">Bảng điều khiển quản trị</h1>
         <p className="text-sm text-slate-500">Giám sát chỉ mục, RAG và duyệt người dùng nền tảng.</p>

@@ -33,14 +33,14 @@ export function CmsRag({
         <h3 className="font-heading text-sm font-bold text-slate-900">Bộ kiểm thử RAG</h3>
       </div>
 
-      <div className="rounded-lg border border-slate-200 bg-white p-3">
+      <div className="rounded-lg border border-slate-200 bg-white dark:bg-[var(--color-neutral-50)] p-3">
         <textarea
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleKey}
           rows={3}
           placeholder="Nhập câu hỏi kiểm thử..."
-          className="w-full resize-none rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm outline-none focus:border-[var(--color-primary)] focus:bg-white focus:ring-2 focus:ring-[var(--color-secondary-mid)]/40"
+          className="w-full resize-none rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm outline-none focus:border-[var(--color-primary)] focus:bg-white dark:bg-[var(--color-neutral-50)] focus:ring-2 focus:ring-[var(--color-secondary-mid)]/40"
         />
         <div className="mt-2 flex items-center justify-between">
           <span className="text-[11px] text-slate-400">Ctrl + Enter để chạy</span>
@@ -61,7 +61,7 @@ export function CmsRag({
           <div className="rounded-lg border border-slate-200 bg-slate-50 p-3">
             <div className="mb-1.5 flex items-center justify-between">
               <span className="text-xs font-semibold text-slate-600">Phản hồi AI</span>
-              <span className="rounded bg-white px-2 py-0.5 text-[10px] font-semibold text-emerald-600 ring-1 ring-emerald-100">
+              <span className="rounded bg-white dark:bg-[var(--color-neutral-50)] px-2 py-0.5 text-[10px] font-semibold text-emerald-600 ring-1 ring-emerald-100">
                 450 ms
               </span>
             </div>
@@ -83,7 +83,7 @@ export function CmsRag({
                   <button
                     key={i}
                     onClick={() => onCitationClick(doc, c.chunkId)}
-                    className="flex items-center gap-3 rounded-lg border border-slate-200 bg-white p-2.5 text-left transition-all hover:border-[var(--color-secondary-mid)] hover:shadow-sm"
+                    className="flex items-center gap-3 rounded-lg border border-slate-200 bg-white dark:bg-[var(--color-neutral-50)] p-2.5 text-left transition-all hover:border-[var(--color-secondary-mid)] hover:shadow-sm"
                   >
                     <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-blue-50">
                       <FileText className="h-4 w-4 text-[var(--color-primary)]" />

@@ -14,7 +14,7 @@ export function VettingTable() {
   }
 
   return (
-    <div className="rounded-xl border border-slate-200 bg-white">
+    <div className="rounded-xl border border-slate-200 bg-white dark:bg-[var(--color-neutral-50)]">
       <div className="flex items-center justify-between border-b border-slate-100 px-5 py-4">
         <div>
           <h2 className="font-heading text-base font-bold text-slate-900">Hàng đợi duyệt luật sư</h2>
@@ -63,7 +63,7 @@ export function VettingTable() {
                       </button>
                       <button
                         onClick={() => setRejecting(l)}
-                        className="inline-flex items-center gap-1 rounded-lg border border-red-200 bg-white px-2.5 py-1.5 text-xs font-semibold text-red-600 transition-colors hover:bg-red-50"
+                        className="inline-flex items-center gap-1 rounded-lg border border-red-200 bg-white dark:bg-[var(--color-neutral-50)] px-2.5 py-1.5 text-xs font-semibold text-red-600 transition-colors hover:bg-red-50"
                       >
                         <X className="h-3.5 w-3.5" />
                         Từ chối

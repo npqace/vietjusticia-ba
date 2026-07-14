@@ -31,7 +31,7 @@ export function CitationDrawer({
 
       {/* Sheet */}
       <div
-        className={`absolute inset-x-0 bottom-0 flex h-[70%] flex-col rounded-t-3xl bg-white shadow-2xl transition-transform duration-300 ease-out ${
+        className={`absolute inset-x-0 bottom-0 flex h-[70%] flex-col rounded-t-3xl bg-white dark:bg-[var(--color-neutral-50)] shadow-2xl transition-transform duration-300 ease-out ${
           open ? "translate-y-0" : "translate-y-full"
         }`}
       >
@@ -39,20 +39,20 @@ export function CitationDrawer({
           <div className="mx-auto mb-3 h-1.5 w-10 rounded-full bg-gray-200" />
           <div className="flex items-start justify-between gap-3">
             <div>
-              <p className="text-[15px] font-bold leading-snug text-[var(--color-neutral-950)]">{citation?.title}</p>
-              <p className="mt-1 text-xs text-[var(--color-neutral-500)]">{citation?.issuer}</p>
+              <p className="text-[15px] font-bold leading-snug text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">{citation?.title}</p>
+              <p className="mt-1 text-xs text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]">{citation?.issuer}</p>
             </div>
             <button
               type="button"
               onClick={onClose}
-              className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[var(--color-neutral-50)] text-[var(--color-neutral-500)] transition-colors hover:bg-gray-200"
+              className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[var(--color-neutral-50)] dark:bg-[var(--color-neutral-50)] text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)] transition-colors hover:bg-gray-200"
             >
               <X className="h-4 w-4" />
             </button>
           </div>
 
           {/* Tabs */}
-          <div className="mt-4 grid grid-cols-2 gap-1 rounded-xl bg-[var(--color-neutral-50)] p-1">
+          <div className="mt-4 grid grid-cols-2 gap-1 rounded-xl bg-[var(--color-neutral-50)] dark:bg-[var(--color-neutral-50)] p-1">
             <TabBtn active={tab === "content"} onClick={() => setTab("content")} icon={FileText} label="Nội dung" />
             <TabBtn active={tab === "flow"} onClick={() => setTab("flow")} icon={Scale} label="Lược đồ" />
           </div>
@@ -77,7 +77,7 @@ export function CitationDrawer({
                       {i + 1}
                     </span>
                     <span className="mt-2 text-xs font-bold text-[var(--color-primary)]">{node.step}</span>
-                    <span className="mt-1 text-[10px] leading-tight text-[var(--color-neutral-500)]">{node.note}</span>
+                    <span className="mt-1 text-[10px] leading-tight text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]">{node.note}</span>
                   </div>
                   {i < (citation?.flow.length ?? 0) - 1 && (
                     <ChevronRight className="h-5 w-5 shrink-0 text-[var(--color-secondary-mid)]" />
@@ -89,7 +89,7 @@ export function CitationDrawer({
         </div>
 
         {/* CTA */}
-        <div className="border-t border-gray-100 px-5 py-3 pb-5">
+        <div className="border-t border-[var(--color-neutral-200)] dark:border-[var(--color-neutral-200)] px-5 py-3 pb-5">
           <button
             type="button"
             className="w-full rounded-2xl py-3.5 text-sm font-bold text-white shadow-sm transition-all active:scale-[0.98] hover:opacity-90"
@@ -119,7 +119,7 @@ function TabBtn({
       type="button"
       onClick={onClick}
       className={`flex items-center justify-center gap-1.5 rounded-lg py-2 text-xs font-semibold transition-all ${
-        active ? "bg-white text-[var(--color-primary)] shadow-sm" : "text-[var(--color-neutral-500)]"
+        active ? "bg-white dark:bg-[var(--color-neutral-50)] text-[var(--color-primary)] shadow-sm" : "text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]"
       }`}
     >
       <Icon className="h-4 w-4" />

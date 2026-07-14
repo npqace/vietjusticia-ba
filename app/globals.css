@@ -77,6 +77,97 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+/* Light Mode Colors */
+:root {
+  /* Branding Colors - Light Mode */
+  --color-primary-light-mode: #2854A8;
+  --color-primary-dark-light-mode: #1F4080;
+  --color-primary-light-light-mode: #E6F0F9;
+  --color-primary-mid-light-mode: #B0CBE2;
+
+  --color-secondary-light-mode: #0D9488;
+  --color-secondary-dark-light-mode: #0A7A6D;
+  --color-secondary-light-light-mode: #D1FAE5;
+  --color-secondary-mid-light-mode: #6EE7B7;
+
+  --color-accent-light-mode: #F59E0B;
+  --color-accent-dark-light-mode: #D97706;
+  --color-accent-light-light-mode: #FEF3C7;
+  --color-accent-mid-light-mode: #FCD34D;
+
+  /* Neutral Colors - Light Mode */
+  --color-neutral-950-light-mode: #0F172A;
+  --color-neutral-700-light-mode: #374151;
+  --color-neutral-500-light-mode: #6B7280;
+  --color-neutral-200-light-mode: #E5E7EB;
+  --color-neutral-50-light-mode: #F9FAFB;
+
+  /* Functional Colors - Light Mode */
+  --color-success-light-mode: #10B981;
+  --color-warning-light-mode: #F59E0B;
+  --color-error-light-mode: #EF4444;
+  --color-info-light-mode: #3B82F6;
+
+  /* Apply Light Mode as Default */
+  --color-primary: var(--color-primary-light-mode);
+  --color-primary-dark: var(--color-primary-dark-light-mode);
+  --color-primary-light: var(--color-primary-light-light-mode);
+  --color-primary-mid: var(--color-primary-mid-light-mode);
+
+  --color-secondary: var(--color-secondary-light-mode);
+  --color-secondary-dark: var(--color-secondary-dark-light-mode);
+  --color-secondary-light: var(--color-secondary-light-light-mode);
+  --color-secondary-mid: var(--color-secondary-mid-light-mode);
+
+  --color-accent: var(--color-accent-light-mode);
+  --color-accent-dark: var(--color-accent-dark-light-mode);
+  --color-accent-light: var(--color-accent-light-light-mode);
+  --color-accent-mid: var(--color-accent-mid-light-mode);
+
+  --color-neutral-950: var(--color-neutral-950-light-mode);
+  --color-neutral-700: var(--color-neutral-700-light-mode);
+  --color-neutral-500: var(--color-neutral-500-light-mode);
+  --color-neutral-200: var(--color-neutral-200-light-mode);
+  --color-neutral-50: var(--color-neutral-50-light-mode);
+
+  --color-success: var(--color-success-light-mode);
+  --color-warning: var(--color-warning-light-mode);
+  --color-error: var(--color-error-light-mode);
+  --color-info: var(--color-info-light-mode);
+}
+
+/* Dark Mode Colors */
+.dark {
+  /* Branding Colors - Dark Mode */
+  --color-primary: #3B82F6;
+  --color-primary-dark: #1E40AF;
+  --color-primary-light: #1E3A8A;
+  --color-primary-mid: #93C5FD;
+
+  --color-secondary: #06B6D4;
+  --color-secondary-dark: #0891B2;
+  --color-secondary-light: #164E63;
+  --color-secondary-mid: #67E8F9;
+
+  --color-accent: #FBBF24;
+  --color-accent-dark: #F59E0B;
+  --color-accent-light: #78350F;
+  --color-accent-mid: #FCD34D;
+
+  /* Neutral Colors - Dark Mode */
+  --color-neutral-950: #F9FAFB;
+  --color-neutral-700: #D1D5DB;
+  --color-neutral-500: #9CA3AF;
+  --color-neutral-200: #374151;
+  --color-neutral-50: #1F2937;
+
+  /* Functional Colors - Dark Mode */
+  --color-success: #10B981;
+  --color-warning: #FBBF24;
+  --color-error: #F87171;
+  --color-info: #60A5FA;
+}
+
 :root {
   color-scheme: light;
   --background: oklch(1 0 0);
