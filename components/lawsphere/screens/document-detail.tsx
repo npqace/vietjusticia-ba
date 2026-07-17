@@ -12,6 +12,7 @@ import {
   ChevronRight,
   Workflow,
   ListChecks,
+  Scale,
 } from "lucide-react"
 import { docDetails, fallbackDoc, type LawDoc } from "../data"
 
@@ -24,8 +25,8 @@ export function DocumentDetail({
   onBack: () => void
   onOpenRelated: (id: string) => void
 }) {
-  const detail = docDetails[doc.id] ?? { ...fallbackDoc, id: doc.id }
-  const [tab, setTab] = useState<"original" | "overview">("overview")
+  const   detail = docDetails[doc.id] ?? { ...fallbackDoc, id: doc.id }
+  const [tab, setTab] = useState<"content" | "flow">("content")
 
   return (
     <div className="flex h-full flex-col bg-[var(--color-neutral-50)] dark:bg-[var(--color-neutral-50)]">
@@ -72,18 +73,35 @@ export function DocumentDetail({
         </div>
         <h1 className="mt-2 text-lg font-bold leading-snug text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)] text-balance">{doc.title}</h1>
 
-        {/* Tabs */}
+        {/* Tabs - Synchronized with citation drawer */}
         <div className="mt-4 grid grid-cols-2 gap-1 rounded-xl bg-[var(--color-neutral-50)] dark:bg-[var(--color-neutral-50)] p-1">
-          <TabBtn active={tab === "overview"} onClick={() => setTab("overview")} icon={Workflow} label="Lược đồ & Tóm tắt" />
-          <TabBtn active={tab === "original"} onClick={() => setTab("original")} icon={FileText} label="Nội dung gốc" />
+          <TabBtn active={tab === "content"} onClick={() => setTab("content")} icon={FileText} label="Nội dung" />
+          <TabBtn active={tab === "flow"} onClick={() => setTab("flow")} icon={Scale} label="Lược đồ" />
         </div>
       </div>
 
-      <div className="flex-1 overflow-y-auto">
-        {tab === "overview" ? (
-          <>
+      <div className="flex-1 overflow-y-auto px-4 py-4">
+        {tab === "content" ? (
+          /* Content tab - Show original article content */
+          <article className="space-y-4 text-[13px] leading-relaxed">
+            {detail.articles.map((a) => (
+              <div key={a.heading}>
+                <h3 className="font-bold text-[var(--color-primary)]">{a.heading}</h3>
+                <div className="mt-1.5 space-y-1.5">
+                  {a.body.map((p, i) => (
+                    <p key={i} className="text-[#3A3A3A]">
+                      {p}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </article>
+        ) : (
+          /* Flow tab - Show diagram and related info */
+          <div className="space-y-4">
             {/* Metadata */}
-            <div className="mt-2 bg-white dark:bg-[var(--color-neutral-50)] px-4 py-4">
+            <div>
               <h2 className="text-sm font-bold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">Thông tin văn bản</h2>
               <div className="mt-3 space-y-2 rounded-2xl bg-[var(--color-neutral-50)] dark:bg-[var(--color-neutral-50)] p-3">
                 <MetaRow icon={Tag} label="Số hiệu" value={detail.number} />
@@ -93,14 +111,14 @@ export function DocumentDetail({
             </div>
 
             {/* Summary */}
-            <div className="mt-2 bg-white dark:bg-[var(--color-neutral-50)] px-4 py-4">
+            <div>
               <h2 className="text-sm font-bold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">Tóm tắt nội dung</h2>
               <p className="mt-2 text-[13px] leading-relaxed text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]">{detail.summary}</p>
             </div>
 
             {/* Key points */}
             {detail.keyPoints.length > 0 && (
-              <div className="mt-2 bg-white dark:bg-[var(--color-neutral-50)] px-4 py-4">
+              <div>
                 <h2 className="flex items-center gap-2 text-sm font-bold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">
                   <ListChecks className="h-4 w-4 text-[var(--color-primary)]" />
                   Điểm chính
@@ -120,7 +138,7 @@ export function DocumentDetail({
 
             {/* Process diagram */}
             {detail.flow.length > 0 && (
-              <div className="mt-2 bg-white dark:bg-[var(--color-neutral-50)] px-4 py-4">
+              <div>
                 <h2 className="flex items-center gap-2 text-sm font-bold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">
                   <Workflow className="h-4 w-4 text-[var(--color-primary)]" />
                   Lược đồ áp dụng
@@ -146,7 +164,7 @@ export function DocumentDetail({
 
             {/* Related documents */}
             {detail.related.length > 0 && (
-              <div className="mt-2 bg-white dark:bg-[var(--color-neutral-50)] px-4 py-4">
+              <div>
                 <h2 className="text-sm font-bold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">Văn bản liên quan</h2>
                 <div className="mt-3 space-y-2">
                   {detail.related.map((r) => (
@@ -168,38 +186,7 @@ export function DocumentDetail({
                 </div>
               </div>
             )}
-          </>
-        ) : (
-          <>
-            {/* Metadata in original content tab */}
-            <div className="mt-2 bg-white dark:bg-[var(--color-neutral-50)] px-4 py-4">
-              <h2 className="text-sm font-bold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">Thông tin văn bản</h2>
-              <div className="mt-3 space-y-2 rounded-2xl bg-[var(--color-neutral-50)] dark:bg-[var(--color-neutral-50)] p-3">
-                <MetaRow icon={Tag} label="Số hiệu" value={detail.number} />
-                <MetaRow icon={Building2} label="Cơ quan ban hành" value={detail.issuer} />
-                <MetaRow icon={CalendarDays} label="Ngày hiệu lực" value={detail.effectiveDate} />
-              </div>
-            </div>
-
-            {/* Original formatted content */}
-            <div className="mt-2 bg-white dark:bg-[var(--color-neutral-50)] px-4 py-4">
-              <h2 className="text-sm font-bold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">Nội dung chi tiết</h2>
-              <div className="mt-3 space-y-4">
-                {detail.articles.map((a) => (
-                  <div key={a.heading}>
-                    <h3 className="text-[13px] font-bold text-[var(--color-primary)]">{a.heading}</h3>
-                    <div className="mt-1.5 space-y-1.5">
-                      {a.body.map((p, i) => (
-                        <p key={i} className="text-[13px] leading-relaxed text-[#3A3A3A]">
-                          {p}
-                        </p>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </>
+          </div>
         )}
 
         <div className="h-4" />
