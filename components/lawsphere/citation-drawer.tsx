@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { X, FileText, Scale, ChevronRight } from "lucide-react"
+import { X, FileText, Scale, ChevronRight, Tag, Building2, CalendarDays, Workflow, ListChecks } from "lucide-react"
 import type { Citation } from "./data"
 
 export function CitationDrawer({
@@ -61,29 +61,98 @@ export function CitationDrawer({
         {/* Body */}
         <div className="flex-1 overflow-y-auto px-5 py-4">
           {tab === "content" ? (
-            <article className="space-y-3 text-[13px] leading-relaxed text-[#333]">
-              {citation?.content.map((line, i) => (
-                <p key={i} className={i === 0 ? "font-bold text-[var(--color-primary)]" : ""}>
-                  {line}
-                </p>
-              ))}
+            /* Content tab - Show full original article content */
+            <article className="space-y-4 text-[13px] leading-relaxed">
+              {Array.isArray(citation?.content) && citation.content.length > 0 ? (
+                citation.content.map((line, i) => (
+                  <p key={i} className={i === 0 ? "font-bold text-[var(--color-primary)]" : "text-[#3A3A3A]"}>
+                    {line}
+                  </p>
+                ))
+              ) : (
+                <p className="text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]">Không có nội dung</p>
+              )}
             </article>
           ) : (
-            <div className="flex items-stretch gap-2 overflow-x-auto pb-2">
-              {citation?.flow.map((node, i) => (
-                <div key={i} className="flex items-center gap-2">
-                  <div className="flex w-28 shrink-0 flex-col items-center rounded-xl border border-[var(--color-secondary-mid)]/40 bg-[var(--color-primary-light)] px-3 py-3 text-center">
-                    <span className="grid h-6 w-6 place-items-center rounded-full bg-[var(--color-primary)] text-[11px] font-bold text-white">
-                      {i + 1}
-                    </span>
-                    <span className="mt-2 text-xs font-bold text-[var(--color-primary)]">{node.step}</span>
-                    <span className="mt-1 text-[10px] leading-tight text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]">{node.note}</span>
-                  </div>
-                  {i < (citation?.flow.length ?? 0) - 1 && (
-                    <ChevronRight className="h-5 w-5 shrink-0 text-[var(--color-secondary-mid)]" />
+            /* Flow tab - Show metadata, summary, key points, and diagram */
+            <div className="space-y-4">
+              {/* Metadata */}
+              <div>
+                <h3 className="text-xs font-bold uppercase tracking-wide text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]">Thông tin văn bản</h3>
+                <div className="mt-2 space-y-1.5 rounded-xl bg-[var(--color-neutral-50)] dark:bg-[var(--color-neutral-50)] p-2 text-[12px]">
+                  <p className="flex items-center gap-2">
+                    <Tag className="h-3.5 w-3.5 text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]" />
+                    <span className="font-semibold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">Số hiệu:</span>
+                    <span className="text-[var(--color-neutral-700)] dark:text-[var(--color-neutral-700)]">{citation?.number}</span>
+                  </p>
+                  <p className="flex items-center gap-2">
+                    <Building2 className="h-3.5 w-3.5 text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]" />
+                    <span className="font-semibold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">Cơ quan:</span>
+                    <span className="text-[var(--color-neutral-700)] dark:text-[var(--color-neutral-700)]">{citation?.issuer}</span>
+                  </p>
+                  {citation?.effectiveDate && (
+                    <p className="flex items-center gap-2">
+                      <CalendarDays className="h-3.5 w-3.5 text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]" />
+                      <span className="font-semibold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">Ngày hiệu lực:</span>
+                      <span className="text-[var(--color-neutral-700)] dark:text-[var(--color-neutral-700)]">{citation.effectiveDate}</span>
+                    </p>
                   )}
                 </div>
-              ))}
+              </div>
+
+              {/* Summary if available */}
+              {citation?.summary && (
+                <div>
+                  <h3 className="text-xs font-bold uppercase tracking-wide text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]">Tóm tắt</h3>
+                  <p className="mt-2 text-[12px] leading-relaxed text-[var(--color-neutral-700)] dark:text-[var(--color-neutral-700)]">{citation.summary}</p>
+                </div>
+              )}
+
+              {/* Key points if available */}
+              {citation?.keyPoints && citation.keyPoints.length > 0 && (
+                <div>
+                  <h3 className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]">
+                    <ListChecks className="h-4 w-4" />
+                    Điểm chính
+                  </h3>
+                  <ul className="mt-2 space-y-1.5">
+                    {citation.keyPoints.map((point, i) => (
+                      <li key={i} className="flex gap-2 text-[11px]">
+                        <span className="mt-0.5 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-[var(--color-primary-light)] text-[8px] font-bold text-[var(--color-primary)]">
+                          {i + 1}
+                        </span>
+                        <span className="leading-snug text-[#3A3A3A]">{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* Flow diagram */}
+              {citation?.flow && citation.flow.length > 0 && (
+                <div>
+                  <h3 className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]">
+                    <Workflow className="h-4 w-4" />
+                    Lược đồ áp dụng
+                  </h3>
+                  <div className="mt-3 flex gap-2 overflow-x-auto pb-2">
+                    {citation.flow.map((node, i) => (
+                      <div key={i} className="flex items-center gap-2">
+                        <div className="flex w-28 shrink-0 flex-col items-center rounded-xl border border-[var(--color-secondary-mid)]/40 bg-[var(--color-primary-light)] px-3 py-3 text-center">
+                          <span className="grid h-6 w-6 place-items-center rounded-full bg-[var(--color-primary)] text-[11px] font-bold text-white">
+                            {i + 1}
+                          </span>
+                          <span className="mt-2 text-xs font-bold text-[var(--color-primary)]">{node.step}</span>
+                          <span className="mt-1 text-[10px] leading-tight text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]">{node.note}</span>
+                        </div>
+                        {i < citation.flow.length - 1 && (
+                          <ChevronRight className="h-5 w-5 shrink-0 text-[var(--color-secondary-mid)]" />
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           )}
         </div>
