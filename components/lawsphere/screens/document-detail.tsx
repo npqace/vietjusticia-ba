@@ -170,24 +170,36 @@ export function DocumentDetail({
             )}
           </>
         ) : (
-          /* Original formatted content */
-          <div className="mt-2 bg-white dark:bg-[var(--color-neutral-50)] px-4 py-4">
-            <h2 className="text-sm font-bold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">Nội dung chi tiết</h2>
-            <div className="mt-3 space-y-4">
-              {detail.articles.map((a) => (
-                <div key={a.heading}>
-                  <h3 className="text-[13px] font-bold text-[var(--color-primary)]">{a.heading}</h3>
-                  <div className="mt-1.5 space-y-1.5">
-                    {a.body.map((p, i) => (
-                      <p key={i} className="text-[13px] leading-relaxed text-[#3A3A3A]">
-                        {p}
-                      </p>
-                    ))}
-                  </div>
-                </div>
-              ))}
+          <>
+            {/* Metadata in original content tab */}
+            <div className="mt-2 bg-white dark:bg-[var(--color-neutral-50)] px-4 py-4">
+              <h2 className="text-sm font-bold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">Thông tin văn bản</h2>
+              <div className="mt-3 space-y-2 rounded-2xl bg-[var(--color-neutral-50)] dark:bg-[var(--color-neutral-50)] p-3">
+                <MetaRow icon={Tag} label="Số hiệu" value={detail.number} />
+                <MetaRow icon={Building2} label="Cơ quan ban hành" value={detail.issuer} />
+                <MetaRow icon={CalendarDays} label="Ngày hiệu lực" value={detail.effectiveDate} />
+              </div>
             </div>
-          </div>
+
+            {/* Original formatted content */}
+            <div className="mt-2 bg-white dark:bg-[var(--color-neutral-50)] px-4 py-4">
+              <h2 className="text-sm font-bold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">Nội dung chi tiết</h2>
+              <div className="mt-3 space-y-4">
+                {detail.articles.map((a) => (
+                  <div key={a.heading}>
+                    <h3 className="text-[13px] font-bold text-[var(--color-primary)]">{a.heading}</h3>
+                    <div className="mt-1.5 space-y-1.5">
+                      {a.body.map((p, i) => (
+                        <p key={i} className="text-[13px] leading-relaxed text-[#3A3A3A]">
+                          {p}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </>
         )}
 
         <div className="h-4" />
