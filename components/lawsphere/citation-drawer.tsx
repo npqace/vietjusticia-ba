@@ -12,7 +12,103 @@ export function CitationDrawer({
   onClose: () => void
 }) {
   const [tab, setTab] = useState<"content" | "flow">("content")
+  const [showAppointmentForm, setShowAppointmentForm] = useState(false)
+  const [selectedLawyer, setSelectedLawyer] = useState("")
+  const [description, setDescription] = useState("")
   const open = citation !== null
+
+  const handleBookAppointment = () => {
+    if (!selectedLawyer.trim() || !description.trim()) return
+    // Handle appointment submission here
+    console.log("[v0] Appointment booked:", { selectedLawyer, description, citation: citation?.id })
+    setShowAppointmentForm(false)
+    setSelectedLawyer("")
+    setDescription("")
+    onClose()
+  }
+
+  if (showAppointmentForm) {
+    return (
+      <div className="absolute inset-0 z-30 pointer-events-auto">
+        {/* Backdrop */}
+        <button
+          type="button"
+          aria-label="Đóng"
+          onClick={() => setShowAppointmentForm(false)}
+          className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+        />
+
+        {/* Appointment Form Sheet */}
+        <div className="absolute inset-x-0 bottom-0 flex h-[75%] flex-col rounded-t-3xl bg-white dark:bg-[var(--color-neutral-50)] shadow-2xl">
+          <div className="flex flex-col px-5 pt-3">
+            <div className="mx-auto mb-3 h-1.5 w-10 rounded-full bg-gray-200" />
+            <button
+              type="button"
+              onClick={() => setShowAppointmentForm(false)}
+              className="text-sm font-bold text-[var(--color-primary)] hover:text-[var(--color-primary-dark)]"
+            >
+              ← Quay lại
+            </button>
+            <h2 className="mt-4 text-lg font-bold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">Đặt lịch tư vấn</h2>
+            <p className="mt-1 text-sm text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]">Về {citation?.title}</p>
+          </div>
+
+          {/* Form Content */}
+          <div className="flex-1 overflow-y-auto space-y-4 px-5 py-4">
+            <div>
+              <label className="text-xs font-semibold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">Chọn luật sư</label>
+              <select
+                value={selectedLawyer}
+                onChange={(e) => setSelectedLawyer(e.target.value)}
+                className="mt-2 w-full rounded-xl border border-[var(--color-neutral-200)] dark:border-[var(--color-neutral-200)] px-3 py-2.5 text-sm outline-none transition-colors focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary-light)]"
+              >
+                <option value="">Chọn một luật sư...</option>
+                <option value="l1">Trần Minh Khoa - Luật sư Lao động</option>
+                <option value="l2">Nguyễn Thị Hương - Luật sư Hôn nhân</option>
+                <option value="l3">Lê Công Dương - Luật sư Doanh nghiệp</option>
+                <option value="l4">Phạm Quốc Bảo - Luật sư Lao động</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="text-xs font-semibold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">Mô tả vấn đề cần tư vấn</label>
+              <textarea
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                placeholder="Mô tả chi tiết vấn đề của bạn..."
+                className="mt-2 h-32 w-full rounded-xl border border-[var(--color-neutral-200)] dark:border-[var(--color-neutral-200)] px-3 py-2.5 text-sm placeholder-gray-400 outline-none transition-colors focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary-light)]"
+              />
+            </div>
+
+            <div className="rounded-2xl bg-[var(--color-primary-light)] p-3">
+              <p className="text-xs text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">
+                <span className="font-semibold">Tài liệu liên quan:</span> {citation?.title}
+              </p>
+            </div>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="border-t border-[var(--color-neutral-200)] dark:border-[var(--color-neutral-200)] px-5 py-3 space-y-2 pb-5">
+            <button
+              type="button"
+              onClick={handleBookAppointment}
+              disabled={!selectedLawyer.trim() || !description.trim()}
+              className="w-full rounded-xl bg-[var(--color-primary)] py-3 text-sm font-bold text-white transition-all active:scale-[0.98] hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              Gửi yêu cầu đặt lịch
+            </button>
+            <button
+              type="button"
+              onClick={() => setShowAppointmentForm(false)}
+              className="w-full rounded-xl border border-[var(--color-neutral-200)] dark:border-[var(--color-neutral-200)] py-3 text-sm font-bold text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)] transition-colors active:scale-[0.98] hover:bg-[var(--color-neutral-50)]"
+            >
+              Hủy
+            </button>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div
@@ -161,10 +257,11 @@ export function CitationDrawer({
         <div className="border-t border-[var(--color-neutral-200)] dark:border-[var(--color-neutral-200)] px-5 py-3 pb-5">
           <button
             type="button"
+            onClick={() => setShowAppointmentForm(true)}
             className="w-full rounded-2xl py-3.5 text-sm font-bold text-white shadow-sm transition-all active:scale-[0.98] hover:opacity-90"
             style={{ backgroundColor: "var(--color-primary)" }}
           >
-            Yêu cầu tư vấn với Luật sư
+            Đặt lịch tư vấn với Luật sư
           </button>
         </div>
       </div>
