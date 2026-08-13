@@ -21,7 +21,7 @@ const quickItems: { icon: LucideIcon; label: string; sub: string }[] = [
   { icon: UserCog, label: "Thông tin cá nhân", sub: "Họ tên, ảnh đại diện, liên hệ" },
 ]
 
-export function ProfileScreen() {
+export function ProfileScreen({ onRequestsClick }: { onRequestsClick?: () => void }) {
   const [view, setView] = useState<"profile" | "settings">("profile")
   const [editing, setEditing] = useState(false)
 
@@ -62,16 +62,27 @@ export function ProfileScreen() {
       </div>
 
       <div className="-mt-12 flex-1 px-4 pb-4">
+        <div className="mb-3 rounded-xl border border-[var(--color-neutral-200)] bg-white p-1 dark:bg-[var(--color-neutral-50)]">
+          <div className="rounded-lg bg-[var(--color-primary-light)] px-3 py-2 text-center text-xs font-bold text-[var(--color-primary)]">
+            Thông tin cá nhân
+          </div>
+        </div>
+
         {/* Stats strip */}
         <div className="grid grid-cols-3 gap-3 overflow-hidden rounded-2xl border border-[var(--color-primary-light)] bg-white dark:bg-[var(--color-neutral-50)] shadow-sm">
           {/* Pending requests */}
-          <div className="flex flex-col items-center gap-2 px-3 py-4">
+          <button
+            type="button"
+            onClick={onRequestsClick}
+            className="flex flex-col items-center gap-2 px-3 py-4 text-center transition-colors hover:bg-[var(--color-primary-light)]/40"
+            aria-label="Xem 3 yêu cầu đang chờ"
+          >
             <span className="grid h-10 w-10 place-items-center rounded-xl bg-[var(--color-primary-light)] text-[var(--color-primary)]">
               <Clock className="h-5 w-5" />
             </span>
             <p className="text-base font-bold text-[var(--color-neutral-950)] dark:text-[var(--color-neutral-950)]">3</p>
             <p className="text-center text-[10px] font-medium leading-tight text-[var(--color-neutral-500)] dark:text-[var(--color-neutral-500)]">Yêu cầu đang chờ</p>
-          </div>
+          </button>
 
           {/* Matched lawyers */}
           <div className="flex flex-col items-center gap-2 px-3 py-4 border-l border-r border-[var(--color-neutral-200)] dark:border-[var(--color-neutral-200)]">
