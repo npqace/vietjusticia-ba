@@ -6,8 +6,8 @@ import { BottomNav, type TabKey } from "./bottom-nav"
 import { AiChatScreen } from "./screens/ai-chat"
 import { LawyersScreen } from "./screens/lawyers"
 import { LibraryScreen } from "./screens/library"
-import { DashboardScreen } from "./screens/dashboard"
-import { ProfileScreen } from "./screens/profile"
+import { ConversationsScreen } from "./screens/conversations"
+import { PersonalScreen } from "./screens/personal"
 import { Welcome } from "./entry/welcome"
 import { Auth } from "./entry/auth"
 
@@ -47,9 +47,9 @@ export function AppShell() {
             <div className="relative flex-1 overflow-hidden">
               {tab === "ai" && <AiChatScreen />}
               {tab === "lawyers" && <LawyersScreen />}
+              {tab === "conversations" && <ConversationsScreen />}
               {tab === "library" && <LibraryScreen />}
-              {tab === "requests" && <DashboardScreen />}
-              {tab === "profile" && <ProfileScreen />}
+              {tab === "personal" && <PersonalScreen />}
             </div>
 
             <BottomNav active={tab} onChange={setTab} />

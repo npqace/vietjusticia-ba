@@ -1,16 +1,16 @@
 "use client"
 
-import { Bot, Users, BookOpen, FileText, User } from "lucide-react"
+import { Bot, MessageCircle, Users, BookOpen, User } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
 
-export type TabKey = "ai" | "lawyers" | "library" | "requests" | "profile"
+export type TabKey = "ai" | "conversations" | "lawyers" | "library" | "personal"
 
 const tabs: { key: TabKey; label: string; icon: LucideIcon }[] = [
   { key: "ai", label: "AI Luật Sư", icon: Bot },
+  { key: "conversations", label: "Cuộc trò chuyện", icon: MessageCircle },
   { key: "lawyers", label: "Luật sư", icon: Users },
   { key: "library", label: "Thư Viện", icon: BookOpen },
-  { key: "requests", label: "Yêu cầu", icon: FileText },
-  { key: "profile", label: "Cá Nhân", icon: User },
+  { key: "personal", label: "Cá nhân", icon: User },
 ]
 
 export function BottomNav({

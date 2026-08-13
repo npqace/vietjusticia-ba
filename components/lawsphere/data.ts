@@ -3,6 +3,10 @@ export type Citation = {
   label: string
   title: string
   issuer: string
+  number?: string
+  effectiveDate?: string
+  summary?: string
+  keyPoints?: string[]
   content: string[]
   flow: { step: string; note: string }[]
 }
@@ -169,7 +173,7 @@ export const lawDocs: LawDoc[] = [
 export const procedures: LawDoc[] = [
   { id: "p1", title: "Đăng ký thành lập doanh nghiệp tư nhân", date: "Cập nhật: 03/2024", active: true },
   { id: "p2", title: "Cấp đổi Giấy chứng nhận quyền sử dụng đất", date: "Cập nhật: 01/2024", active: true },
-  { id: "p3", title: "Đăng ký kết hôn có yếu tố nước ngoài", date: "Cập nhật: 11/2023", active: true },
+  { id: "p3", title: "Đăng ký k���t hôn có yếu tố nước ngoài", date: "Cập nhật: 11/2023", active: true },
   { id: "p4", title: "Xin cấp phiếu lý lịch tư pháp số 1", date: "Cập nhật: 09/2023", active: true },
 ]
 
