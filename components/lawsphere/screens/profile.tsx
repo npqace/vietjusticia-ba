@@ -97,8 +97,26 @@ export function ProfileScreen({ onRequestsClick }: { onRequestsClick?: () => voi
           </div>
         </div>
 
+        {/* Personal sections */}
+        <div className="mt-4 grid grid-cols-2 gap-1 rounded-xl border border-[var(--color-neutral-200)] bg-white p-1 dark:bg-[var(--color-neutral-50)]">
+          <button
+            type="button"
+            onClick={onRequestsClick}
+            className="rounded-lg px-3 py-2 text-xs font-bold text-[var(--color-neutral-500)] transition-colors hover:bg-[var(--color-primary-light)] hover:text-[var(--color-primary)]"
+          >
+            Yêu cầu
+          </button>
+          <button
+            type="button"
+            className="rounded-lg bg-[var(--color-primary-light)] px-3 py-2 text-xs font-bold text-[var(--color-primary)]"
+            aria-current="page"
+          >
+            Thông tin cá nhân
+          </button>
+        </div>
+
         {/* Quick account items */}
-        <div className="mt-4 overflow-hidden rounded-2xl border border-[var(--color-neutral-200)] dark:border-[var(--color-neutral-200)] bg-white dark:bg-[var(--color-neutral-50)] shadow-sm">
+        <div className="mt-3 overflow-hidden rounded-2xl border border-[var(--color-neutral-200)] dark:border-[var(--color-neutral-200)] bg-white dark:bg-[var(--color-neutral-50)] shadow-sm">
           {quickItems.map(({ icon: Icon, label, sub }, i) => (
             <button
               key={label}
