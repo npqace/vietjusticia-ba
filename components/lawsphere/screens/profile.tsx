@@ -102,7 +102,7 @@ export function ProfileScreen({ onRequestsClick }: { onRequestsClick?: () => voi
           <button
             type="button"
             onClick={onRequestsClick}
-            className="rounded-lg px-3 py-2 text-xs font-bold text-[var(--color-neutral-500)] transition-colors hover:bg-[var(--color-primary-light)] hover:text-[var(--color-primary)]"
+            className="rounded-lg border border-[var(--color-neutral-200)] bg-[var(--color-neutral-50)] px-3 py-2 text-xs font-bold text-[var(--color-neutral-700)] transition-colors hover:bg-[var(--color-primary-light)] hover:text-[var(--color-primary)] dark:bg-[var(--color-neutral-200)] dark:text-[var(--color-neutral-950)]"
           >
             Yêu cầu
           </button>
