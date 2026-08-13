@@ -62,12 +62,6 @@ export function ProfileScreen({ onRequestsClick }: { onRequestsClick?: () => voi
       </div>
 
       <div className="-mt-12 flex-1 px-4 pb-4">
-        <div className="mb-3 rounded-xl border border-[var(--color-neutral-200)] bg-white p-1 dark:bg-[var(--color-neutral-50)]">
-          <div className="rounded-lg bg-[var(--color-primary-light)] px-3 py-2 text-center text-xs font-bold text-[var(--color-primary)]">
-            Thông tin cá nhân
-          </div>
-        </div>
-
         {/* Stats strip */}
         <div className="grid grid-cols-3 gap-3 overflow-hidden rounded-2xl border border-[var(--color-primary-light)] bg-white dark:bg-[var(--color-neutral-50)] shadow-sm">
           {/* Pending requests */}
